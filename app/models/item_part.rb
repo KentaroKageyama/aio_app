@@ -1,0 +1,2 @@
+class ItemPart < ApplicationRecord
+end

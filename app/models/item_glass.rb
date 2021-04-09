@@ -1,0 +1,2 @@
+class ItemGlass < ApplicationRecord
+end
