@@ -1,24 +1,117 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+## users テーブル
 
-* Ruby version
+| Column             | Type     | Options                   |
+| ------------------ | -------- | ------------------------- |
+| name               | string   | null: false               |
+| email              | string   | null: false, unique: true |
+| encrypted_password | string   | null: false               |
 
-* System dependencies
+### Association
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| price           | integer    | null: false                    |
+| collection      | references | null: false, foreign_key: true |
+| category        | references | null: false, foreign_key: true |
+| opal_color      | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_many :item_parts
+- has_many :item_glasses
+- belongs_to :collection
+- belongs_to :category
+- belongs_to :opal_color
 
-* Deployment instructions
 
-* ...
+## item_parts テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| item   | references | null: false, foreign_key: true |
+| part   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :part
+
+
+## parts テーブル
+
+| Column   | Type       | Options     |
+| -------- | ---------- | ----------- |
+| name     | string     | null: false |
+| material | string     | null: false |
+
+### Association
+
+- has_many :item_parts
+
+
+## item_glasses テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| item    | references | null: false, foreign_key: true |
+| glass   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :glass
+
+
+## glasses テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| opal_color    | references | null: false, foreign_key: true |
+
+### Association
+
+- has_many :item_grasses
+- belong_to :opal_color 
+
+
+## collections テーブル
+
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| name          | string     | null: false |
+
+### Association
+
+- has_many :items
+
+
+## categories テーブル
+
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| name          | string     | null: false |
+
+### Association
+
+- has_many :items
+
+
+## opal_colors テーブル
+
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| color         | string     | null: false |
+
+### Association
+
+- has_many :items
+- has_many :glasses
