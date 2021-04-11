@@ -87,10 +87,10 @@
   <%= f.text_field :color, placeholder:"オパールカラー" %>
   <%= f.submit '登録' %>
 <% end %>
+<ul id="opal">
 <% @opal_colors.each do |opal| %>
-      <%= link_to "↑", move_higher_opal_color_path(opal) %>
-      <%= link_to "↓", move_lower_opal_color_path(opal) %>
-      <p><%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %></p>
+      <li><%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %></li>
 <% end %>
+</ul>
 <br>
 
