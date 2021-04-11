@@ -88,7 +88,9 @@
   <%= f.submit '登録' %>
 <% end %>
 <% @opal_colors.each do |opal| %>
-  <p><%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %></p>
+      <%= link_to "↑", move_higher_opal_color_path(opal) %>
+      <%= link_to "↓", move_lower_opal_color_path(opal) %>
+      <p><%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %></p>
 <% end %>
 <br>
 

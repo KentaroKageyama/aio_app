@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     @material = Material.new
     @materials = Material.all
     @opal_color = OpalColor.new
-    @opal_colors = OpalColor.all
+    @opal_colors = OpalColor.all.order(:position)
   end
 
   def create

@@ -10,6 +10,17 @@ class OpalColorsController < ApplicationController
     opal_color.destroy
     redirect_to root_path
   end
+
+  def move_higher
+    OpalColor.find(params[:id]).move_higher
+    redirect_to root_path
+  end
+  
+  def move_lower
+    OpalColor.find(params[:id]).move_lower
+    redirect_to root_path
+  end
+
   
   private
 

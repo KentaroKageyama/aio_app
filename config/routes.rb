@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   resources :collections, only: [:create, :destroy]
   resources :categories, only:  [:create, :destroy]
   resources :materials, only:  [:create, :destroy]
-  resources :opal_colors, only: [:create, :destroy]
+  resources :opal_colors, only: [:create, :destroy] do
+    member do
+      get :move_higher
+      get :move_lower
+    end
+  end
 
 end
