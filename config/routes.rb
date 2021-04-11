@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root to: 'items#index'
+  resources :items
+  resources :parts, only: [:create, :destroy]
+  resources :glasses, only: [:create, :destroy]
+  resources :collections, only: [:create, :destroy]
+  resources :categories, only:  [:create, :destroy]
+  resources :materials, only:  [:create, :destroy]
+  resources :opal_colors, only: [:create, :destroy]
+
 end
