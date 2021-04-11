@@ -1,1 +1,94 @@
 <h1>トップページ</h1>
+<br>
+
+
+<h2>アイテム<h2>
+<%= form_with model: @item, url: items_path, method: :post, local: true do |f| %>
+  <%= f.collection_select :collection_id, Collection.all, :id, :name, include_blank: "選択して下さい" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
+  <%= f.collection_select :opal_color_id, OpalColor.all, :id, :color, include_blank: "選択して下さい" %>
+  <%= f.text_field :name, placeholder:"アイテム名" %>
+  <%= f.text_field :price, placeholder:"金額" %>
+
+  <select name="item[part_ids][]">
+    <option value="">パーツを選択してください</option>
+    <% @parts.each do |par| %>
+      <option value=<%=par.id%>><%= par.name %><%= par.material.name %></option>
+    <% end %>
+  </select>
+    <select name="item[glass_ids][]">
+    <option value="">ガラスパーツを選択してください</option>
+    <% @glasses.each do |gla| %>
+      <option value=<%=gla.id%>><%= gla.name %><%= gla.opal_color.color %></option>
+    <% end %>
+  </select>
+  <%= f.submit '登録' %>
+<% end %>
+<% @items.each do |item| %>
+  <p><%= item.collection.name %><%= item.category.name %><%= item.opal_color.color if item.opal_color.present? %><%= item.name %><%= item.price %><%= link_to '削除', item_path(item.id), method: :delete %></p>
+<% end %>
+<br>
+
+<h2>パーツ<h2>
+<%= form_with model: @part, url: parts_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"パーツ名" %>
+  <%= f.collection_select :material_id, Material.all, :id, :name, include_blank: "選択して下さい" %>
+  <%= f.submit '登録' %>
+<% end %>
+<% @parts.each do |par| %>
+  <p><%= par.material.name %><%= par.name %><%= link_to '削除', part_path(par.id), method: :delete %></p>
+<% end %>
+<br>
+
+<h2>ガラスパーツ<h2>
+<%= form_with model: @glass, url: glasses_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"ガラスパーツ名" %>
+  <%= f.collection_select :opal_color_id, OpalColor.all, :id, :color, include_blank: "選択して下さい" %>
+  <%= f.submit '登録' %>
+<% end %>
+<% @glasses.each do |gla| %>
+  <p><%= gla.opal_color.color %><%= gla.name %><%= link_to '削除', glass_path(gla.id), method: :delete %></p>
+<% end %>
+<br>
+
+<h2>シリーズ<h2>
+<%= form_with model: @collection, url: collections_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"シリーズ名" %>
+  <%= f.submit '登録' %>
+<% end %>
+<% @collections.each do |col| %>
+  <p><%= col.name %><%= link_to '削除', collection_path(col.id), method: :delete %></p>
+<% end %>
+<br>
+
+<h2>カテゴリー</h2>
+<%= form_with model: @category, url: categories_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"カテゴリー名" %>
+  <%= f.submit '登録' %>
+<% end %>
+<% @categories.each do |cate| %>
+  <p><%= cate.name %><%= link_to '削除', category_path(cate.id), method: :delete %></p>
+<% end %>
+<br>
+
+
+<h2>マテリアル</h2>
+<%= form_with model: @material, url: materials_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"マテリアル名" %>
+  <%= f.submit '登録' %>
+<% end %>
+<% @materials.each do |mate| %>
+  <p><%= mate.name %><%= link_to '削除', material_path(mate.id), method: :delete %></p>
+<% end %>
+<br>
+
+<h2>オパールカラー</h2>
+<%= form_with model: @opal_color, url: opal_colors_path, method: :post, local: true do |f| %>
+  <%= f.text_field :color, placeholder:"オパールカラー" %>
+  <%= f.submit '登録' %>
+<% end %>
+<% @opal_colors.each do |opal| %>
+  <p><%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %></p>
+<% end %>
+<br>
+

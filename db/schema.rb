@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_134758) do
   end
 
   create_table "glasses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "glass", null: false
+    t.string "name", null: false
     t.bigint "opal_color_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 2021_04_09_134758) do
 
   create_table "item_parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.bigint "glass_id", null: false
+    t.bigint "part_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["glass_id"], name: "index_item_parts_on_glass_id"
     t.index ["item_id"], name: "index_item_parts_on_item_id"
+    t.index ["part_id"], name: "index_item_parts_on_part_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 2021_04_09_134758) do
   add_foreign_key "glasses", "opal_colors"
   add_foreign_key "item_glasses", "glasses"
   add_foreign_key "item_glasses", "items"
-  add_foreign_key "item_parts", "glasses"
   add_foreign_key "item_parts", "items"
+  add_foreign_key "item_parts", "parts"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "collections"
   add_foreign_key "items", "opal_colors"
