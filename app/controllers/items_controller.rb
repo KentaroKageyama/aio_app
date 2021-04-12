@@ -19,8 +19,14 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    binding.pry
     if item.save
+      part_ids = params[:item][:part_ids]
+      i = 0
+      part_ids.each do |part_id|
+        item_part = item.item_parts.where(part_id: part_id).first
+        item_part.update_attribute(:test, params[:item][:tests][i])
+        i += 1
+      end
     end
     redirect_to root_path
   end
