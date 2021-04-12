@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     item = Item.new(item_params)
     item.save
     redirect_to root_path
@@ -33,7 +32,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price,  :collection_id, :category_id, :opal_color_id,  part_ids: [], glass_ids: [] )
+    params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id,  part_ids: [], glass_ids: [] )
   end
 
 end
