@@ -19,10 +19,18 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.save
+    binding.pry
+    if item.save
+    end
     redirect_to root_path
   end
-    
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+
   def sort
     item = Item.find_by(position: params[:from].to_i + 1)
     item.insert_at(params[:to].to_i + 1)
@@ -32,7 +40,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id,  part_ids: [], glass_ids: [] )
+    params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, part_ids: [], glass_ids: [] )
   end
 
 end

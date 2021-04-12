@@ -7,10 +7,10 @@ class Item < ApplicationRecord
   belongs_to :opal_color
   has_one_attached :image
 
-  has_many :item_parts
+  has_many :item_parts, dependent: :destroy
   has_many :parts, through: :item_parts
 
-  has_many :item_glasses
+  has_many :item_glasses, dependent: :destroy
   has_many :glasses, through: :item_glasses
 
 end
