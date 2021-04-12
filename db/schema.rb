@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_134758) do
+ActiveRecord::Schema.define(version: 2021_04_12_054839) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
   end
 
   create_table "collections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
   end
 
   create_table "glasses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -29,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_134758) do
     t.bigint "opal_color_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
     t.index ["opal_color_id"], name: "index_glasses_on_opal_color_id"
   end
 
@@ -58,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_134758) do
     t.bigint "opal_color_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["collection_id"], name: "index_items_on_collection_id"
     t.index ["opal_color_id"], name: "index_items_on_opal_color_id"
@@ -67,12 +71,14 @@ ActiveRecord::Schema.define(version: 2021_04_09_134758) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
   end
 
   create_table "opal_colors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "color", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
   end
 
   create_table "parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_134758) do
     t.bigint "material_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
     t.index ["material_id"], name: "index_parts_on_material_id"
   end
 

@@ -10,6 +10,12 @@ class MaterialsController < ApplicationController
     material.destroy
     redirect_to root_path
   end
+
+  def sort
+    material = Material.find_by(position: params[:from].to_i + 1)
+    material.insert_at(params[:to].to_i + 1)
+    head :ok
+  end
   
   private
 

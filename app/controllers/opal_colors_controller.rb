@@ -10,6 +10,13 @@ class OpalColorsController < ApplicationController
     opal_color.destroy
     redirect_to root_path
   end
+
+  def sort
+    opal_color = OpalColor.find_by(position: params[:from].to_i + 1)
+    opal_color.insert_at(params[:to].to_i + 1)
+    head :ok
+  end
+
   
   private
 

@@ -1,3 +1,4 @@
+<div class="container">
 <h1>トップページ</h1>
 <br>
 
@@ -24,9 +25,14 @@
   </select>
   <%= f.submit '登録' %>
 <% end %>
-<% @items.each do |item| %>
-  <p><%= item.collection.name %><%= item.category.name %><%= item.opal_color.color if item.opal_color.present? %><%= item.name %><%= item.price %><%= link_to '削除', item_path(item.id), method: :delete %></p>
-<% end %>
+<ul id="item_ul" class="sort_ul">
+  <% @items.each do |item| %>
+    <li class="item_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= item.name %><%= link_to '削除', items_path(item.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <br>
 
 <h2>パーツ<h2>
@@ -35,9 +41,14 @@
   <%= f.collection_select :material_id, Material.all, :id, :name, include_blank: "選択して下さい" %>
   <%= f.submit '登録' %>
 <% end %>
-<% @parts.each do |par| %>
-  <p><%= par.material.name %><%= par.name %><%= link_to '削除', part_path(par.id), method: :delete %></p>
-<% end %>
+<ul id="part_ul" class="sort_ul">
+  <% @parts.each do |par| %>
+    <li class="part_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= par.name %><%= link_to '削除', parts_path(par.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <br>
 
 <h2>ガラスパーツ<h2>
@@ -46,9 +57,14 @@
   <%= f.collection_select :opal_color_id, OpalColor.all, :id, :color, include_blank: "選択して下さい" %>
   <%= f.submit '登録' %>
 <% end %>
-<% @glasses.each do |gla| %>
-  <p><%= gla.opal_color.color %><%= gla.name %><%= link_to '削除', glass_path(gla.id), method: :delete %></p>
-<% end %>
+<ul id="glass_ul" class="sort_ul">
+  <% @glasses.each do |gla| %>
+    <li class="glass_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= gla.name %><%= link_to '削除', glasses_path(gla.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <br>
 
 <h2>シリーズ<h2>
@@ -56,9 +72,14 @@
   <%= f.text_field :name, placeholder:"シリーズ名" %>
   <%= f.submit '登録' %>
 <% end %>
-<% @collections.each do |col| %>
-  <p><%= col.name %><%= link_to '削除', collection_path(col.id), method: :delete %></p>
-<% end %>
+<ul id="collection_ul" class="sort_ul">
+  <% @collections.each do |cole| %>
+    <li class="collection_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= cole.name %><%= link_to '削除', collection_path(cole.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <br>
 
 <h2>カテゴリー</h2>
@@ -66,9 +87,14 @@
   <%= f.text_field :name, placeholder:"カテゴリー名" %>
   <%= f.submit '登録' %>
 <% end %>
-<% @categories.each do |cate| %>
-  <p><%= cate.name %><%= link_to '削除', category_path(cate.id), method: :delete %></p>
-<% end %>
+<ul id="category_ul" class="sort_ul">
+  <% @categories.each do |cate| %>
+    <li class="category_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= cate.name %><%= link_to '削除', category_path(cate.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <br>
 
 
@@ -77,9 +103,14 @@
   <%= f.text_field :name, placeholder:"マテリアル名" %>
   <%= f.submit '登録' %>
 <% end %>
-<% @materials.each do |mate| %>
-  <p><%= mate.name %><%= link_to '削除', material_path(mate.id), method: :delete %></p>
-<% end %>
+<ul id="material_ul" class="sort_ul">
+  <% @materials.each do |mate| %>
+    <li class="material_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= mate.name %><%= link_to '削除', material_path(mate.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <br>
 
 <h2>オパールカラー</h2>
@@ -87,8 +118,14 @@
   <%= f.text_field :color, placeholder:"オパールカラー" %>
   <%= f.submit '登録' %>
 <% end %>
-<% @opal_colors.each do |opal| %>
-  <p><%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %></p>
-<% end %>
+<ul id="opal_ul" class="sort_ul"> 
+  <% @opal_colors.each do |opal| %>
+    <li class="opal_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <br>
 
+</div>

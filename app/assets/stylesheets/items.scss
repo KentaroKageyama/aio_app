@@ -1,3 +1,35 @@
-p {
+.container {
+  padding:50px;
+}
+
+.sort_ul {
+
+}
+
+.sort_li {
+  width: 250px;
+  height: 20px;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border: 1px solid gray;
+  margin-bottom: -1px;
+}
+
+.handle {
   font-size: 15px;
+  padding-right: 5px;
+  cursor: grab;
+}
+
+.opal_li {
+  width: 250px;
+  height: 20px;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border: 1px solid gray;
+  margin-bottom: -1px;
+}
+
+.blue-background {
+  background-color: rgb(190, 235, 253);
 }
