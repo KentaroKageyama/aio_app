@@ -10,6 +10,13 @@ class GlassesController < ApplicationController
     glass.destroy
     redirect_to root_path
   end
+
+  def sort
+    glass = Glass.find_by(position: params[:from].to_i + 1)
+    glass.insert_at(params[:to].to_i + 1)
+    head :ok
+  end
+  
   
   private
 

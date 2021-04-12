@@ -1,16 +1,46 @@
 Rails.application.routes.draw do
 
   root to: 'items#index'
-  resources :items
-  resources :parts, only: [:create, :destroy]
-  resources :glasses, only: [:create, :destroy]
-  resources :collections, only: [:create, :destroy]
-  resources :categories, only:  [:create, :destroy]
-  resources :materials, only:  [:create, :destroy]
+
+  resources :items do
+    collection do
+      patch :sort
+    end
+  end
+
+  resources :parts, only: [:create, :destroy] do
+    collection do
+      patch :sort
+    end
+  end
+
+  resources :glasses, only: [:create, :destroy] do
+    collection do
+      patch :sort
+    end
+  end
+
+  resources :collections, only: [:create, :destroy] do
+    collection do
+      patch :sort
+    end
+  end
+
+  resources :categories, only:  [:create, :destroy] do
+    collection do
+      patch :sort
+    end
+  end
+
+  resources :materials, only:  [:create, :destroy] do
+    collection do
+      patch :sort
+    end
+  end
+  
   resources :opal_colors, only: [:create, :destroy] do
-    member do
-      get :move_higher
-      get :move_lower
+    collection do
+      patch :sort
     end
   end
 
