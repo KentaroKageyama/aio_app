@@ -16,7 +16,6 @@ class OpalColorsController < ApplicationController
     opal_color.insert_at(params[:to].to_i + 1)
     head :ok
   end
-
   
   private
 

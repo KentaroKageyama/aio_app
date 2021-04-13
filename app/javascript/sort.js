@@ -1,6 +1,6 @@
 import Sortable from 'sortablejs';
 
-if(document.URL.match( /localhost/)) {
+if(document.URL.match( /new/)) {
   const sort = () => {
 
     $(function() {
@@ -14,7 +14,7 @@ if(document.URL.match( /localhost/)) {
           delay: 100,
           onUpdate: function(evt) {
             return $.ajax({
-              url: 'items/sort',
+              url: '/items/sort',
               type: 'patch',
               data: {
                 from: evt.oldIndex,
@@ -37,7 +37,7 @@ if(document.URL.match( /localhost/)) {
           delay: 100,
           onUpdate: function(evt) {
             return $.ajax({
-              url: 'parts/sort',
+              url: '/parts/sort',
               type: 'patch',
               data: {
                 from: evt.oldIndex,
@@ -60,7 +60,7 @@ if(document.URL.match( /localhost/)) {
           delay: 100,
           onUpdate: function(evt) {
             return $.ajax({
-              url: 'glasses/sort',
+              url: '/glasses/sort',
               type: 'patch',
               data: {
                 from: evt.oldIndex,
@@ -83,7 +83,7 @@ if(document.URL.match( /localhost/)) {
           delay: 100,
           onUpdate: function(evt) {
             return $.ajax({
-              url: 'collections/sort',
+              url: '/collections/sort',
               type: 'patch',
               data: {
                 from: evt.oldIndex,
@@ -106,7 +106,7 @@ if(document.URL.match( /localhost/)) {
           delay: 100,
           onUpdate: function(evt) {
             return $.ajax({
-              url: 'categories/sort',
+              url: '/categories/sort',
               type: 'patch',
               data: {
                 from: evt.oldIndex,
@@ -129,7 +129,7 @@ if(document.URL.match( /localhost/)) {
           delay: 100,
           onUpdate: function(evt) {
             return $.ajax({
-              url: 'materials/sort',
+              url: '/materials/sort',
               type: 'patch',
               data: {
                 from: evt.oldIndex,
@@ -152,7 +152,7 @@ if(document.URL.match( /localhost/)) {
           delay: 100,
           onUpdate: function(evt) {
             return $.ajax({
-              url: 'opal_colors/sort',
+              url: '/opal_colors/sort',
               type: 'patch',
               data: {
                 from: evt.oldIndex,

@@ -1,4 +1,4 @@
-if (document.URL.match( /localhost/ )) {
+if (document.URL.match( /items\/new\// )) {
   
   document.addEventListener('DOMContentLoaded', function(){
     const ImageList = document.getElementById('image-list');
