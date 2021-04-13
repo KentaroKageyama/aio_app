@@ -4,4 +4,5 @@ class ItemGlass < ApplicationRecord
   belongs_to :glass
 
   validates :item_id, uniqueness: { scope: :glass_id } 
+  
 end

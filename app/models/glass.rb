@@ -10,4 +10,6 @@ class Glass < ApplicationRecord
   has_many :items, through: :item_glasses
   belongs_to :opal_color
 
+  validates :name, presence: true
+
 end

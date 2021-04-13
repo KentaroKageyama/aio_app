@@ -11,10 +11,14 @@ class Item < ApplicationRecord
   has_many :parts, through: :item_parts
   accepts_nested_attributes_for :item_parts
 
-
   has_many :item_glasses, dependent: :destroy
   has_many :glasses, through: :item_glasses
   accepts_nested_attributes_for :item_glasses
 
+  with_options presence: true do
+    validates :collection_id, :category_id, :name, :price
+  end
+
+  validates :price, numericality: true
 
 end
