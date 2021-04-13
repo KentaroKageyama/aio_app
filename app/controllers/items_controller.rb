@@ -11,13 +11,13 @@ class ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     item.save
-    redirect_to root_path
+    redirect_to new_item_path
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to root_path
+    redirect_to new_item_path
   end
 
   def sort

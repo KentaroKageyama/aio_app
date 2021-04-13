@@ -2,13 +2,13 @@ class MaterialsController < ApplicationController
   def create
     material = Material.new(material_params)
     material.save
-    redirect_to root_path
+    redirect_to new_other_items_path
   end
 
   def destroy
     material = Material.find(params[:id])
     material.destroy
-    redirect_to root_path
+    redirect_to new_other_items_path
   end
 
   def sort

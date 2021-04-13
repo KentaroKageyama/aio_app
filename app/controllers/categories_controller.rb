@@ -2,13 +2,13 @@ class CategoriesController < ApplicationController
   def create
     category = Category.new(category_params)
     category.save
-    redirect_to root_path
+    redirect_to new_other_items_path
   end
 
   def destroy
     category = Category.find(params[:id])
     category.destroy
-    redirect_to root_path
+    redirect_to new_other_items_path
   end
   
   def sort
