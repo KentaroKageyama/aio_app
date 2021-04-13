@@ -22,9 +22,12 @@
 | collection      | references | null: false, foreign_key: true |
 | category        | references | null: false, foreign_key: true |
 | opal_color      | references | null: false, foreign_key: true |
+| position        | integer    | null: false                    |
+
 
 ### Association
 
+- has_one_attached :image
 - has_many :item_parts
 - has_many :item_glasses
 - belongs_to :collection
@@ -51,6 +54,8 @@
 | -------- | ---------- | ----------- |
 | name     | string     | null: false |
 | material | string     | null: false |
+| position | integer    | null: false |
+
 
 ### Association
 
@@ -76,6 +81,8 @@
 | ------------- | ---------- | ------------------------------ |
 | name          | string     | null: false                    |
 | opal_color    | references | null: false, foreign_key: true |
+| position      | integer    | null: false                    |
+
 
 ### Association
 
@@ -88,6 +95,7 @@
 | Column        | Type       | Options     |
 | ------------- | ---------- | ----------- |
 | name          | string     | null: false |
+| position      | integer    | null: false |
 
 ### Association
 
@@ -99,6 +107,7 @@
 | Column        | Type       | Options     |
 | ------------- | ---------- | ----------- |
 | name          | string     | null: false |
+| position      | integer    | null: false |
 
 ### Association
 
@@ -110,6 +119,7 @@
 | Column        | Type       | Options     |
 | ------------- | ---------- | ----------- |
 | color         | string     | null: false |
+| position      | integer    | null: false |
 
 ### Association
 
