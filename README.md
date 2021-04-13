@@ -80,7 +80,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | name          | string     | null: false                    |
-| opal_color    | references | null: false, foreign_key: true |
+| opal_color    | references | foreign_key: true              |
 | position      | integer    | null: false                    |
 
 
