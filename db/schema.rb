@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_055453) do
 
   create_table "glasses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "opal_color_id", null: false
+    t.bigint "opal_color_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position", null: false
