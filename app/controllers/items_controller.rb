@@ -18,16 +18,9 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     item = Item.new(item_params)
-    if item.save
-      part_ids = params[:item][:part_ids]
-      i = 0
-      part_ids.each do |part_id|
-        item_part = item.item_parts.where(part_id: part_id).first
-        item_part.update_attribute(:test, params[:item][:tests][i])
-        i += 1
-      end
-    end
+    item.save
     redirect_to root_path
   end
 
@@ -46,7 +39,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, part_ids: [], glass_ids: [] )
+    params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy] )
   end
 
 end

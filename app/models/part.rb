@@ -1,5 +1,9 @@
 class Part < ApplicationRecord
 
+  def view_material_and_name
+    self.material.name + ' ' + self.name
+  end
+
   acts_as_list
 
   has_many :item_parts
