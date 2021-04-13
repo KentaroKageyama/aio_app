@@ -1,0 +1,61 @@
+<div class="container">
+<h2>シリーズ<h2>
+<%= form_with model: @collection, url: collections_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"シリーズ名" %>
+  <%= f.submit '登録' %>
+<% end %>
+<ul id="collection_ul" class="sort_ul">
+  <% @collections.each do |cole| %>
+    <li class="collection_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= cole.name %><%= link_to '削除', collection_path(cole.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+<h2>カテゴリー</h2>
+<%= form_with model: @category, url: categories_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"カテゴリー名" %>
+  <%= f.submit '登録' %>
+<% end %>
+<ul id="category_ul" class="sort_ul">
+  <% @categories.each do |cate| %>
+    <li class="category_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= cate.name %><%= link_to '削除', category_path(cate.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+
+<h2>マテリアル</h2>
+<%= form_with model: @material, url: materials_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder:"マテリアル名" %>
+  <%= f.submit '登録' %>
+<% end %>
+<ul id="material_ul" class="sort_ul">
+  <% @materials.each do |mate| %>
+    <li class="material_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= mate.name %><%= link_to '削除', material_path(mate.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+<h2>オパールカラー</h2>
+<%= form_with model: @opal_color, url: opal_colors_path, method: :post, local: true do |f| %>
+  <%= f.text_field :color, placeholder:"オパールカラー" %>
+  <%= f.submit '登録' %>
+<% end %>
+<ul id="opal_ul" class="sort_ul"> 
+  <% @opal_colors.each do |opal| %>
+    <li class="opal_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= opal.color %><%= link_to '削除', opal_color_path(opal.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+</div>

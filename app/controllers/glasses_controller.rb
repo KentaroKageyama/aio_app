@@ -1,14 +1,20 @@
 class GlassesController < ApplicationController
+
+  def new
+    @glass = Glass.new
+    @glasses = Glass.all.order(:position)
+  end
+  
   def create
     glass = Glass.new(glass_params)
     glass.save
-    redirect_to root_path
+    redirect_to new_glass_path
   end
 
   def destroy
     glass = Glass.find(params[:id])
     glass.destroy
-    redirect_to root_path
+    redirect_to new_glass_path
   end
 
   def sort

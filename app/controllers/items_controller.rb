@@ -1,24 +1,14 @@
 class ItemsController < ApplicationController
 
   def index
-    @item = Item.new
     @items = Item.all.order(:position)
-    @part = Part.new
-    @parts = Part.all.order(:position)
-    @glass = Glass.new
-    @glasses = Glass.all.order(:position)
-    @collection = Collection.new
-    @collections = Collection.all.order(:position)
-    @category = Category.new
-    @categories = Category.all.order(:position)
-    @material = Material.new
-    @materials = Material.all.order(:position)
-    @opal_color = OpalColor.new
-    @opal_colors = OpalColor.all.order(:position)
+  end
+
+  def new
+    @item = Item.new
   end
 
   def create
-    binding.pry
     item = Item.new(item_params)
     item.save
     redirect_to root_path
@@ -36,6 +26,16 @@ class ItemsController < ApplicationController
     head :ok
   end
 
+  def new_other
+    @collection = Collection.new
+    @collections = Collection.all.order(:position)
+    @category = Category.new
+    @categories = Category.all.order(:position)
+    @material = Material.new
+    @materials = Material.all.order(:position)
+    @opal_color = OpalColor.new
+    @opal_colors = OpalColor.all.order(:position)
+  end
   private
 
   def item_params

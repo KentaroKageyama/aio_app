@@ -4,17 +4,18 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
+      get :new_other
       patch :sort
     end
   end
 
-  resources :parts, only: [:create, :destroy] do
+  resources :parts, only: [:new, :create, :destroy] do
     collection do
       patch :sort
     end
   end
 
-  resources :glasses, only: [:create, :destroy] do
+  resources :glasses, only: [:new, :create, :destroy] do
     collection do
       patch :sort
     end
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
       patch :sort
     end
   end
-  
+
   resources :opal_colors, only: [:create, :destroy] do
     collection do
       patch :sort

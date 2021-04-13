@@ -1,0 +1,21 @@
+header {
+  height: 15vh;
+  background-color: skyblue;
+}
+
+.header-container {
+  display:flex;
+  align-items: center;
+}
+
+.title-logo {
+  height: 15vh;
+}
+
+.header-lists{
+  display: flex;
+}
+
+.header-list {
+  margin-right: 10px;
+}

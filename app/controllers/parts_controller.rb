@@ -1,15 +1,21 @@
 class PartsController < ApplicationController
 
+  def new
+    @part = Part.new
+    @parts = Part.all.order(:position)
+  end
+
   def create
     part = Part.new(part_params)
     part.save
-    redirect_to root_path
+    redirect_to new_part_path
   end
 
   def destroy
+    binding.pry
     part = Part.find(params[:id])
     part.destroy
-    redirect_to root_path
+    redirect_to new_part_path
   end
   
   def sort
