@@ -1,0 +1,11 @@
+<div class="nested-fields">
+    <div class="col-md-6">
+      <label class="control-label">パーツ名</label>
+        <%= f.collection_select :part_id, Part.all, :id, :view_material_and_name, include_blank: "選択して下さい" %>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label">個数</label>
+        <%= f.text_field :quantity, placeholder: "半角数字"%>
+    </div>
+    <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
+</div>

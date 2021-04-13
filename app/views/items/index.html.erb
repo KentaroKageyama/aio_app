@@ -3,35 +3,41 @@
 <br>
 
 
+
 <h2>アイテム<h2>
 <%= form_with model: @item, url: items_path, method: :post, local: true do |f| %>
   <%= f.collection_select :collection_id, Collection.all, :id, :name, include_blank: "選択して下さい" %>
   <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
   <%= f.collection_select :opal_color_id, OpalColor.all, :id, :color, include_blank: "選択して下さい" %>
+  <br>
   <%= f.text_field :name, placeholder:"アイテム名" %>
   <%= f.text_field :price, placeholder:"金額" %>
-
-  <select name="item[part_ids][]">
-    <option value="">パーツを選択してください</option>
-    <% @parts.each do |par| %>
-      <option value=<%=par.id%>><%= par.name %><%= par.material.name %></option>
-    <% end %>
-  </select>
-    <select name="item[glass_ids][]">
-    <option value="">ガラスパーツを選択してください</option>
-    <% @glasses.each do |gla| %>
-      <option value=<%=gla.id%>><%= gla.name %><%= gla.opal_color.color %></option>
-    <% end %>
-  </select>
+  <br>
   <%= f.file_field :image, id:"item-image" %>
   <div id="image-list" class="preview-image"></div>
+
+  <div>
+  <%= f.fields_for :item_parts do |item_part| %>
+    <%= render 'item_part_fields', f: item_part %>
+  <%- end %>
+    <%= link_to_add_association 'パーツ追加', f, :item_parts %>
+  </div>
+
+  <div>
+  <%= f.fields_for :item_glasses do |item_glass| %>
+    <%= render 'item_glass_fields', f: item_glass %>
+  <%- end %>
+    <%= link_to_add_association 'ガラスパーツ追加', f, :item_glasses %>
+  </div>
+
+<br>
   <%= f.submit '登録' %>
 <% end %>
 <ul id="item_ul" class="sort_ul">
   <% @items.each do |item| %>
     <li class="item_li sort_li">
       <i class="fas fa-grip-lines-vertical handle"></i>
-      <%= item.name %><%= link_to '削除', items_path(item.id), method: :delete %>
+      <%= item.name %><%= link_to '削除', item_path(item.id), method: :delete %>
     </li>
   <% end %>
 </ul>
