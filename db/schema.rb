@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_055453) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", null: false
     t.index ["glass_id"], name: "index_item_glasses_on_glass_id"
+    t.index ["item_id", "glass_id"], name: "index_item_glasses_on_item_id_and_glass_id", unique: true
     t.index ["item_id"], name: "index_item_glasses_on_item_id"
   end
 
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_055453) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", null: false
+    t.index ["item_id", "part_id"], name: "index_item_parts_on_item_id_and_part_id", unique: true
     t.index ["item_id"], name: "index_item_parts_on_item_id"
     t.index ["part_id"], name: "index_item_parts_on_part_id"
   end
