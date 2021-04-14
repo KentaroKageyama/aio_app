@@ -22,13 +22,23 @@
 <% end %>
 <br>  <br>
   <%# 商品一覧 %>
+  <table>
+  <thead>
+    <tr>
+      <th><%= sort_link(@p, :collection_name, "series") %></th>
+      <th><%= sort_link(@p, :category_name, "category") %></th>
+      <th><%= sort_link(@p, :name, "name") %></th>
+      <th><%= sort_link(@p, :price, "price") %></th>
+    </tr>
+    </thead>
+    <tbody>
   <% @items.each do |item| %>
-  <td>
-  <br>
-  <li>
-    <%= item.collection.name %>
-    <%= item.category.name %>
-    <%= item.name %>
-    <%= item.price %>
-  </li>
+    <tr>
+      <td><%= item.collection.name %></td>
+      <td><%= item.category.name %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+    </tr>
   <% end %>
+  </tbody>
+  </table>
