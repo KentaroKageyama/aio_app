@@ -2,14 +2,14 @@
 <h2>パーツ<h2>
 <%= form_with model: @part, url: parts_path, method: :post, local: true do |f| %>
   <%= f.text_field :name, placeholder:"パーツ名" %>
-  <%= f.collection_select :material_id, Material.all, :id, :name, include_blank: "選択して下さい" %>
+  <%= f.collection_select :material_id, Material.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
   <%= f.submit '登録' %>
 <% end %>
 <ul id="part_ul" class="sort_ul">
   <% @parts.each do |par| %>
     <li class="part_li sort_li">
-      <i class="fas fa-grip-lines-vertical handle"></i>
-      <%= par.name %><%= link_to '削除', part_path(par.id), method: :delete %>
+      <p><i class="fas fa-grip-lines-vertical handle"></i>
+      <%= par.material.name %> <%= par.name %> <%= link_to '削除', part_path(par.id), method: :delete %></p>
     </li>
   <% end %>
 </ul>

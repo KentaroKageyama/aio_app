@@ -25,8 +25,15 @@
     <%= link_to_add_association 'ガラスパーツ追加', f, :item_glasses %>
   </div>
   
-<br>
   <%= f.submit '登録' %>
 <% end %>
+<ul id="item_ul" class="sort_ul">
+  <% @items.each do |item| %>
+    <li class="item_li sort_li">
+      <i class="fas fa-grip-lines-vertical handle"></i>
+      <%= item.name %><%= link_to '削除', item_path(item.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 
 </div>

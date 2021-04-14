@@ -1,11 +1,15 @@
 class ItemsController < ApplicationController
+  before_action :search_item, only: [:index, :search]
 
   def index
-    @items = Item.all.order(:position)
+    @items = @p.result.order(:position)
+    @collections = Collection.all.order(:position)
+    @categories = Category.all.order(:position)
   end
 
   def new
     @item = Item.new
+    @items = Item.all.order(:position)
   end
 
   def create
@@ -18,6 +22,16 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy
     redirect_to new_item_path
+  end
+
+  def search
+    @results = @p.result
+  end
+
+  def incremental_search
+    return nil if params[:keyword] == ""
+    item = Item.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: item }
   end
 
   def sort
@@ -40,6 +54,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy] )
+  end
+
+  def search_item
+    @p = Item.ransack(params[:q])
   end
 
 end

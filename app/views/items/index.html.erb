@@ -1,14 +1,44 @@
 <div class="container">
-<h1>トップページ</h1>
+<h1>一覧表示</h1>
 <br>
 
-<ul id="item_ul" class="sort_ul">
+<h1>
+  商品検索
+</h1>
+<%= search_form_for @p, url: search_items_path do |f| %>
+  <%= f.label :collection_name_eq, 'シリーズ：' %>
+  <%= f.collection_select :collection_name_eq, @collections, :name, :name, include_blank: '指定なし'%>
+  <br>
+  <%= f.label :category_name_eq, 'カテゴリー：' %>
+  <%= f.collection_select :category_name_eq, @categories, :name, :name, include_blank: '指定なし'%>
+  <br>
+  <%= f.label :name_eq, '商品名' %>
+  <%= f.search_field :name_cont, class:"input-item", id:"input-item" %>
+  <div id="search-result"></div>
+  <br>
+  <div class="submit-post">
+  <%= f.submit '検索', class: "submit-btn" %>
+  </div>
+<% end %>
+<br>  <br>
+  <%# 商品一覧 %>
+  <table>
+  <thead>
+    <tr>
+      <th><%= sort_link(@p, :collection_name, "series") %></th>
+      <th><%= sort_link(@p, :category_name, "category") %></th>
+      <th><%= sort_link(@p, :name, "name") %></th>
+      <th><%= sort_link(@p, :price, "price") %></th>
+    </tr>
+    </thead>
+    <tbody>
   <% @items.each do |item| %>
-    <li class="item_li sort_li">
-      <i class="fas fa-grip-lines-vertical handle"></i>
-      <%= item.name %><%= link_to '削除', item_path(item.id), method: :delete %>
-    </li>
+    <tr>
+      <td><%= item.collection.name %></td>
+      <td><%= item.category.name %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+    </tr>
   <% end %>
-</ul>
-
-</div>
+  </tbody>
+  </table>

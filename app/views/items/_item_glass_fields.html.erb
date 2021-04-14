@@ -1,7 +1,7 @@
 <div class="nested-fields">
     <div class="col-md-6">
       <label class="control-label">ガラスパーツ名</label>
-        <%= f.collection_select :glass_id, Glass.all, :id, :view_name_and_opal_color, include_blank: "選択して下さい" %>
+        <%= f.collection_select :glass_id, Glass.all.order(:position), :id, :view_name_and_opal_color , include_blank: "選択して下さい" %>
     </div>
     <div class="col-md-6">
         <label class="control-label">個数</label>

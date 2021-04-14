@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
+      get :search
       get :new_other
+      get :incremental_search
       patch :sort
     end
   end
