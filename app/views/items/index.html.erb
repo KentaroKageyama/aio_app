@@ -1,6 +1,19 @@
 <div class="container">
-<h1>トップページ</h1>
+<h1>一覧表示</h1>
 <br>
+
+<%= form_with model: @item, class:'form-wrap', local: true do |f| %>
+    <div class="item-field", id='item-field'>
+      <%= f.label :name, "item名" %>
+      <%= f.text_field :name, class:"input-item", id:"input-item" %>
+    </div>
+    <div id="search-result">
+    </div>
+  </div>
+  <div class="submit-post">
+    <%= f.submit "Send", class: "submit-btn" %>
+  </div>
+<% end %>
 
 <ul id="item_ul" class="sort_ul">
   <% @items.each do |item| %>
@@ -10,5 +23,7 @@
     </li>
   <% end %>
 </ul>
+
+
 
 </div>

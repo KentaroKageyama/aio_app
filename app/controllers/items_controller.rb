@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @items = Item.all.order(:position)
   end
 
   def create
@@ -18,6 +19,12 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy
     redirect_to new_item_path
+  end
+
+  def search
+    return nil if params[:keyword] == ""
+    item = Item.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: item }
   end
 
   def sort
