@@ -1,0 +1,41 @@
+<div class="container">
+<h1>一覧表示</h1>
+<br>
+
+<h1>
+  検索結果
+</h1>
+<%# 検索結果の個数で条件分岐 %>
+<% if @results.length !=0 %>
+  <% @results.each do |result| %>
+    <td>
+    <br>
+    <li>
+    <%= result.collection.name %>
+    <%= result.category.name %>
+    <%= result.name %>
+    <%= result.price %>
+    </li>
+  <% end %>
+<% else %>
+  該当する商品はありません
+<% end %>
+<%= link_to '戻る', root_path %>
+
+<br>
+<br>
+<%= form_with model: @item, class:'form-wrap', local: true do |f| %>
+    <div class="item-field", id='item-field'>
+      <%= f.label :name, "item名" %>
+      <%= f.text_field :name, class:"input-item", id:"input-item" %>
+    </div>
+    <div id="search-result">
+    </div>
+  </div>
+  <div class="submit-post">
+    <%= f.submit "Send", class: "submit-btn" %>
+  </div>
+<% end %>
+
+
+</div>
