@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 
   belongs_to :collection
   belongs_to :category
-  belongs_to :opal_color
+  belongs_to :opal_color, optional: true
   has_one_attached :image
 
   has_many :item_parts, dependent: :destroy

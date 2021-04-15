@@ -4,9 +4,10 @@
   <div>
     <%= image_tag @item.image %>
     <%= @item.collection.name %>
-    <%= @item.category.name %>
     <%= @item.name %>
-    <%= @item.price %>
+    <%= @item.category.name %>
+    <%= @item.opal_color.color if @item.opal_color.present? %>
+    <%= @item.price.to_s(:delimited) %>
   </div>
   <br>
   <div>

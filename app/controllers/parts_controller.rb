@@ -12,7 +12,6 @@ class PartsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     part = Part.find(params[:id])
     part.destroy
     redirect_to new_part_path
