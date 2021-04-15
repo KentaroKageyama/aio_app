@@ -26,8 +26,9 @@
   <thead>
     <tr>
       <th><%= sort_link(@p, :collection_name, "series") %></th>
+      <th><%= sort_link(@p, :name, "item") %></th>
       <th><%= sort_link(@p, :category_name, "category") %></th>
-      <th><%= sort_link(@p, :name, "name") %></th>
+      <th><%= sort_link(@p, :opal_color_color, "opal color") %></th>
       <th><%= sort_link(@p, :price, "price") %></th>
       <th colspan = "3" ></th>
 
@@ -37,9 +38,14 @@
   <% @items.each do |item| %>
     <tr>
       <td><%= item.collection.name %></td>
-      <td><%= item.category.name %></td>
       <td><%= item.name %></td>
-      <td><%= item.price %></td>
+      <td><%= item.category.name %></td>
+      <% if item.opal_color.present? %>
+        <td><%= item.opal_color.color %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <td><%= item.price.to_s(:delimited) %></td>
       <td><%= link_to '詳細', item_path(item.id) %></td>
       <td><%= link_to '編集', edit_item_path(item.id) %></td>
       <td><%= link_to '削除', item_path(item.id), method: :delete %></td> 

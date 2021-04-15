@@ -31,7 +31,7 @@
   <% @items.each do |item| %>
     <li class="item_li sort_li">
       <i class="fas fa-grip-lines-vertical handle"></i>
-      <%= item.name %><%= link_to '削除', item_path(item.id), method: :delete %>
+      <%= item.name %><%= item.price.to_s(:delimited) %><%= link_to '削除', item_path(item.id), method: :delete %>
     </li>
   <% end %>
 </ul>
