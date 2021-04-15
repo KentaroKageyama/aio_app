@@ -7,20 +7,34 @@ class ItemsController < ApplicationController
     @categories = Category.all.order(:position)
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def new
     @item = Item.new
     @items = Item.all.order(:position)
   end
 
   def create
-    item = Item.new(item_params)
-    item.save
+    @item = Item.new(item_params)
+    @item.save
     redirect_to new_item_path
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item  = Item.find(params[:id])
+    @item.update(item_params.merge(position: params[:position]))
+    redirect_to action: :index
+  end
+
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    @item = Item.find(params[:id])
+    @item.destroy
     redirect_to new_item_path
   end
 
