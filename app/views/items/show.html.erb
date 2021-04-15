@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>詳細ページ<h2>
+  <br>
+  <div>
+    <%= image_tag @item.image %>
+    <%= @item.collection.name %>
+    <%= @item.category.name %>
+    <%= @item.name %>
+    <%= @item.price %>
+  </div>
+  <br>
+  <div>
+    <ul>パーツ：
+      <% @item.parts.each do |part| %>
+        <% item_part = @item.item_parts.where(part_id: part.id).first %>
+        <li><%= part.name %><%= item_part.quantity %></li>
+      <% end %>
+    </ul>
+  </div>
+  <br>
+  <div>
+    <ul>ガラスパーツ：
+      <% @item.glasses.each do |glass| %>
+        <li><%= glass.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
