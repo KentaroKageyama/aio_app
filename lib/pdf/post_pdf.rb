@@ -1,5 +1,7 @@
 class PostPdf < Prawn::Document
-  def initialize
+  def initialize(test)
+
+    @test = test
 
     super(
       page_size: 'A4',
@@ -13,11 +15,8 @@ class PostPdf < Prawn::Document
 
     font 'app/assets/fonts/SourceHanSans-Normal.ttc'
 
-
     create_contents
     number_pages('<page> / <total>', at: [bounds.right - 280, -5], :size => 10 )
-          
-
 
   end
   
@@ -42,7 +41,7 @@ class PostPdf < Prawn::Document
     end
 
     bounding_box([40, 698], width: 310, height: 40) do
-      text '請求書', size: 20, align: :left
+      text "#{@test}", size: 20, align: :left
     end
 
     bounding_box([40, 640], width: 300, height: 150) do

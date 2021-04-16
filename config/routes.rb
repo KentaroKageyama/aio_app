@@ -48,5 +48,5 @@ Rails.application.routes.draw do
   end
 
   resources :post_pdf, only: :index
-
+  resources :invoices, only: :index
 end

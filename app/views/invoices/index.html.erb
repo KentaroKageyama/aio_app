@@ -1,0 +1,13 @@
+<div class="container">
+<h1>Invoice</h1>
+<br>
+  <%= form_with url: post_pdf_index_path(format: "pdf"), method: :get, local: true do |f| %>
+
+    <%= f.text_field :test%>
+    <%= f.submit 'PDF出力'%>
+
+    <%= link_to "pdf", post_pdf_index_path(:format=>:pdf) , class: 'btn btn-primary' %>
+  <% end %>
+
+  <%= link_to "PDFを表示", post_pdf_index_path(format: "pdf") %>
+</div>
