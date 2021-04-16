@@ -17,6 +17,6 @@ module AioApp
     # the framework and any gems in your application.
 
     config.eager_load_paths += %W(#{Rails.root}/lib/pdf)
-
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
