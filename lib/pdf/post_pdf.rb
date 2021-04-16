@@ -15,7 +15,7 @@ class PostPdf < Prawn::Document
 
 
     create_contents
-    number_pages('<page> / <total>', at: [bounds.right - 280, 0], :size => 10 )
+    number_pages('<page> / <total>', at: [bounds.right - 280, -5], :size => 10 )
           
 
 
@@ -107,56 +107,12 @@ class PostPdf < Prawn::Document
     rows << ['test1', 'test2', 'test3', 'test4']
     rows << ['test1', 'test2', 'test3', 'test4']
     rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
 
     table(rows, column_widths: [280, 40, 50, 50], position: :center) do |table|
       table.cells.size = 8
       table.row(0).background_color = "e0e0e0"
+
+      table.column(1..3).align = :right
       table.row(0).align = :center
     end
 
