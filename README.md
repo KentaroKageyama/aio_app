@@ -18,7 +18,6 @@
 | bank_type_id       | integer  | null: false               |
 | bank_number        | integer  | null: false               |
 | bank_account       | string   | null: false               |
-| name               | string   | null: false               |
 | email              | string   | null: false, unique: true |
 | encrypted_password | string   | null: false               |
 
