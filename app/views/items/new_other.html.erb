@@ -1,3 +1,6 @@
+
+<%= render "shared/header" %>
+
 <div class="container">
 <h2>シリーズ<h2>
 <%= form_with model: @collection, url: collections_path, method: :post, local: true do |f| %>
@@ -28,7 +31,6 @@
   <% end %>
 </ul>
 <br>
-
 
 <h2>マテリアル</h2>
 <%= form_with model: @material, url: materials_path, method: :post, local: true do |f| %>
