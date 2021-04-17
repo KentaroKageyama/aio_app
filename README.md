@@ -6,9 +6,22 @@
 
 | Column             | Type     | Options                   |
 | ------------------ | -------- | ------------------------- |
+| company            | string   | null: false               |
+| zip_code           | integer  | null: false               |
+| prefecture_id      | integer  | null: false               |
+| city               | string   | null: false               |
+| address            | string   | null: false               |
+| building           | string   |                           |
+| phone_number       | integer  | null: false               |
+| bank               | string   | null: false               |
+| branch             | string   | null: false               |
+| bank_type_id       | integer  | null: false               |
+| bank_number        | integer  | null: false               |
+| bank_account       | string   | null: false               |
 | name               | string   | null: false               |
 | email              | string   | null: false, unique: true |
 | encrypted_password | string   | null: false               |
+
 
 ### Association
 
