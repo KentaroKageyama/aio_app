@@ -4,10 +4,11 @@ class PostPdfController < ApplicationController
   def index
     @test = params[:test]
     @user = User.find(current_user.id)
+    @client = Client.find(params[:client_id])
     respond_to do |format|
       format.html
       format.pdf do
-        post_pdf = PostPdf.new(@test, @user).render
+        post_pdf = PostPdf.new(@test, @user, @client).render
 
         send_data post_pdf,
           filename: 'post_pdf.pdf',

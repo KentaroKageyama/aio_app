@@ -6,6 +6,7 @@
   <%= form_with url: post_pdf_index_path(format: "pdf"), method: :get, local: true do |f| %>
 
     <%= f.text_field :test%>
+    <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: "選択して下さい" %>
     <%= f.submit 'PDF出力'%>
 
     <%= link_to "pdf", post_pdf_index_path(:format=>:pdf) , class: 'btn btn-primary' %>

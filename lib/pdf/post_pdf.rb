@@ -1,8 +1,9 @@
 class PostPdf < Prawn::Document
-  def initialize(test, user)
+  def initialize(test, user, client)
 
     @test = test
     @user = user
+    @client = client
 
     super(
       page_size: 'A4',
@@ -46,7 +47,7 @@ class PostPdf < Prawn::Document
     end
 
     bounding_box([40, 660], width: 300, height: 150) do
-      text "fugafuga株式会社 御中", size: 17, align: :left
+      text "#{@client.name} 御中", size: 17, align: :left
       move_down 15
       text "東京店 1月売上分", size: 14, aligh: :left
     end
@@ -77,7 +78,7 @@ class PostPdf < Prawn::Document
     end
 
     bounding_box([330, 550], width: 250) do
-      table [['小計', "¥10000"], ['消費税', "¥1000"], ['合計金額', "¥11000"], ['掛け率', "50%"]], column_widths: [70, 90], position: :left do |table|
+      table [['小計', "¥10000"], ['消費税', "¥1000"], ['合計金額', "¥11000"], ['掛け率', "#{@client.percentage}%"]], column_widths: [70, 90], position: :left do |table|
         table.cells.size = 9
         table.column(0).background_color = 'e0e0e0'
         table.column(1).align = :right
