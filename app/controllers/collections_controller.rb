@@ -1,4 +1,6 @@
 class CollectionsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     collection = Collection.new(collection_params)
     collection.save

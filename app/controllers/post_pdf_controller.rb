@@ -1,4 +1,6 @@
 class PostPdfController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @test = params[:test]
     @user = User.find(current_user.id)

@@ -52,4 +52,5 @@ Rails.application.routes.draw do
 
   resources :post_pdf, only: :index
   resources :invoices, only: :index
+  resources :clients, only: [:index, :create, :update, :destroy]
 end

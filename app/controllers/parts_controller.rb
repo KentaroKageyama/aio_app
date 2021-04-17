@@ -1,4 +1,5 @@
 class PartsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @part = Part.new

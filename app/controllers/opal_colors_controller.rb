@@ -1,4 +1,6 @@
 class OpalColorsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     opal_color = OpalColor.new(opal_color_params)
     opal_color.save
