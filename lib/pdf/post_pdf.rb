@@ -1,7 +1,8 @@
 class PostPdf < Prawn::Document
-  def initialize(test)
+  def initialize(test, user)
 
     @test = test
+    @user = user
 
     super(
       page_size: 'A4',
@@ -51,15 +52,15 @@ class PostPdf < Prawn::Document
     end
 
     bounding_box([330, 660], width: 300, height: 150) do
-      text 'HogeHoge株式会社', size: 12
+      text "#{@user.company}", size: 12
       move_down 10
-      text '〒000-0000', size: 10
+      text "〒#{@user.zip_code[0..2]}-#{@user.zip_code[3..6]}", size: 10
       move_down 5
-      text '福岡県福岡市博多区博多駅前1-1-1', size: 10
+      text "#{@user.prefecture.name} #{@user.city} #{@user.address}", size: 10
       move_down 5
-      text '駅前1丁目ビル1F 博多駅前店', size: 10
+      text "#{@user.building}", size: 10
       move_down 5
-      text 'TEL: 000-1234-5678', size: 12
+      text "TEL: #{@user.phone_number}", size: 12
     end
 
 
@@ -100,7 +101,7 @@ class PostPdf < Prawn::Document
 
     move_down 15
 
-    table [["お振込先：", "hogehoge銀行 hogefuga支店 普通 0000000 カ）ホゲ"]], column_widths: [90, 332], position: :center do |table|
+    table [["お振込先：", "#{@user.bank} #{@user.branch}   #{@user.bank_type.name} #{@user.bank_number}   #{@user.bank_account}"]], column_widths: [90, 332], position: :center do |table|
       table.column(0).background_color = 'e0e0e0'
       table.cells.size = 9
     end
