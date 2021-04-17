@@ -61,4 +61,5 @@ gem "cocoon"
 gem 'ransack'
 gem 'prawn'
 gem 'prawn-table'
-
+gem 'devise'
+gem 'active_hash'

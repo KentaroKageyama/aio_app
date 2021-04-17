@@ -6,11 +6,39 @@
 
 | Column             | Type     | Options                   |
 | ------------------ | -------- | ------------------------- |
-| name               | string   | null: false               |
+| company            | string   | null: false               |
+| zip_code           | integer  | null: false               |
+| prefecture_id      | integer  | null: false               |
+| city               | string   | null: false               |
+| address            | string   | null: false               |
+| building           | string   |                           |
+| phone_number       | integer  | null: false               |
+| bank               | string   | null: false               |
+| branch             | string   | null: false               |
+| bank_type_id       | integer  | null: false               |
+| bank_number        | integer  | null: false               |
+| bank_account       | string   | null: false               |
 | email              | string   | null: false, unique: true |
 | encrypted_password | string   | null: false               |
 
+
 ### Association
+
+- has_many clients
+
+
+## clients テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| percentage       | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
 
 
 ## items テーブル

@@ -1,3 +1,5 @@
+<%= render "shared/header" %>
+
 <div class="container">
 <h1>一覧表示</h1>
 <br>
@@ -20,7 +22,7 @@
 <% else %>
   該当する商品はありません
 <% end %>
-<%= link_to '戻る', root_path %>
+<%= link_to '戻る', items_path %>
 
 <br>
 <br>

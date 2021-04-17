@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :search_item, only: [:index, :search]
+  before_action :authenticate_user!
 
   def index
     @items = @p.result.order(:position)

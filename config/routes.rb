@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: 'items#index'
+  devise_for :users
+  root to: 'users#index'
+
+  resources :users, only: [:index]
 
   resources :items do
     collection do
