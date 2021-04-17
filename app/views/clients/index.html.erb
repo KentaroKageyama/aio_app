@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+
+<div class="container">
+
+  <%= form_with model: @client, url: clients_path, local: true do |f| %>
+    <%= f.label "取引先・顧客名" %>
+    <br>
+    <%= f.text_field :name, placeholder: "例）Aio株式会社" %>
+    <br>
+    <%= f.label "掛け率（自社取り分）" %>
+    <br>
+    <%= f.text_field :percentage, placeholder: "例）50" %><span>%</span>
+    <br>
+    <%= f.submit '登録' %>
+  <% end %>
+
+  <%# 商品一覧 %>
+  <table class="item-lists">
+    <tbody>
+  <% @clients.each do |client| %>
+    <tr>
+      <td><%= client.name %></td>
+      <td><%= client.percentage %>%</td>
+      <td><%= link_to '編集', "#" %></td>
+      <td><%= link_to '削除', client_path(client.id), method: :delete %></td> 
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>

@@ -6,10 +6,20 @@
   <%= form_with url: post_pdf_index_path(format: "pdf"), method: :get, local: true do |f| %>
 
     <%= f.text_field :test%>
+    <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: "選択して下さい" %>
+
+    <div>
+      <%= f.fields_for :item_glasses do |item_glass| %>
+      <%= render 'item_glass_fields', f: item_glass %>
+      <%- end %>
+      <%= link_to_add_association 'ガラスパーツ追加', f, :item_glasses %>
+    </div>
+    
     <%= f.submit 'PDF出力'%>
 
-    <%= link_to "pdf", post_pdf_index_path(:format=>:pdf) , class: 'btn btn-primary' %>
   <% end %>
 
   <%= link_to "PDFを表示", post_pdf_index_path(format: "pdf") %>
+  <%= link_to "pdf", post_pdf_index_path(:format=>:pdf) , class: 'btn btn-primary' %>
+
 </div>
