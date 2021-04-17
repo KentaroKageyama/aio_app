@@ -8,5 +8,8 @@
     <li class="header-list"><%= link_to 'ガラス登録', new_glass_path %></li>
     <li class="header-list"><%= link_to 'その他項目', new_other_items_path %></li>
   </ul>
+  <%= link_to current_user.company , edit_user_registration_path(current_user.id) %>
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+
   <div>
 </header>
