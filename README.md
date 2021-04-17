@@ -58,17 +58,21 @@
 - has_one_attached :image
 - has_many :item_parts
 - has_many :item_glasses
+- has_many :invoice_items
 - belongs_to :collection
 - belongs_to :category
 - belongs_to :opal_color
 
 
+
 ## item_parts テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| item   | references | null: false, foreign_key: true |
-| part   | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| item     | references | null: false, foreign_key: true |
+| part     | references | null: false, foreign_key: true |
+| quantity | integer    | null: false                    |
+
 
 ### Association
 
@@ -92,10 +96,12 @@
 
 ## item_glasses テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| item    | references | null: false, foreign_key: true |
-| glass   | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| item     | references | null: false, foreign_key: true |
+| glass    | references | null: false, foreign_key: true |
+| quantity | integer    | null: false                    |
+
 
 ### Association
 
@@ -153,3 +159,29 @@
 
 - has_many :items
 - has_many :glasses
+
+
+## invoices テーブル
+
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| issue_date    | date       | null: false |
+| issue_number  | integer    | null: false |
+
+### Association
+
+- has_many :invoice_items
+
+
+## invoice_items テーブル
+
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| invoice   | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
+| quantity  | integer    | null: false                    |
+
+### Association
+
+- belongs_to :invoice
+- belongs_to :item
