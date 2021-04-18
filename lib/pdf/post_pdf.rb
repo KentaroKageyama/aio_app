@@ -1,10 +1,10 @@
 class PostPdf < Prawn::Document
-  def initialize(test, user, client)
+  def initialize(invoice, user, client)
 
-    @test = test
+    @invoice = invoice
     @user = user
     @client = client
-
+    @items = @invoice.invoice_items
     super(
       page_size: 'A4',
       top_margin: 80,
@@ -29,9 +29,9 @@ class PostPdf < Prawn::Document
     # bunding_boxメソッドでボックスを生成
     # 引数にはボックス生成位置、横、縦のサイズを指定
     bounding_box([370, 750], width: 100, height: 40) do
-      text "2020年10月01日", size: 11, align: :right
+      text "発行日: #{@invoice.issue_date}", size: 11, align: :right
       move_down 2
-      text "No.00000000", size: 11, align: :right
+      text "No.#{@invoice.issue_number}", size: 11, align: :right
     end
 
     bounding_box([20, 715], width: 10, height: 30) do
@@ -43,7 +43,7 @@ class PostPdf < Prawn::Document
     end
 
     bounding_box([40, 713], width: 310, height: 40) do
-      text "#{@test}", size: 20, align: :left
+      text "請求書", size: 20, align: :left
     end
 
     bounding_box([40, 660], width: 300, height: 150) do
@@ -66,7 +66,7 @@ class PostPdf < Prawn::Document
 
 
     bounding_box([40, 550], width: 310, height: 65) do
-      data = [ ["御請求金額", "¥ 5,500(税込)"] ]
+      data = [ ["御請求金額", "¥ #{all_total.to_s(:delimited)}(税込)"] ]
       table(data, :column_widths => [90, 160]) do |table|
         table.cells.size = 14
         table.cells.height = 28
@@ -78,7 +78,7 @@ class PostPdf < Prawn::Document
     end
 
     bounding_box([330, 550], width: 250) do
-      table [['小計', "¥10000"], ['消費税', "¥1000"], ['合計金額', "¥11000"], ['掛け率', "#{@client.percentage}%"]], column_widths: [70, 90], position: :left do |table|
+      table [['小計', "¥#{subtotal.to_s(:delimited)}"], ['消費税', "¥#{tax.to_s(:delimited)}"], ['合計金額', "¥#{subtotal + tax}"], ['掛け率', "#{@client.percentage}%"]], column_widths: [70, 90], position: :left do |table|
         table.cells.size = 9
         table.column(0).background_color = 'e0e0e0'
         table.column(1).align = :right
@@ -86,14 +86,18 @@ class PostPdf < Prawn::Document
     end
     
     move_down 15
-
-    rows = [['詳細', '数量', '単価', '金額'], ['雑費', '1', '10000', '10000']]
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
-    rows << ['test1', 'test2', 'test3', 'test4']
+    rows = [['シリーズ', '数量', '単価', '金額']]
+    @items.each do |item|
+      rows << ["#{item.collection}", "#{item.quantity}", "#{item.price}", "#{item.price * item.quantity}"]
+      
+    end
+    # rows = [['詳細', '数量', '単価', '金額'], ['雑費', '1', '10000', '10000']]
+    # rows << ['test1', 'test2', 'test3', 'test4']
+    # rows << ['test1', 'test2', 'test3', 'test4']
+    # rows << ['test1', 'test2', 'test3', 'test4']
 
     table(rows, column_widths: [280, 40, 50, 50], position: :center) do |table|
-      table.cells.size = 8
+      table.cells.size = 7
       table.row(0).background_color = "e0e0e0"
 
       table.column(1..3).align = :right
@@ -107,4 +111,21 @@ class PostPdf < Prawn::Document
       table.cells.size = 9
     end
   end
+
+  def subtotal
+    sub = 0
+    @items.each do |item|
+      sub += item.price
+    end
+    return sub
+  end
+
+  def tax
+    tax = (subtotal * 0.1).floor
+  end
+
+  def all_total
+    return ((subtotal + tax) * @client.percentage / 100).floor
+  end 
+
 end
