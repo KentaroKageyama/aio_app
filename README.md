@@ -50,6 +50,7 @@
 | collection      | references | null: false, foreign_key: true |
 | category        | references | null: false, foreign_key: true |
 | opal_color      | references | null: false, foreign_key: true |
+| chain_name      | string     | null: false, unique: true      |
 | position        | integer    | null: false                    |
 
 
@@ -166,6 +167,7 @@
 | ------------- | ---------- | ----------- |
 | issue_date    | date       | null: false |
 | issue_number  | integer    | null: false |
+| content       | string     |             |
 
 ### Association
 
@@ -181,6 +183,7 @@
 | category   | string     | null: false                    |
 | opal_color | string     |                                |
 | item       | string     | null: false                    |
+| chain_item | string     | null: false                    |
 | size       | string     |                                |
 | price      | integer    | null: false                    |
 | quantity   | integer    | null: false                    |
