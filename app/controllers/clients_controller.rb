@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
   private
 
   def set_client
-    params.require(:client).permit(:name, :percentage).merge(user_id: current_user.id)
+    params.require(:client).permit(:name, :percentage)
   end
 
 end

@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
     t.string "category", null: false
     t.string "opal_color"
     t.string "item", null: false
-    t.string "size", null: false
+    t.string "size"
     t.integer "price", null: false
     t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
