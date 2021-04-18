@@ -181,6 +181,7 @@
 | invoice    | references | null: false, foreign_key: true |
 | collection | string     | null: false                    |
 | category   | string     | null: false                    |
+| material   | string     |                                |
 | opal_color | string     |                                |
 | item       | string     | null: false                    |
 | chain_item | string     | null: false                    |

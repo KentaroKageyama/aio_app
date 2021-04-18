@@ -69,11 +69,23 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy] )
+    params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, :material_id,
+      item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy] ).merge(chain_name: set_chain_name)
   end
 
   def search_item
     @p = Item.ransack(params[:q])
+  end
+
+  def set_chain_name
+    array = []
+    items = params.require(:item)
+    array << Collection.find(items[:collection_id]).name
+    array << items[:name]
+    array << Category.find(items[:category_id]).name
+    array << Material.find(items[:material_id]).name if items[:material_id].present?
+    array << OpalColor.find(items[:opal_color_id]).color if items[:opal_color_id].present?
+    return array.join(" ")
   end
 
 end

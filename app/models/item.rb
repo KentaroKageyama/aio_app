@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   belongs_to :collection
   belongs_to :category
+  belongs_to :material, optional: true
   belongs_to :opal_color, optional: true
   has_one_attached :image
 

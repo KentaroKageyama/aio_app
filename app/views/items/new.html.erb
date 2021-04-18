@@ -5,6 +5,7 @@
 <%= form_with model: @item, url: items_path, method: :post, local: true do |f| %>
   <%= f.collection_select :collection_id, Collection.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
   <%= f.collection_select :category_id, Category.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
+  <%= f.collection_select :material_id, Material.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
   <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color, include_blank: "選択して下さい" %>
   <br>
   <%= f.text_field :name, placeholder:"アイテム名" %>
