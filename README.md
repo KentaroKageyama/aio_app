@@ -181,6 +181,7 @@
 | category   | string     | null: false                    |
 | opal_color | string     |                                |
 | item       | string     | null: false                    |
+| size       | string     |                                |
 | price      | integer    | null: false                    |
 | quantity   | integer    | null: false                    |
 
