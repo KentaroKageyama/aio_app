@@ -65,12 +65,16 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
 
   create_table "invoice_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "invoice_id", null: false
-    t.bigint "item_id", null: false
+    t.string "collection", null: false
+    t.string "category", null: false
+    t.string "opal_color"
+    t.string "item", null: false
+    t.string "size", null: false
+    t.integer "price", null: false
     t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
-    t.index ["item_id"], name: "index_invoice_items_on_item_id"
   end
 
   create_table "invoices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -166,7 +170,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "glasses", "opal_colors"
   add_foreign_key "invoice_items", "invoices"
-  add_foreign_key "invoice_items", "items"
   add_foreign_key "item_glasses", "glasses"
   add_foreign_key "item_glasses", "items"
   add_foreign_key "item_parts", "items"
