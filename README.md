@@ -58,7 +58,6 @@
 - has_one_attached :image
 - has_many :item_parts
 - has_many :item_glasses
-- has_many :invoice_items
 - belongs_to :collection
 - belongs_to :category
 - belongs_to :opal_color
@@ -175,13 +174,16 @@
 
 ## invoice_items テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| invoice   | references | null: false, foreign_key: true |
-| item      | references | null: false, foreign_key: true |
-| quantity  | integer    | null: false                    |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| invoice    | references | null: false, foreign_key: true |
+| collection | string     | null: false                    |
+| category   | string     | null: false                    |
+| opal_color | string     |                                |
+| item       | string     | null: false                    |
+| price      | integer    | null: false                    |
+| quantity   | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :invoice
-- belongs_to :item
