@@ -1,8 +1,4 @@
 <div class="nested-fields">
-    <%# <div class="col-md-6"> %>
-      <%# <label class="control-label">シリーズ</label> %>
-        <%# <%= f.collection_select :collection, Collection.all.order(:position), :name, :name, include_blank: "選択して下さい" %>
-    <%# </div> %>
     <div class="col-md-6">
       <label class="control-label">アイテム</label>
         <%= f.collection_select(:chain_item, Item.all.order(:position), :chain_name, :chain_name, {include_blank: "選択してください"}, {class:"items-form" }) %>

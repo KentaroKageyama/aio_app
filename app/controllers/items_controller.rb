@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
   end
 
   def output_price
-    price = Item.find(params[:id]).price
+    price = Item.find_by(chain_name: params[:name]).price
     render json: {price: price} 
   end
 

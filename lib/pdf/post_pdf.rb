@@ -60,7 +60,7 @@ class PostPdf < Prawn::Document
       move_down 5
       text "#{@user.building}", size: 10
       move_down 5
-      text "TEL: #{@user.phone_number}", size: 12
+      text "TEL: #{@user.phone_number}", size: 10
     end
 
     # image 'app/assets/images/test1.png', at: [328, 660], width: 150
@@ -105,7 +105,7 @@ class PostPdf < Prawn::Document
 
     move_down 15
 
-    table [["お振込先：", "#{@user.bank} #{@user.branch}   #{@user.bank_type.name} #{@user.bank_number}   #{@user.bank_account}"]], column_widths: [90, 332], position: :center do |table|
+    table [["お振込先：", "#{@user.bank} #{@user.branch}   #{@user.bank_type.name} #{@user.bank_number}   #{@user.bank_account}"]], column_widths: [100, 360], position: :center do |table|
       table.column(0).background_color = 'e0e0e0'
       table.cells.size = 9
     end

@@ -14,7 +14,7 @@ if (document.URL.match( /invoice/ )){
                 return true;
               }
               const XHR = new XMLHttpRequest();
-              XHR.open("GET", `items/output_price/?id=${item.value}`, true);
+              XHR.open("GET", `items/output_price/?name=${item.value}`, true);
               XHR.responseType = "json";
               XHR.send();
               XHR.onload = () => {
