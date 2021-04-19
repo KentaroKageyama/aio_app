@@ -6,7 +6,6 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    binding.pry
     @invoice = Invoice.new(set_invoice)
     @invoice.save
 
