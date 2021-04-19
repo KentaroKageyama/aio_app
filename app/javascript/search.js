@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const childElement = document.createElement("div");
           childElement.setAttribute("class", "child");
           childElement.setAttribute("id", item.id);
-          childElement.innerHTML = item.name;
+          childElement.innerHTML = item.chain_name;
           searchResult.appendChild(childElement);
           const clickElement = document.getElementById(item.id);
           clickElement.addEventListener("click", () => {
@@ -27,3 +27,4 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 });
+

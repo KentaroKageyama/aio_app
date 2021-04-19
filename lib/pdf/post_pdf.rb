@@ -23,11 +23,8 @@ class PostPdf < Prawn::Document
   end
   
 
-  # コンポーネント作成
   def create_contents
     
-    # bunding_boxメソッドでボックスを生成
-    # 引数にはボックス生成位置、横、縦のサイズを指定
     bounding_box([370, 750], width: 100, height: 40) do
       text "発行日: #{@invoice.issue_date}", size: 11, align: :right
       move_down 2

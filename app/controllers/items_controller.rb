@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     @item.save
     redirect_to new_item_path
@@ -66,6 +65,12 @@ class ItemsController < ApplicationController
     @opal_color = OpalColor.new
     @opal_colors = OpalColor.all.order(:position)
   end
+
+  def output_price
+    price = Item.find(params[:id]).price
+    render json: {price: price} 
+  end
+
   private
 
   def item_params

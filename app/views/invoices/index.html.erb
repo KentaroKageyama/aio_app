@@ -7,15 +7,15 @@
 
     <%= f.date_field :issue_date, placeholder: "日付" %>
     <%= f.text_field :issue_number, placeholder: "No." %>
+    <%= f.text_field :content, placeholder:"例）東京店1月売上分"%>
     <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: "選択して下さい" %>
 
     <div>
       <%= f.fields_for :invoice_items do |invoice_item| %>
       <%= render 'invoice_item_fields', f: invoice_item %>
       <%- end %>
-      <%= link_to_add_association 'item追加', f, :invoice_items %>
+      <%= link_to_add_association 'item追加', f, :invoice_items, id:"add-item" %>
     </div>
-    
     <%= f.submit 'PDF出力+保存'%>
 
   <% end %>

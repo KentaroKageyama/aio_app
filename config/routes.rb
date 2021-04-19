@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :new_other
       get :incremental_search
       patch :sort
+      get :output_price
     end
   end
 

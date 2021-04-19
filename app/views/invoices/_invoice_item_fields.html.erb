@@ -1,19 +1,13 @@
 <div class="nested-fields">
-    <div class="col-md-6">
-      <label class="control-label">シリーズ</label>
-        <%= f.collection_select :collection, Collection.all.order(:position), :name, :name, include_blank: "選択して下さい" %>
-    </div>
+    <%# <div class="col-md-6"> %>
+      <%# <label class="control-label">シリーズ</label> %>
+        <%# <%= f.collection_select :collection, Collection.all.order(:position), :name, :name, include_blank: "選択して下さい" %>
+    <%# </div> %>
     <div class="col-md-6">
       <label class="control-label">アイテム</label>
-      <%= f.text_field :item, placeholder: "アイテム名"%>
-    </div>
-    <div class="col-md-6">
-      <label class="control-label">カテゴリー</label>
-        <%= f.collection_select :category, Category.all.order(:position), :name, :name, include_blank: "選択して下さい" %>
-    </div>
-    <div class="col-md-6">
-      <label class="control-label">オパールカラー</label>
-        <%= f.collection_select :opal_color, OpalColor.all.order(:position), :color, :color, include_blank: "選択して下さい" %>
+        <%= f.collection_select(:chain_item, Item.all.order(:position), :id, :chain_name, {include_blank: "選択してください"}, {class:"items-form" }) %>
+
+      <div id="search-result"></div> 
     </div>
     <div class="col-md-6">
       <label class="control-label">サイズ</label>
@@ -25,7 +19,7 @@
     </div>
     <div class="col-md-6">
       <label class="control-label">価格</label>
-      <%= f.text_field :price, placeholder: "半角数字"%>
+      <%= f.text_field :price, placeholder: "半角数字", class:"price-form" %>
     </div>
     <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
 </div>
