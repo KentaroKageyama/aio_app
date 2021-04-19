@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :new_other
       get :incremental_search
       patch :sort
+      get :output_price
     end
   end
 
@@ -51,6 +52,6 @@ Rails.application.routes.draw do
   end
 
   resources :post_pdf, only: :index
-  resources :invoices, only: :index
+  resources :invoices, only: [:index, :create]
   resources :clients, only: [:index, :create, :update, :destroy]
 end

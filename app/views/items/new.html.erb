@@ -5,6 +5,7 @@
 <%= form_with model: @item, url: items_path, method: :post, local: true do |f| %>
   <%= f.collection_select :collection_id, Collection.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
   <%= f.collection_select :category_id, Category.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
+  <%= f.collection_select :material_id, Material.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
   <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color, include_blank: "選択して下さい" %>
   <br>
   <%= f.text_field :name, placeholder:"アイテム名" %>
@@ -33,7 +34,7 @@
   <% @items.each do |item| %>
     <li class="item_li sort_li">
       <i class="fas fa-grip-lines-vertical handle"></i>
-      <%= item.name %><%= item.price.to_s(:delimited) %><%= link_to '削除', item_path(item.id), method: :delete %>
+      <%= item.chain_name %><%= item.price.to_s(:delimited) %><%= link_to '削除', item_path(item.id), method: :delete %>
     </li>
   <% end %>
 </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_094902) do
+ActiveRecord::Schema.define(version: 2021_04_17_134102) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,10 +43,8 @@ ActiveRecord::Schema.define(version: 2021_04_17_094902) do
   create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "percentage", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "collections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -63,6 +61,27 @@ ActiveRecord::Schema.define(version: 2021_04_17_094902) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position", null: false
     t.index ["opal_color_id"], name: "index_glasses_on_opal_color_id"
+  end
+
+  create_table "invoice_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "invoice_id", null: false
+    t.string "chain_item", null: false
+    t.string "size"
+    t.integer "price", null: false
+    t.integer "quantity", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
+  end
+
+  create_table "invoices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "issue_date", null: false
+    t.integer "issue_number", null: false
+    t.string "content"
+    t.string "client_name", null: false
+    t.integer "client_percentage", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "item_glasses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,14 +109,17 @@ ActiveRecord::Schema.define(version: 2021_04_17_094902) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
+    t.string "chain_name", null: false
     t.bigint "collection_id", null: false
     t.bigint "category_id", null: false
     t.bigint "opal_color_id"
+    t.bigint "material_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["collection_id"], name: "index_items_on_collection_id"
+    t.index ["material_id"], name: "index_items_on_material_id"
     t.index ["opal_color_id"], name: "index_items_on_opal_color_id"
   end
 
@@ -149,14 +171,15 @@ ActiveRecord::Schema.define(version: 2021_04_17_094902) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "clients", "users"
   add_foreign_key "glasses", "opal_colors"
+  add_foreign_key "invoice_items", "invoices"
   add_foreign_key "item_glasses", "glasses"
   add_foreign_key "item_glasses", "items"
   add_foreign_key "item_parts", "items"
   add_foreign_key "item_parts", "parts"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "collections"
+  add_foreign_key "items", "materials"
   add_foreign_key "items", "opal_colors"
   add_foreign_key "parts", "materials"
 end

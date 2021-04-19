@@ -1,0 +1,21 @@
+<div class="nested-fields">
+    <div class="col-md-6">
+      <label class="control-label">アイテム</label>
+        <%= f.collection_select(:chain_item, Item.all.order(:position), :chain_name, :chain_name, {include_blank: "選択してください"}, {class:"items-form" }) %>
+
+      <div id="search-result"></div> 
+    </div>
+    <div class="col-md-6">
+      <label class="control-label">サイズ</label>
+      <%= f.text_field :size, placeholder: "サイズ"%>
+    </div>
+    <div class="col-md-6">
+      <label class="control-label">個数</label>
+      <%= f.text_field :quantity, placeholder: "半角数字"%>
+    </div>
+    <div class="col-md-6">
+      <label class="control-label">価格</label>
+      <%= f.text_field :price, placeholder: "半角数字", class:"price-form" %>
+    </div>
+    <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
+</div>

@@ -50,6 +50,7 @@
 | collection      | references | null: false, foreign_key: true |
 | category        | references | null: false, foreign_key: true |
 | opal_color      | references | null: false, foreign_key: true |
+| chain_name      | string     | null: false, unique: true      |
 | position        | integer    | null: false                    |
 
 
@@ -63,12 +64,15 @@
 - belongs_to :opal_color
 
 
+
 ## item_parts テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| item   | references | null: false, foreign_key: true |
-| part   | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| item     | references | null: false, foreign_key: true |
+| part     | references | null: false, foreign_key: true |
+| quantity | integer    | null: false                    |
+
 
 ### Association
 
@@ -92,10 +96,12 @@
 
 ## item_glasses テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| item    | references | null: false, foreign_key: true |
-| glass   | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| item     | references | null: false, foreign_key: true |
+| glass    | references | null: false, foreign_key: true |
+| quantity | integer    | null: false                    |
+
 
 ### Association
 
@@ -153,3 +159,33 @@
 
 - has_many :items
 - has_many :glasses
+
+
+## invoices テーブル
+
+| Column            | Type       | Options     |
+| ----------------- | ---------- | ----------- |
+| issue_date        | date       | null: false |
+| issue_number      | integer    | null: false |
+| content           | string     |             |
+| client_name       | string     | null: false |
+| client_percentage | integer    | null: false |
+
+### Association
+
+- has_many :invoice_items
+
+
+## invoice_items テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| invoice    | references | null: false, foreign_key: true |
+| chain_item | string     | null: false                    |
+| size       | string     |                                |
+| price      | integer    | null: false                    |
+| quantity   | integer    | null: false                    |
+
+### Association
+
+- belongs_to :invoice
