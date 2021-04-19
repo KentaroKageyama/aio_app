@@ -65,11 +65,6 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
 
   create_table "invoice_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "invoice_id", null: false
-    t.string "collection", null: false
-    t.string "category", null: false
-    t.string "material"
-    t.string "opal_color"
-    t.string "item", null: false
     t.string "chain_item", null: false
     t.string "size"
     t.integer "price", null: false
@@ -83,6 +78,8 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
     t.date "issue_date", null: false
     t.integer "issue_number", null: false
     t.string "content"
+    t.string "client_name", null: false
+    t.integer "client_percentage", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

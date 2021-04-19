@@ -49,20 +49,23 @@ class PostPdf < Prawn::Document
       text "東京店 1月売上分", size: 14, aligh: :left
     end
 
-    bounding_box([330, 660], width: 300, height: 150) do
+    bounding_box([328, 660], width: 300, height: 150) do
       text "#{@user.company}", size: 12
       move_down 10
       text "〒#{@user.zip_code[0..2]}-#{@user.zip_code[3..6]}", size: 10
       move_down 5
-      text "#{@user.prefecture.name} #{@user.city} #{@user.address}", size: 10
+      text "#{@user.prefecture.name} #{@user.city}", size: 10
+      move_down 5
+      text "#{@user.address}", size: 10
       move_down 5
       text "#{@user.building}", size: 10
       move_down 5
       text "TEL: #{@user.phone_number}", size: 12
     end
 
+    # image 'app/assets/images/test1.png', at: [328, 660], width: 150
 
-    bounding_box([40, 550], width: 310, height: 65) do
+    bounding_box([30, 550], width: 310, height: 65) do
       data = [ ["御請求金額", "¥ #{all_total.to_s(:delimited)}(税込)"] ]
       table(data, :column_widths => [90, 160]) do |table|
         table.cells.size = 14
@@ -74,7 +77,7 @@ class PostPdf < Prawn::Document
       end
     end
 
-    bounding_box([330, 550], width: 250) do
+    bounding_box([328, 550], width: 250) do
       table [['小計', "¥#{subtotal.to_s(:delimited)}"], ['消費税', "¥#{tax.to_s(:delimited)}"], ['合計金額', "¥#{subtotal + tax}"], ['掛け率', "#{@client.percentage}%"]], column_widths: [70, 90], position: :left do |table|
         table.cells.size = 9
         table.column(0).background_color = 'e0e0e0'
@@ -83,21 +86,20 @@ class PostPdf < Prawn::Document
     end
     
     move_down 15
-    rows = [['シリーズ', '数量', '単価', '金額']]
+    num = 1
+    rows = [['No.', '作品名', '数量', '単価', '金額']]
     @items.each do |item|
-      rows << ["#{item.collection}", "#{item.quantity}", "#{item.price}", "#{item.price * item.quantity}"]
-      
+      rows << ["#{num}","#{item.chain_item}", "#{item.quantity}", "#{item.price.to_s(:delimited)}", "#{(item.price * item.quantity).to_s(:delimited)}"]
+      num += 1
     end
-    # rows = [['詳細', '数量', '単価', '金額'], ['雑費', '1', '10000', '10000']]
-    # rows << ['test1', 'test2', 'test3', 'test4']
-    # rows << ['test1', 'test2', 'test3', 'test4']
-    # rows << ['test1', 'test2', 'test3', 'test4']
 
-    table(rows, column_widths: [280, 40, 50, 50], position: :center) do |table|
+    table(rows, column_widths: [30, 290, 30, 55, 55], position: :center) do |table|
       table.cells.size = 7
       table.row(0).background_color = "e0e0e0"
 
-      table.column(1..3).align = :right
+      table.column(0).align = :right
+      table.column(2..4).align = :right
+
       table.row(0).align = :center
     end
 

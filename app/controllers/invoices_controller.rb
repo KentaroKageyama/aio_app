@@ -6,6 +6,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    binding.pry
     @invoice = Invoice.new(set_invoice)
     @invoice.save
 
@@ -15,7 +16,8 @@ class InvoicesController < ApplicationController
   private
 
   def set_invoice
-    params.require(:invoice).permit(:issue_date, :issue_number, invoice_items_attributes: [:collection, :item, :category, :opal_color, :size, :quantity, :price, :_destroy])
+    client = Client.find(params[:invoice][:client_id]) if params[:invoice][:client_id].present?
+    params.require(:invoice).permit(:issue_date, :issue_number, :content, invoice_items_attributes: [:chain_item, :size, :quantity, :price, :_destroy]).merge(client_name: client.name, client_percentage: client.percentage)
   end
 
 end

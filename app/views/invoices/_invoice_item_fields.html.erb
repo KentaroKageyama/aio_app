@@ -5,7 +5,7 @@
     <%# </div> %>
     <div class="col-md-6">
       <label class="control-label">アイテム</label>
-        <%= f.collection_select(:chain_item, Item.all.order(:position), :id, :chain_name, {include_blank: "選択してください"}, {class:"items-form" }) %>
+        <%= f.collection_select(:chain_item, Item.all.order(:position), :chain_name, :chain_name, {include_blank: "選択してください"}, {class:"items-form" }) %>
 
       <div id="search-result"></div> 
     </div>

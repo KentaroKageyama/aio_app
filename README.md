@@ -163,11 +163,13 @@
 
 ## invoices テーブル
 
-| Column        | Type       | Options     |
-| ------------- | ---------- | ----------- |
-| issue_date    | date       | null: false |
-| issue_number  | integer    | null: false |
-| content       | string     |             |
+| Column            | Type       | Options     |
+| ----------------- | ---------- | ----------- |
+| issue_date        | date       | null: false |
+| issue_number      | integer    | null: false |
+| content           | string     |             |
+| client_name       | string     | null: false |
+| client_percentage | integer    | null: false |
 
 ### Association
 
@@ -179,11 +181,6 @@
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | invoice    | references | null: false, foreign_key: true |
-| collection | string     | null: false                    |
-| category   | string     | null: false                    |
-| material   | string     |                                |
-| opal_color | string     |                                |
-| item       | string     | null: false                    |
 | chain_item | string     | null: false                    |
 | size       | string     |                                |
 | price      | integer    | null: false                    |
