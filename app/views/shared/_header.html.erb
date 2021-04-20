@@ -1,18 +1,47 @@
 <header>
   <div class="header-container">
-  <%= image_tag 'logo.png', class: 'title-logo' %>
-  <ul class="header-lists">
-    <li class="header-list"><%= link_to '作品一覧', items_path %></li>
-    <li class="header-list"><%= link_to '作品登録', new_item_path %></li>
-    <li class="header-list"><%= link_to '金属パーツ登録', new_part_path %></li>
-    <li class="header-list"><%= link_to 'ガラス登録', new_glass_path %></li>
-    <li class="header-list"><%= link_to 'その他項目', new_other_items_path %></li>
-    <li class="header-list"><%= link_to '取引先・顧客管理', clients_path %></li>
-    <li class="header-list"><%= link_to '請求書作成', invoices_path %></li>
+    <div class="logo-box">
+      <%= image_tag 'logo.png' , class: 'title-logo' %>
+    </div>
+    <div class="header-contents">
+      <ul class="header-lists">
+        <li class="header-list">
+          <%= link_to(items_path) do %>
+            作品一覧 
+          <% end %>
+        </li>
+        <li class="header-list">
+          <%= link_to(new_item_path) do %>
+            作品登録
+          <% end %>
+        </li>
+        <li class="header-list">
+          <%= link_to(new_part_path) do %>
+            金属パーツ<br>管理
+          <% end %>
+        </li>
+        <li class="header-list">
+          <%= link_to(new_glass_path) do %>
+            ガラスパーツ<br>管理
+          <% end %>
+        </li>
+        <li class="header-list">
+          <%= link_to(new_other_items_path) do %>
+            その他項目<br>管理
+          <% end %>
+        </li>
+        <li class="header-list">
+          <%= link_to(clients_path) do %>
+            取引先 顧客<br>管理
+          <% end %>
+        </li>
+        <li class="header-list"><%= link_to '請求書作成', invoices_path %></li>
 
-  </ul>
-  <%= link_to current_user.company , edit_user_registration_path(current_user.id) %>
-  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-
+      </ul>
+      <div class="header-right">
+        <%= link_to current_user.company , edit_user_registration_path(current_user.id), class:"company-name"%>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"logout-btn" %>
+      </div>
+    </div>
   <div>
 </header>

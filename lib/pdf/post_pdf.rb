@@ -49,7 +49,7 @@ class PostPdf < Prawn::Document
       text "東京店 1月売上分", size: 14, aligh: :left
     end
 
-    bounding_box([328, 660], width: 300, height: 150) do
+    bounding_box([360, 660], width: 300, height: 150) do
       text "#{@user.company}", size: 12
       move_down 10
       text "〒#{@user.zip_code[0..2]}-#{@user.zip_code[3..6]}", size: 10
@@ -63,7 +63,7 @@ class PostPdf < Prawn::Document
       text "TEL: #{@user.phone_number}", size: 10
     end
 
-    # image 'app/assets/images/test1.png', at: [328, 660], width: 150
+    image 'app/assets/images/logo.png', at: [265, 660], width: 80
 
     bounding_box([30, 550], width: 310, height: 65) do
       data = [ ["御請求金額", "¥ #{all_total.to_s(:delimited)}(税込)"] ]
