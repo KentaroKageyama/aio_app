@@ -1,7 +1,9 @@
 <header>
   <div class="header-container">
     <div class="logo-box">
-      <%= image_tag 'logo.png' , class: 'title-logo' %>
+      <%= link_to(items_path) do %>
+        <%= image_tag 'logo.png', class:'title-logo' %>
+      <% end %>
     </div>
     <div class="header-contents">
       <ul class="header-lists">

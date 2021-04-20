@@ -5,25 +5,36 @@
 <h1>一覧表示</h1>
 <br>
 
-<h1>
-  商品検索
-</h1>
-<%= search_form_for @p, url: search_items_path do |f| %>
-  <%= f.label :collection_name_eq, 'シリーズ：' %>
-  <%= f.collection_select :collection_name_eq, @collections, :name, :name, include_blank: '指定なし'%>
-  <br>
-  <%= f.label :category_name_eq, 'カテゴリー：' %>
-  <%= f.collection_select :category_name_eq, @categories, :name, :name, include_blank: '指定なし'%>
-  <br>
-  <%= f.label :chain_name_eq, '商品名' %>
-  <%= f.search_field :chain_name_cont, class:"input-item", id:"input-item" %>
-  <div id="search-result"></div>
-  <br>
-  <div class="submit-post">
-  <%= f.submit '検索', class: "submit-btn" %>
-  </div>
-<% end %>
-<br>  <br>
+<%# 商品検索 %>
+<div class="search-box">
+  <h1 class="search-header">
+    <i class="fas fa-search"></i>
+    作品検索
+  </h1>
+  <%= search_form_for @p, url: search_items_path do |f| %>
+    <div class="search-form-box">
+      <%= f.label :collection_name_eq, 'シリーズ', class:"search-label" %>
+      <%= f.collection_select :collection_name_eq, @collections, :name, :name, {include_blank: '指定なし'}, {class:"search-form"} %>
+      <%= f.label :category_name_eq, 'カテゴリー', class:"search-label" %>
+      <%= f.collection_select :category_name_eq, @categories, :name, :name, {include_blank: '指定なし'}, {class:"search-form"} %>
+      <%= f.label :material_name_eq, '金具材質', class:"search-label" %>
+      <%= f.collection_select :material_name_eq, @materials, :name, :name, {include_blank: '指定なし'}, {class:"search-form"} %>
+      <%= f.label :opal_color_color_eq, 'オパールカラー', class:"search-label" %>
+      <%= f.collection_select :opal_color_color_eq, @opal_colors, :color, :color, {include_blank: '指定なし'}, {class:"search-form"} %>
+      <div class="search-input">
+        <%= f.label :chain_name_eq, '作品名', class:"input-label" %>
+        <%= f.search_field :chain_name_cont, class:"input-item", id:"input-item" %>
+        <div class="search-result" id="search-result"></div>
+      </div>
+      <div class="submit-post">
+        <%= f.button :type => "submit", class:"search-submit-btn" do %>
+          <i class="fas fa-search"></i>検索
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
   <%# 商品一覧 %>
   <table class="item-lists">
   <thead>

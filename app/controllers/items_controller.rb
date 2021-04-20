@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
     @items = @p.result.order(:position)
     @collections = Collection.all.order(:position)
     @categories = Category.all.order(:position)
+    @opal_colors = OpalColor.all.order(:position)
+    @materials = Material.all.order(:position)
   end
 
   def show
@@ -45,7 +47,7 @@ class ItemsController < ApplicationController
 
   def incremental_search
     return nil if params[:keyword] == ""
-    item = Item.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    item = Item.where(['chain_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: item }
   end
 
