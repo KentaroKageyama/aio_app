@@ -123,18 +123,18 @@
 
 .input-item {
   height: 35px;
-  width: 400px;
+  width: 500px;
   border: 1px solid #d0d0d0;
   border-radius: 4px;
 }
 
 .search-result {
-  width: 400px;
+  width: 500px;
   background-color: #f0f0f0;
   font-size: 14px;
   position: absolute;
   top: 35px;
-  left: 21vw;
+  left: 17.5vw;
 }
 
 .child {
@@ -165,7 +165,7 @@
 	cursor:pointer;
 }
 
-.search-submit-btn:active {
+.search-submit-btn:hover {
   opacity: 0.7;
 }
 
@@ -175,6 +175,97 @@
 
 // /search
 
+// 一覧
+
+
+.item-lists {
+  width: 100%;
+  font-size: 14px;
+}
+
+.item-lists a {
+  text-decoration: none;
+}
+
+.item-lists th {
+  border-bottom: 2px double #c0c0c0;
+  text-align: left;
+  height: 30px;
+  font-weight: bold;
+}
+
+.item-lists th a{
+  color: #1f4570;
+}
+
+.item-lists td {
+  height: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.td-show {
+  text-align: center;
+  width: 80px
+}
+
+.td-collection {
+  width: 100px;
+}
+
+.td-item {
+  width: 180px;
+}
+
+.td-category {
+  width: 100px;
+}
+
+.td-material {
+  width: 80px;
+}
+
+.td-color {
+  width: 80px;
+}
+
+.td-price {
+  width: 80px;
+}
+
+
+.td-edit {
+  width: 40px;
+  text-align: center;
+}
+
+.td-destroy {
+  width: 60px;
+  text-align: center;
+}
+
+.show-link {
+  color: #FFF;
+  background-color: rgb(56, 123, 211);
+  border:1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.edit-link, .destroy-link {
+  font-size: 12px;
+  color: #FFF;
+  background-color: #909090;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.show-link:hover, .edit-link:hover, .destroy-link:hover {
+  opacity: 0.6;
+}
+
+// /一覧
+
 .preview-image img{
   width: 150px;
 }
@@ -182,14 +273,4 @@
 .item-name-search {
   height: 30px;
   width: 500px;
-}
-
-.item-lists th {
-  text-align: left;
-  height: 30px;
-}
-
-.item-lists td {
-  width: 100px;
-  height: 20px;
 }
