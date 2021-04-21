@@ -2,8 +2,14 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h2>シリーズ<h2>
-<%= form_with model: @collection, url: collections_path, method: :post, local: true do |f| %>
+  <div class="title">
+    <h1>その他項目管理</h1>
+  </div>
+  <div class="subtitle">
+    <h2>シリーズ</h2>
+  </div>
+
+  <%= form_with model: @collection, url: collections_path, method: :post, local: true do |f| %>
   <%= f.text_field :name, placeholder:"シリーズ名" %>
   <%= f.submit '登録' %>
 <% end %>
@@ -17,8 +23,10 @@
 </ul>
 <br>
 
-<h2>カテゴリー</h2>
-<%= form_with model: @category, url: categories_path, method: :post, local: true do |f| %>
+  <div class="subtitle">
+    <h2>カテゴリー</h2>
+  </div>
+  <%= form_with model: @category, url: categories_path, method: :post, local: true do |f| %>
   <%= f.text_field :name, placeholder:"カテゴリー名" %>
   <%= f.submit '登録' %>
 <% end %>
@@ -32,7 +40,9 @@
 </ul>
 <br>
 
-<h2>マテリアル</h2>
+  <div class="subtitle">
+    <h2>金具材質</h2>
+  </div>
 <%= form_with model: @material, url: materials_path, method: :post, local: true do |f| %>
   <%= f.text_field :name, placeholder:"マテリアル名" %>
   <%= f.submit '登録' %>
@@ -47,8 +57,10 @@
 </ul>
 <br>
 
-<h2>オパールカラー</h2>
-<%= form_with model: @opal_color, url: opal_colors_path, method: :post, local: true do |f| %>
+  <div class="subtitle">
+    <h2>オパールカラー</h2>
+  </div>
+  <%= form_with model: @opal_color, url: opal_colors_path, method: :post, local: true do |f| %>
   <%= f.text_field :color, placeholder:"オパールカラー" %>
   <%= f.submit '登録' %>
 <% end %>

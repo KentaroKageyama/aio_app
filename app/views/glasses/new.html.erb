@@ -1,8 +1,11 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h2>ガラスパーツ<h2>
-<%= form_with model: @glass, url: glasses_path, method: :post, local: true do |f| %>
+  <div class="title">
+    <h1>ガラスパーツ管理</h1>
+  </div>
+  
+  <%= form_with model: @glass, url: glasses_path, method: :post, local: true do |f| %>
   <%= f.text_field :name, placeholder:"ガラスパーツ名" %>
   <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color, include_blank: "選択して下さい" %>
   <%= f.submit '登録' %>

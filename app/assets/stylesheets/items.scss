@@ -19,11 +19,25 @@
   float: left;
 }
 
+.sub-title {
+  font-size: 15px;
+  font-weight: bold;
+  width: 92%;
+  padding: 7px 10px;
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
 // sortable
 
+.sort_ul {
+  width: 80%;
+  font-size: 16px;
+}
+
 .sort_li {
-  height: 20px;
-  width: 50%;
+  font-size: 15px;
+  height: 40px;
   background-color: #FFF;
   border: 1px solid gray;
   margin-bottom: 2px;
@@ -35,17 +49,8 @@
 
 .handle {
   font-size: 15px;
-  padding-right: 5px;
+  padding-right: 10px;
   cursor: grab;
-}
-
-.opal_li {
-  width: 250px;
-  height: 20px;
-  background-color: #f8f8f8;
-  padding: 10px;
-  border: 1px solid gray;
-  margin-bottom: -1px;
 }
 
 .blue-background {
@@ -150,6 +155,7 @@
 }
 
 .submit-post {
+  width: 100%;
   margin-top: 20px;
   display:flex;
   justify-content: center;
@@ -176,7 +182,6 @@
 // /search
 
 // 一覧
-
 
 .item-lists {
   width: 100%;
@@ -258,6 +263,7 @@
   background-color: #909090;
   border-radius: 4px;
   padding: 4px 8px;
+  text-decoration: none;
 }
 
 .show-link:hover, .edit-link:hover, .destroy-link:hover {

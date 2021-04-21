@@ -1,0 +1,136 @@
+.item-regi-box {
+  width: 90%;
+}
+
+.registration-form {
+  width: 90%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.item-regi-image {
+  margin-bottom: 20px; 
+}
+
+.item-regi-image p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.fa-images {
+  color: #1f4570;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.item-regi-table {
+  margin-bottom: 20px;
+}
+
+.item-regi-table th {
+  font-size: 14px;
+  height: 15px;
+  text-align: left;
+}
+
+.item-regi-select {
+  height: 30px;
+  width: 9vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.item-regi-name {
+  height: 30px;
+  width: 15vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.item-regi-price {
+  height: 30px;
+  width: 8vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.item-regi-submit-post {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+}
+
+.item-regi-submit {
+  width: 85px;
+  height: 32px;
+  color: #FFF;
+  background-color: rgb(56, 123, 211);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+// cocoon
+
+.parts-subtitle {
+  width: 90%;
+  font-size: 15px;
+  margin-bottom :5px;
+}
+
+.parts-add-form {
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+.nested-fields {
+  width: 90%;
+  display: flex;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.parts-select {
+  height: 30px;
+  width: 300px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.parts-qty {
+  height: 30px;
+  width: 100px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.parts-delete {
+  font-size: 12px;
+  color: #FFF;
+  background-color: #909090;
+  border-radius: 4px;
+  padding: 6px 12px;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.parts-delete:hover {
+  opacity: 0.7;
+}
+
+.add-btn{
+  text-decoration: none;
+  font-size: 14px;
+  color: #1f4570;
+  float: left;
+}
+
+.add-btn:hover {
+  opacity: 0.7;
+}
