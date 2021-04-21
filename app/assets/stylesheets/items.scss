@@ -266,6 +266,24 @@
 
 // /一覧
 
+// 検索結果
+
+.back-link {
+  margin-bottom: 20px ;
+  width: 100%;
+}
+
+.back-link a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #1f4570;
+  float: left;
+}
+
+.back-link a:hover {
+  opacity: 0.7;
+}
+
 .preview-image img{
   width: 150px;
 }
@@ -274,3 +292,4 @@
   height: 30px;
   width: 500px;
 }
+

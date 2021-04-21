@@ -1,43 +1,56 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h1>一覧表示</h1>
-<br>
+  <div class="title">
+    <h1>検索結果</h1>
+  </div>
+  <div class="back-link">
+    <%= link_to '<< 一覧へ戻る', items_path %>
+  </div>
 
-<h1>
-  検索結果
-</h1>
-<%# 検索結果の個数で条件分岐 %>
-<% if @results.length !=0 %>
-  <% @results.each do |result| %>
-    <td>
-    <br>
-    <li>
-    <%= result.collection.name %>
-    <%= result.category.name %>
-    <%= result.name %>
-    <%= result.price %>
-    </li>
+  <%# 検索結果の個数で条件分岐 %>
+  <% if @results.length !=0 %>
+
+  <table class="item-lists">
+    <thead>
+      <tr>
+        <th colspan ="1"></th>
+        <th><%= sort_link(@p, :collection_name, "series") %></th>
+        <th><%= sort_link(@p, :name, "item") %></th>
+        <th><%= sort_link(@p, :category_name, "category") %></th>
+        <th><%= sort_link(@p, :material_name, "material") %></th>
+        <th><%= sort_link(@p, :opal_color_color, "opal color") %></th>
+        <th><%= sort_link(@p, :price, "price") %></th>
+        <th colspan = "2" ></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |result| %>
+        <tr>
+          <td class="td-show"><%= link_to '詳細', item_path(result.id), class:"show-link" %></td>
+          <td class="td-collection"><%= result.collection.name %></td>
+          <td class="td-item"><%= result.name %></td>
+          <td class="td-category"><%= result.category.name %></td>
+          <% if result.material.present? %>
+            <td class="td-material"><%= result.material.name %></td>
+          <% else %>
+            <td class="td-material"></td>
+          <% end %>
+          <% if result.opal_color.present? %>
+            <td class="td-color"><%= result.opal_color.color %></td>
+          <% else %>
+            <td class="td-color"></td>
+          <% end %>
+          <td class="td-price"><%= result.price.to_s(:delimited) %></td>
+          <td class="td-edit"><%= link_to '編集', edit_item_path(result.id), class:"edit-link" %></td>
+          <td class="td-destroy"><%= link_to '削除', item_path(result.id), method: :delete, class:"destroy-link" %></td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% else %>
+    該当する商品はありません
   <% end %>
-<% else %>
-  該当する商品はありません
-<% end %>
-<%= link_to '戻る', items_path %>
-
-<br>
-<br>
-<%= form_with model: @item, class:'form-wrap', local: true do |f| %>
-    <div class="item-field", id='item-field'>
-      <%= f.label :name, "item名" %>
-      <%= f.text_field :name, class:"input-item", id:"input-item" %>
-    </div>
-    <div id="search-result">
-    </div>
-  </div>
-  <div class="submit-post">
-    <%= f.submit "Send", class: "submit-btn" %>
-  </div>
-<% end %>
-
 
 </div>
