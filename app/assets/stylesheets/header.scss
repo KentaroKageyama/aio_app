@@ -65,10 +65,28 @@ header a {
   align-items: center;
 }
 
-.company-name {
-  font-size: 17px;
+.header-company-box {
+  height: 12vh;
   margin-right: 15px;
-  text-decoration:underline;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+.company-name {
+  color: #FFF;
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+
+.company-link {
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.company-link:hover {
+  opacity: 0.7;
 }
 
 .logout-btn {

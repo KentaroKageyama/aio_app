@@ -41,7 +41,10 @@
 
       </ul>
       <div class="header-right">
-        <%= link_to current_user.company , edit_user_registration_path(current_user.id), class:"company-name"%>
+        <div class="header-company-box">
+          <p class="company-name"><%= current_user.company %></p>
+          <%= link_to "会員情報変更" , edit_user_registration_path(current_user.id), class:"company-link" %>
+        </div>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"logout-btn" %>
       </div>
     </div>
