@@ -320,26 +320,100 @@
 
 // /検索結果
 
-.preview-image img{
-  width: 150px;
-}
-
-.item-name-search {
-  height: 30px;
-  width: 500px;
-}
-
 // 詳細ページ
-
 
 .show-box {
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid #d0d0d0;
+  padding: 50px 50px;
+}
+
+.show-item-name {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 40px;
 }
 
 .show-image {
-  width: 200px;
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.show-mid-box {
+  width: 50%;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 30px;
+  padding: 10px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.show-item-info {
+  width: 100%;
+}
+
+.show-item-info td {
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.show-item-td1 {
+  text-align: left;
+}
+
+.show-parts-glasses-box {
+  width: 85%;
+  display: flex;
+}
+
+.show-glasses-box, .show-parts-box {
+  width: 50%;
+  padding: 30px;
+  border: 1px solid #d0d0d0;
+  position: relative;
+}
+
+.show-parts-box {
+  margin-right: -1px;
+}
+
+.show-sub-header {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #aaa;
+  color: #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.show-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.show-table th {
+  font-size: 15px;
+  height: 25px;
+  border-bottom: 2px solid #e0e0e0;
+  text-align: left;
+}
+
+.show-table td {
+  font-size: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.show-td-name {
+  width: 80%;
+}
+
+.show-td-qty {
+  width: 20%;
+  text-align: center;
 }
 
