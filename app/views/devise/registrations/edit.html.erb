@@ -132,19 +132,19 @@
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">口座名義（カナ）</label>
-          <span class="form-any">必須</span>
+          <span class="indispensable">必須</span>
         </div>
         <%= f.text_field :bank_account, class:"input-default", id:"bank-account", placeholder:"例）カ）エーアイオー" %>
       </div>
     </div>
 
     <div class='form-btn-post'>
-      <%= f.submit "変更する", class:"form-btn" %>
+      <%= f.submit "変更", class:"form-btn" %>
     </div>
 
     <div class="form-btn-post">
       <%= link_to(:back , class:"back-link") do %>
-        <i class="fas fa-backward"></i> 変更しないで戻る
+        <i class="fas fa-backward"></i> 変更せずに戻る
       <% end %>
     </div>
   </div>
