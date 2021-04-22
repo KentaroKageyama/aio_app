@@ -36,6 +36,7 @@
 }
 
 .sort_li {
+  width: 100%;
   font-size: 15px;
   height: 40px;
   background-color: #FFF;
@@ -44,7 +45,7 @@
   border-radius: 4px;
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 0 10px;
 }
 
 .handle {
@@ -57,7 +58,15 @@
   background-color: rgb(190, 235, 253);
 }
 
-.sort-delete-btn {
+.sort-main-block{
+  width: 80%;
+}
+
+.sort-btn-block {
+  width: 20%;
+}
+
+.sort-delete-btn, .sort-edit-btn {
   float: right;
   color: black;
   background-color: #FFF;
@@ -66,9 +75,10 @@
   padding: 6px;
   border-radius: 4px;
   border: 1px solid #d8d8d8;
+  margin-right: 5px;
 }
 
-.sort-delete-btn:hover {
+.sort-delete-btn:hover, .sort-edit-btn:hover {
   opacity: 0.6;
 }
 
@@ -290,6 +300,8 @@
   opacity: 0.7;
 }
 
+// /検索結果
+
 .preview-image img{
   width: 150px;
 }
@@ -297,5 +309,19 @@
 .item-name-search {
   height: 30px;
   width: 500px;
+}
+
+// 詳細ページ
+
+
+.show-box {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-image {
+  width: 200px;
 }
 

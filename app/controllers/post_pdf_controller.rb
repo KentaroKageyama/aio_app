@@ -13,7 +13,7 @@ class PostPdfController < ApplicationController
         send_data post_pdf,
           filename: 'post_pdf.pdf',
           type: 'application/pdf',
-          disposition: 'inline' # 外すとダウンロード
+          disposition: 'inline'
       end
     end
   end

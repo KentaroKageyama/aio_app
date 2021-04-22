@@ -68,8 +68,14 @@
   <ul id="item_ul" class="sort_ul">
     <% @items.each do |item| %>
       <li class="item_li sort_li">
-        <i class="fas fa-grip-lines-vertical handle"></i>
-        <%= item.chain_name %><%= link_to '削除', item_path(item.id), method: :delete, class:"sort-delete-btn" %>
+        <div class="sort-main-block">
+          <i class="fas fa-grip-lines-vertical handle"></i>
+          <%= item.chain_name %>
+        </div>
+        <div class="sort-btn-block">
+          <%= link_to '削除', item_path(item.id), method: :delete, class:"sort-delete-btn" %>
+          <%= link_to '編集', edit_item_path(item.id), class:"sort-edit-btn" %>
+        </div>
       </li>
     <% end %>
   </ul>
