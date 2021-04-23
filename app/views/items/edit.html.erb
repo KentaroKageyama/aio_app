@@ -9,7 +9,7 @@
     <h2>作品情報編集</h2>
   </div>
 
-  <%= form_with model: @item, url: items_path, method: :post, local: true, class:"registration-form" do |f| %>
+  <%= form_with model: @item, url: item_path, local: true, class:"registration-form" do |f| %>
 
     <div class="item-regi-image">
       <p><i class="fas fa-images"></i><%= f.label :image, '画像をアップロード' %></p>
