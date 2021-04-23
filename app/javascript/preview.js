@@ -1,8 +1,7 @@
-if (document.URL.match( /items\/new\// )) {
+if (document.URL.match( /items\/new$/ )) {
   
   document.addEventListener('DOMContentLoaded', function(){
     const ImageList = document.getElementById('image-list');
-
     const createImageHTML = (blob) => {
        // 画像を表示するためのdiv要素を生成
       const imageElement = document.createElement('div');
@@ -17,7 +16,6 @@ if (document.URL.match( /items\/new\// )) {
     };
 
     document.getElementById('item-image').addEventListener('change', function(e){
-      console.log("test message")
       // 画像が表示されている場合のみ、すでに存在している画像を削除する
       const imageContent = document.querySelector('img');
       if (imageContent){
