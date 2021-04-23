@@ -6,7 +6,7 @@
   </div>
 
   <div class="sub-title">
-    <h2>作品登録</h2>
+    <h2><i class="fas fa-square"></i>作品登録</h2>
   </div>
 
   <%= form_with model: @item, url: items_path, method: :post, local: true, class:"registration-form" do |f| %>
@@ -63,21 +63,22 @@
 
   <%# 並べ替えリスト %>
   <div class="sub-title">
-    <h2>並べ替えリスト</h2>
+    <h2><i class="fas fa-square"></i>並べ替えリスト</h2>
   </div>
-  <ul id="item_ul" class="sort_ul">
-    <% @items.each do |item| %>
-      <li class="item_li sort_li">
-        <div class="sort-main-block">
-          <i class="fas fa-grip-lines-vertical handle"></i>
-          <%= item.chain_name %>
-        </div>
-        <div class="sort-btn-block">
-          <%= link_to '削除', item_path(item.id), method: :delete, class:"sort-delete-btn" %>
-          <%= link_to '編集', edit_item_path(item.id), class:"sort-edit-btn" %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-  
+  <div class="sort-box">
+    <ul id="item_ul" class="sort_ul">
+      <% @items.each do |item| %>
+        <li class="item_li sort_li">
+          <div class="sort-main-block">
+            <i class="fas fa-grip-lines-vertical handle"></i>
+            <%= item.chain_name %>
+          </div>
+          <div class="sort-btn-block">
+            <%= link_to '削除', item_path(item.id), method: :delete, class:"sort-delete-btn" %>
+            <%= link_to '編集', edit_item_path(item.id), class:"sort-edit-btn" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
