@@ -77,6 +77,11 @@
   background-color: rgb(56, 123, 211);
   border: 1px solid #e0e0e0;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.item-regi-submit:hover {
+  opacity: 0.7;
 }
 
 // cocoon
@@ -93,10 +98,11 @@
 }
 
 .nested-fields {
-  width: 90%;
+  width: 100%;
   display: flex;
   margin-bottom: 5px;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .parts-select {

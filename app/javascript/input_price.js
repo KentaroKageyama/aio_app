@@ -5,8 +5,8 @@ if (document.URL.match( /invoice/ )){
 
       setTimeout(
         function () {
-          const items = document.querySelectorAll(".items-form");
-          const prices = document.querySelectorAll(".price-form");
+          const items = document.querySelectorAll(".invoice-item-name");
+          const prices = document.querySelectorAll(".invoice-item-price");
 
           items.forEach(function(item, index) {
             item.addEventListener("change", ()=> {
