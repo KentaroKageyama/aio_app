@@ -1,2 +1,23 @@
-<%= link_to '新規登録', new_user_registration_path %>
-<%= link_to 'ログイン', new_user_session_path %>
+<div class="top-background1">
+  <%= image_tag "logo.png", class:"top-logo" %>
+    <div class="catchcopy">
+    なぜAioは、生まれたのか。
+    </div>
+    <div class="catchcopy-sub">
+      零細企業の事務員のために作られた<br>
+      総合商品管理クラウドサービス
+    </div>
+
+  <ul class="catchcopy-logo">
+    <li><span class="logo-initial">A</span>ll</li>
+    <li class="logo-in"><span class="logo-initial">i</span>n</li>
+    <li><span class="logo-initial">o</span>ne</li>
+  </ul>
+
+</div>
+<div class="top-background2">
+  <div class="top-btn-box">
+    <%= link_to '新規登録', new_user_registration_path, class:"top-signup-btn" %>
+    <%= link_to 'ログイン', new_user_session_path, class:"top-login-btn" %>
+  </div>
+</div>
