@@ -7,8 +7,18 @@ class PartsController < ApplicationController
   end
 
   def create
-    part = Part.new(part_params)
+    part = Part.new(set_part)
     part.save
+    redirect_to new_part_path
+  end
+
+  def edit
+    @part = Part.find(params[:id])
+  end
+
+  def update
+    @part = Part.find(params[:id])
+    @part.update(set_part)
     redirect_to new_part_path
   end
 
@@ -26,7 +36,7 @@ class PartsController < ApplicationController
 
   private
 
-  def part_params
+  def set_part
     params.require(:part).permit(:name, :material_id)
   end
   

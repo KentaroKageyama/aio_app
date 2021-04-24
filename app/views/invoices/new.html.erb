@@ -1,0 +1,49 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <div class="title">
+    <h1>請求書作成</h1>
+  </div>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>入力フォーム</h2>
+  </div>
+  <%= form_with model: @invoice, url: invoices_path, method: :post, local: true, class:"registration-form" do |f| %>
+    
+    <table class="item-regi-table">
+      <thead>
+        <tr>
+          <th><%= f.label :issue_date, '発行日'%></th>
+          <th><%= f.label :issue_number, '番号' %></th>
+          <th><%= f.label :content, '請求内容'%></th>
+          <th><%= f.label :client_id, '取引先・顧客'%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.date_field :issue_date , class:"invoice-date" %></td>
+          <td><%= f.text_field :issue_number, placeholder: "例）210001", class:"invoice-num" %></td>
+          <td><%= f.text_field :content, placeholder:"例）東京店1月売上分", class:"invoice-cont" %></td>
+          <td><%= f.collection_select :client_id, Client.all, :id, :name, { include_blank: "選択して下さい" }, { class:"invoice-client" } %></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <p class="parts-subtitle">作品リスト</p>
+    <div class="parts-add-form">
+      <%= f.fields_for :invoice_items do |invoice_item| %>
+        <%= render 'invoice_item_fields', f: invoice_item %>
+      <%- end %>
+      <div class="cocoon-links">
+        <%= link_to_add_association '+作品追加', f, :invoice_items, id:"add-item", class:"add-btn" %>
+      </div>
+    </div>
+
+    <div class="invoice-submit-post">
+      <%= f.button :type => "submit", class:"invoice-submit" do %>
+        <i class="fas fa-file-pdf"></i>PDF出力 + 保存 
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

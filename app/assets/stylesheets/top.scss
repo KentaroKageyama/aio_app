@@ -1,0 +1,100 @@
+.top-background1 {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  background: -moz-linear-gradient(top, #60a7f8, transparent);
+  background: -webkit-linear-gradient(top, #76c1ff, transparent);
+  background: linear-gradient(to bottom, #76c1ff, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  position: relative;
+}
+
+.top-background2 {
+  width: 100vw;
+  height: 100vh;
+  background: url(top_background.jpg) center center / cover no-repeat fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.top-logo {  
+  margin: 12vh auto;
+  width: 27h;
+  height: 27vh;
+  position: fixed;
+  z-index: 999;
+}
+
+.catchcopy {
+  position: absolute;
+  font-size: 4vw;
+  margin-bottom: 3vh;
+  font-weight: bold;
+  left: 9vw;
+  top: 55vh;
+  text-shadow: 2px 1px 0 #ccc, 0px 3px 0 #ccc, 4px 6px 8px rgb(255, 255, 255);
+}
+
+.catchcopy-sub {
+  position: absolute;
+  font-size: 2vw;
+  font-weight: bold;
+  left: 10vw;
+  top: 70vh;
+  line-height: 3vw;
+}
+
+.catchcopy-logo {
+  position: absolute;
+  font-size: 5vw;
+  letter-spacing: 15px;
+  top: 15vh;
+  left: 10vw;
+}
+
+.logo-in {
+  padding-left: 10px;
+  letter-spacing: 25px;
+}
+
+.logo-initial {
+  text-shadow: #000 2px 0, #000 -2px 0, #000 0 -2px, #000 0 2px, #000 2px 2px, #000 -2px 2px, #000 2px -2px, #000 -2px -2px, #000 1px 2px, #000 -1px 2px, #000 1px -2px, #000 -1px -2px, #000 2px 1px, #000 -2px 1px, #000 2px -1px, #000 -2px -1px;
+  color: #fff;
+}
+
+.top-btn-box {
+  margin-top: 65vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-signup-btn {
+  padding: 17px 50px;
+  font-size: 15px;
+  text-decoration: none;
+  color: #f15555;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 2px solid #f15555;
+  margin-right: 40px;
+  margin-left: 40px;
+  font-weight: bold;
+}
+
+.top-login-btn {
+  padding: 17px 50px;
+  font-size: 15px;
+  text-decoration: none;
+  color: #FFF;
+  border-radius: 4px;
+  background-color: #2989f8;
+  margin-right: 40px;
+}
+
+.top-signup-btn:hover, .top-login-btn:hover {
+  opacity: 0.7;
+}

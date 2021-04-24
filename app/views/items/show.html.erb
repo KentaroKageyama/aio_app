@@ -1,31 +1,87 @@
 <%= render "shared/header" %>
 
 <div class="container">
-  <h2>詳細ページ<h2>
-  <br>
-  <div>
-    <%= image_tag @item.image %>
-    <%= @item.collection.name %>
-    <%= @item.name %>
-    <%= @item.category.name %>
-    <%= @item.opal_color.color if @item.opal_color.present? %>
-    <%= @item.price.to_s(:delimited) %>
+  <div class="title">
+    <h1>作品詳細</h1>
   </div>
-  <br>
-  <div>
-    <ul>パーツ：
-      <% @item.parts.each do |part| %>
-        <% item_part = @item.item_parts.where(part_id: part.id).first %>
-        <li><%= part.name %><%= item_part.quantity %></li>
+  <div class="show-box">
+
+    <h3 class="show-item-name">
+      <%= @item.chain_name %>
+    </h3>
+
+    <% if @item.image.attached? %>
+      <%= image_tag @item.image , class:"show-image"%>
+    <% else %>
+      <%= image_tag "no_image.png", class:"show-image" %>
+    <% end %>
+    
+    <div class="show-mid-box">
+    <table class="show-item-info">
+      <tr>
+        <td class="show-item-td1">価格</td>
+        <td><%= @item.price.to_s(:delimited) %>円</td>
+      </tr>
+      <tr>
+        <td class="show-item-td1">シリーズ</td>
+        <td><%= @item.collection.name %></td>
+      </tr>
+      <tr>
+        <td class="show-item-td1">カテゴリー</td>
+        <td><%= @item.category.name %></td>
+      </tr>
+      <% if @item.material.present? %>
+        <tr>
+          <td class="show-item-td1">金属材質</td>
+          <td><%= @item.material.name %></td>
+        </tr>
       <% end %>
-    </ul>
-  </div>
-  <br>
-  <div>
-    <ul>ガラスパーツ：
-      <% @item.glasses.each do |glass| %>
-        <li><%= glass.name %></li>
+      <% if @item.opal_color.present? %>
+        <tr>
+          <td class="show-item-td1">オパールカラー</td>
+          <td><%= @item.opal_color.color %></td>
+        </tr>
       <% end %>
-    </ul>
+    </table>
+    </div>
+
+    <div class="show-parts-glasses-box">
+
+      <div class="show-parts-box">
+        <div class="show-sub-header"><i class="fas fa-square"></i>金属パーツ</div>
+        <table class="show-table">
+          <tr>
+            <th>金属パーツ名</th>
+            <th>必要個数</th>
+          </tr>
+          <% @item.parts.each do |part| %>
+            <tr>
+              <% item_part = @item.item_parts.where(part_id: part.id).first %>
+              <td class="show-td-name"><%= part.name %></td>
+              <td class="show-td-qty"><%= item_part.quantity %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      
+      <div class="show-glasses-box">
+        <div class="show-sub-header"><i class="fas fa-square"></i>ガラスパーツ</div>
+        <table class="show-table">
+          <tr>
+            <th>ガラスパーツ名</th>
+            <th>必要個数</th>
+          </tr>
+          <% @item.glasses.each do |glass| %>
+            <tr>
+              <% item_glass = @item.item_glasses.where(glass_id: glass.id).first %>
+              <td class="show-td-name"><%= glass.name %></td>
+              <td class="show-td-qty"><%= item_glass.quantity %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+    </div>
+
   </div>
 </div>

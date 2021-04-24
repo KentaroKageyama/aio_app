@@ -1,0 +1,27 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <div class="title">
+    <h1>金属パーツ管理</h1>
+  </div>
+  
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>金属パーツ編集</h2>
+  </div>
+  <%= form_with model: @part, url: part_path, local: true, class:"registration-form" do |f| %>
+    <p class="parts-subtitle">材質</p>
+    <%= f.collection_select :material_id, Material.all.order(:position), :id, :name,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
+    <p class="parts-subtitle">金属パーツ</p>
+    <%= f.text_field :name, placeholder:"金属パーツ名", class:"part-name" %>
+    
+    <div class="item-regi-submit-post">
+      <%= f.submit '変更' , class:"item-regi-submit" %>
+    </div>
+    <div class="form-btn-post">
+      <%= link_to(:back , class:"back-link") do %>
+        <i class="fas fa-backward"></i> 変更せずに戻る
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

@@ -2,8 +2,18 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    category = Category.new(category_params)
+    category = Category.new(set_category)
     category.save
+    redirect_to new_other_items_path
+  end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    @category.update(set_category)
     redirect_to new_other_items_path
   end
 
@@ -21,7 +31,7 @@ class CategoriesController < ApplicationController
 
   private
 
-  def category_params
+  def set_category
     params.require(:category).permit(:name)
   end
 end

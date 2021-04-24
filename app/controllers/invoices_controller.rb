@@ -2,6 +2,10 @@ class InvoicesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @invoices = Invoice.all.order(issue_date: :DESC)
+  end
+
+  def new
     @invoice = Invoice.new
   end
 
@@ -10,6 +14,23 @@ class InvoicesController < ApplicationController
     @invoice.save
 
     redirect_to post_pdf_index_path(format: "pdf", invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+  end
+
+  def edit
+    @invoice = Invoice.find(params[:id])
+    @client = Client.find_by(name: @invoice.client_name)
+  end
+
+  def update
+    @invoice = Invoice.find(params[:id])
+    @invoice.update(set_invoice)
+    redirect_to post_pdf_index_path(format: "pdf", invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+  end
+
+  def destroy
+    @invoice = Invoice.find(params[:id])
+    @invoice.destroy
+    redirect_to action: :index
   end
 
   private

@@ -1,52 +1,460 @@
 .container {
-  padding:50px;
-  background-color: #f8f8f8;
+  padding: 50px 60px;
+  margin: 50px auto;
+  width: 84%;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.title h1{
+  float: left;
+}
+
+.sub-title {
+  font-size: 15px;
+  font-weight: bold;
+  width: 92%;
+  padding: 7px 10px;
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.indispensable {
+  background: #FFF;
+  margin-left: 8px;
+  padding: 3px;
+  border: 1px solid  #ea592d;
+  border-radius: 2px;
+  color: #ea592d;
+  font-size: 11px;
+}
+
+.form-any {
+  background: #ccc;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px;
+}
+
+.fa-square {
+  color: #FFF;
+  font-size: 15px;
+  margin-right: 6px;
+}
+
+// sortable
+
+.sort-box {
+  width: 90%;
+}
+
+.sort_ul {
+  width: 60%;
+  font-size: 16px;
 }
 
 .sort_li {
-  width: 250px;
-  height: 20px;
-  background-color: #f8f8f8;
-  padding: 10px;
+  width: 100%;
+  font-size: 15px;
+  height: 40px;
+  background-color: #FFF;
   border: 1px solid gray;
   margin-bottom: 2px;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
 }
 
 .handle {
   font-size: 15px;
-  padding-right: 5px;
+  padding-right: 10px;
   cursor: grab;
-}
-
-.opal_li {
-  width: 250px;
-  height: 20px;
-  background-color: #f8f8f8;
-  padding: 10px;
-  border: 1px solid gray;
-  margin-bottom: -1px;
 }
 
 .blue-background {
   background-color: rgb(190, 235, 253);
 }
 
-.preview-image img{
-  width: 150px;
+.sort-main-block{
+  width: 80%;
 }
 
-.item-name-search {
+.sort-btn-block {
+  width: 20%;
+}
+
+.sort-edit-btn {
+  font-weight: bold;
+  float: right;
+  color: #1f4570;
+  background-color: #FFF;
+  font-size: 11px;
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #d8d8d8;
+  margin-right: 5px;
+}
+
+.sort-delete-btn {
+  font-weight: bold;
+  float: right;
+  color: rgb(240, 157, 157);
+  background-color: #FFF;
+  font-size: 11px;
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #d8d8d8;
+  margin-right: 5px;
+}
+
+.sort-delete-btn:hover, .sort-edit-btn:hover {
+  opacity: 0.6;
+}
+
+// /sortable
+
+// search
+
+.search-box {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.search-header {
+  width: 100%;
+  padding:10px 20px;
+  background-color: #e0e0e0;
+  font-size: 16px;
+}
+
+.fa-search {
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.search-form-box {
+  padding: 20px 0;
+}
+
+.search-label {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.search-form {
+  width: 150px;
   height: 30px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+}
+
+.input-label {
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+.search-input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-item {
+  height: 35px;
   width: 500px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+}
+
+.search-result {
+  width: 500px;
+  background-color: #f0f0f0;
+  font-size: 14px;
+  position: absolute;
+  top: 35px;
+  left: 17.5vw;
+}
+
+.child {
+  border-bottom:#666 1px solid;
+  margin: 10px 0;
+  padding-left: 11px;
+  padding-bottom: 5px;
+  cursor: default;
+}
+
+.child:hover {
+  opacity: 0.6;
+}
+
+.submit-post {
+  width: 100%;
+  margin-top: 20px;
+  display:flex;
+  justify-content: center;
+}
+
+.search-submit-btn {
+  width: 85px;
+  height: 32px;
+  color: #FFF;
+  background-color: rgb(56, 123, 211);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+	cursor:pointer;
+}
+
+.search-submit-btn:hover {
+  opacity: 0.7;
+}
+
+.search-submit-btn > .fa-search {
+  font-size: 13px;
+}
+
+// /search
+
+// 一覧
+
+.item-lists {
+  width: 100%;
+  font-size: 14px;
+}
+
+.item-lists a {
+  text-decoration: none;
 }
 
 .item-lists th {
+  border-bottom: 2px double #c0c0c0;
   text-align: left;
   height: 30px;
+  font-weight: bold;
+}
+
+.item-lists th a{
+  color: #1f4570;
 }
 
 .item-lists td {
-  width: 100px;
   height: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
 }
+
+.td-show {
+  text-align: center;
+  width: 80px
+}
+
+.td-collection {
+  width: 100px;
+}
+
+.td-item {
+  width: 180px;
+}
+
+.td-category {
+  width: 100px;
+}
+
+.td-material {
+  width: 80px;
+}
+
+.td-color {
+  width: 80px;
+}
+
+.td-price {
+  width: 80px;
+}
+
+
+.td-edit {
+  width: 60px;
+  text-align: center;
+}
+
+.td-destroy {
+  width: 60px;
+  text-align: center;
+}
+
+.show-link {
+  font-weight: bold;
+  color: #FFF;
+  background-color: rgb(83, 199, 155);
+  border:1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.edit-link {
+  font-weight: bold;
+  font-size: 12px;
+  color: #1F4570;
+  background-color: #FFF;
+  border: 1px solid #909090;
+  border-radius: 4px;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+
+.destroy-link {
+  font-weight: bold;
+  font-size: 12px;
+  color: rgb(240, 157, 157);
+  background-color: #FFF;
+  border: 1px solid #909090;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.show-link:hover, .edit-link:hover, .destroy-link:hover {
+  opacity: 0.6;
+}
+
+// /一覧
+
+// 検索結果
+
+.back-link {
+  margin-bottom: 20px ;
+  width: 100%;
+}
+
+.back-link a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #1f4570;
+  float: left;
+}
+
+.back-link a:hover {
+  opacity: 0.7;
+}
+
+// /検索結果
+
+// 詳細ページ
+
+.show-box {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #d0d0d0;
+  padding: 50px 50px;
+}
+
+.show-item-name {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.show-image {
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.show-mid-box {
+  width: 50%;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 30px;
+  padding: 10px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.show-item-info {
+  width: 100%;
+}
+
+.show-item-info td {
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.show-item-td1 {
+  text-align: left;
+}
+
+.show-parts-glasses-box {
+  width: 85%;
+  display: flex;
+}
+
+.show-glasses-box, .show-parts-box {
+  width: 50%;
+  padding: 30px;
+  border: 1px solid #d0d0d0;
+  position: relative;
+}
+
+.show-parts-box {
+  margin-right: -1px;
+}
+
+.show-sub-header {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #aaa;
+  color: #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.show-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.show-table th {
+  font-size: 15px;
+  height: 25px;
+  border-bottom: 2px solid #e0e0e0;
+  text-align: left;
+}
+
+.show-table td {
+  font-size: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.show-td-name {
+  width: 80%;
+}
+
+.show-td-qty {
+  width: 20%;
+  text-align: center;
+}
+
+// /詳細ページ
+

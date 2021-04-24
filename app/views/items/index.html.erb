@@ -2,67 +2,77 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h1>一覧表示</h1>
-<br>
-
-<h1>
-  商品検索
-</h1>
-<%= search_form_for @p, url: search_items_path do |f| %>
-  <%= f.label :collection_name_eq, 'シリーズ：' %>
-  <%= f.collection_select :collection_name_eq, @collections, :name, :name, include_blank: '指定なし'%>
-  <br>
-  <%= f.label :category_name_eq, 'カテゴリー：' %>
-  <%= f.collection_select :category_name_eq, @categories, :name, :name, include_blank: '指定なし'%>
-  <br>
-  <%= f.label :chain_name_eq, '商品名' %>
-  <%= f.search_field :chain_name_cont, class:"input-item", id:"input-item" %>
-  <div id="search-result"></div>
-  <br>
-  <div class="submit-post">
-  <%= f.submit '検索', class: "submit-btn" %>
+  <div class="title">
+    <h1>一覧表示&検索</h1>
   </div>
-<% end %>
-<br>  <br>
+
+  <%# 商品検索 %>
+  <div class="search-box">
+    <h1 class="search-header">
+      <i class="fas fa-search"></i>
+      作品検索
+    </h1>
+    <%= search_form_for @p, url: search_items_path do |f| %>
+      <div class="search-form-box">
+        <%= f.label :collection_name_eq, 'シリーズ', class:"search-label" %>
+        <%= f.collection_select :collection_name_eq, @collections, :name, :name, {include_blank: '指定なし'}, {class:"search-form"} %>
+        <%= f.label :category_name_eq, 'カテゴリー', class:"search-label" %>
+        <%= f.collection_select :category_name_eq, @categories, :name, :name, {include_blank: '指定なし'}, {class:"search-form"} %>
+        <%= f.label :material_name_eq, '金具材質', class:"search-label" %>
+        <%= f.collection_select :material_name_eq, @materials, :name, :name, {include_blank: '指定なし'}, {class:"search-form"} %>
+        <%= f.label :opal_color_color_eq, 'オパールカラー', class:"search-label" %>
+        <%= f.collection_select :opal_color_color_eq, @opal_colors, :color, :color, {include_blank: '指定なし'}, {class:"search-form"} %>
+        <div class="search-input">
+          <%= f.label :chain_name_eq, '作品名', class:"input-label" %>
+          <%= f.search_field :chain_name_cont, class:"input-item", id:"input-item" %>
+          <div class="search-result" id="search-result"></div>
+        </div>
+        <div class="submit-post">
+          <%= f.button :type => "submit", class:"search-submit-btn" do %>
+            <i class="fas fa-search"></i>検索
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <%# 商品一覧 %>
   <table class="item-lists">
-  <thead>
-    <tr>
-      <th><%= sort_link(@p, :collection_name, "series") %></th>
-      <th><%= sort_link(@p, :name, "item") %></th>
-      <th><%= sort_link(@p, :category_name, "category") %></th>
-      <th><%= sort_link(@p, :material_name, "material") %></th>
-      <th><%= sort_link(@p, :opal_color_color, "opal color") %></th>
-      <th><%= sort_link(@p, :price, "price") %></th>
-      <th colspan = "3" ></th>
-
-    </tr>
+    <thead>
+      <tr>
+        <th colspan ="1"></th>
+        <th><%= sort_link(@p, :collection_name, "series") %></th>
+        <th><%= sort_link(@p, :name, "item") %></th>
+        <th><%= sort_link(@p, :category_name, "category") %></th>
+        <th><%= sort_link(@p, :material_name, "material") %></th>
+        <th><%= sort_link(@p, :opal_color_color, "opal color") %></th>
+        <th><%= sort_link(@p, :price, "price") %></th>
+        <th colspan = "2" ></th>
+      </tr>
     </thead>
     <tbody>
-  <% @items.each do |item| %>
-    <tr>
-      <td><%= item.collection.name %></td>
-      <td><%= item.name %></td>
-      <td><%= item.category.name %></td>
-      <% if item.material.present? %>
-        <td><%= item.material.name %></td>
-      <% else %>
-        <td></td>
+      <% @items.each do |item| %>
+        <tr>
+          <td class="td-show"><%= link_to '詳細', item_path(item.id), class:"show-link" %></td>
+          <td class="td-collection"><%= item.collection.name %></td>
+          <td class="td-item"><%= item.name %></td>
+          <td class="td-category"><%= item.category.name %></td>
+          <% if item.material.present? %>
+            <td class="td-material"><%= item.material.name %></td>
+          <% else %>
+            <td class="td-material"></td>
+          <% end %>
+          <% if item.opal_color.present? %>
+            <td class="td-color"><%= item.opal_color.color %></td>
+          <% else %>
+            <td class="td-color"></td>
+          <% end %>
+          <td class="td-price"><%= item.price.to_s(:delimited) %></td>
+          <td class="td-edit"><%= link_to '編集', edit_item_path(item.id), class:"edit-link" %></td>
+          <td class="td-destroy"><%= link_to '削除', item_path(item.id), method: :delete, class:"destroy-link" %></td> 
+        </tr>
       <% end %>
-      <% if item.opal_color.present? %>
-        <td><%= item.opal_color.color %></td>
-      <% else %>
-        <td></td>
-      <% end %>
-      <td><%= item.price.to_s(:delimited) %></td>
-      <td><%= link_to '詳細', item_path(item.id) %></td>
-      <td><%= link_to '編集', edit_item_path(item.id) %></td>
-      <td><%= link_to '削除', item_path(item.id), method: :delete %></td> 
-    </tr>
-  <% end %>
-  </tbody>
+    </tbody>
   </table>
 
-  <br>
-  <%= link_to "users_index", users_path %>
 </div>

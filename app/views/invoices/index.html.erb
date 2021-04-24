@@ -1,26 +1,39 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h1>Invoice</h1>
-<br>
-  <%= form_with model: @invoice, url: invoices_path, method: :post, local: true do |f| %>
+  <div class="title">
+    <h1>請求書一覧</h1>
+  </div>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>請求書リスト</h2>
+  </div>
+  <div class="invoice-lists-box">
+    <table class="invoice-lists">
+      <thead>
+        <tr>
+          <th>発行日</th>
+          <th>番号</th>
+          <th>請求先</th>
+          <th>請求内容</th>
+          <th>請求金額</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoices.each do |invoice| %>
+          <tr>
+            <td class="td-date"><%= invoice.issue_date %></td>
+            <td class="td-number"><%= invoice.issue_number %></td>
+            <td class="td-client-name"><%= invoice.client_name %>
+            <td class="td-content"><%= invoice.content %></td>
+            <td class="td-amount"><%= ((InvoiceItem.where(invoice_id: invoice.id).pluck(:price).sum) * 1.1 * invoice.client_percentage / 100 ).floor.to_s(:delimited) %></td>
+            <td class="td-edit"><%= link_to '再発行', edit_invoice_path(invoice.id) , class:"edit-link" %></td>
+            <td class="td-destroy"><%= link_to '削除', invoice_path(invoice.id), method: :delete, class:"destroy-link" %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-    <%= f.date_field :issue_date, placeholder: "日付" %>
-    <%= f.text_field :issue_number, placeholder: "No." %>
-    <%= f.text_field :content, placeholder:"例）東京店1月売上分"%>
-    <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: "選択して下さい" %>
-
-    <div>
-      <%= f.fields_for :invoice_items do |invoice_item| %>
-      <%= render 'invoice_item_fields', f: invoice_item %>
-      <%- end %>
-      <%= link_to_add_association 'item追加', f, :invoice_items, id:"add-item" %>
-    </div>
-    <%= f.submit 'PDF出力+保存'%>
-
-  <% end %>
-
-  <%= link_to "PDFを表示", post_pdf_index_path(format: "pdf") %>
-  <%= link_to "pdf", post_pdf_index_path(:format=>:pdf) , class: 'btn btn-primary' %>
 
 </div>

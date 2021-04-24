@@ -15,43 +15,43 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :parts, only: [:new, :create, :destroy] do
+  resources :parts, only: [:new, :edit, :update, :create, :destroy] do
     collection do
       patch :sort
     end
   end
 
-  resources :glasses, only: [:new, :create, :destroy] do
+  resources :glasses, only: [:new, :edit, :update, :create, :destroy] do
     collection do
       patch :sort
     end
   end
 
-  resources :collections, only: [:create, :destroy] do
+  resources :collections, only: [:create, :edit, :update, :destroy] do
     collection do
       patch :sort
     end
   end
 
-  resources :categories, only:  [:create, :destroy] do
+  resources :categories, only:  [:create, :edit, :update, :destroy] do
     collection do
       patch :sort
     end
   end
 
-  resources :materials, only:  [:create, :destroy] do
+  resources :materials, only:  [:create, :edit, :update, :destroy] do
     collection do
       patch :sort
     end
   end
 
-  resources :opal_colors, only: [:create, :destroy] do
+  resources :opal_colors, only: [:create, :edit, :update, :destroy] do
     collection do
       patch :sort
     end
   end
 
   resources :post_pdf, only: :index
-  resources :invoices, only: [:index, :create]
+  resources :invoices, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :clients, only: [:index, :create, :update, :destroy]
 end

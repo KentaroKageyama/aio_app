@@ -1,18 +1,43 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h2>ガラスパーツ<h2>
-<%= form_with model: @glass, url: glasses_path, method: :post, local: true do |f| %>
-  <%= f.text_field :name, placeholder:"ガラスパーツ名" %>
-  <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color, include_blank: "選択して下さい" %>
-  <%= f.submit '登録' %>
-<% end %>
-<ul id="glass_ul" class="sort_ul">
-  <% @glasses.each do |gla| %>
-    <li class="glass_li sort_li">
-      <p><i class="fas fa-grip-lines-vertical handle"></i>
-      <%= gla.name %> <%= gla.opal_color.color unless gla.opal_color_id.nil? %> <%= link_to '削除', glass_path(gla.id), method: :delete %></p>
-    </li>
+  <div class="title">
+    <h1>ガラスパーツ管理</h1>
+  </div>
+
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>ガラスパーツ登録</h2>
+  </div>
+  <%= form_with model: @glass, url: glasses_path, method: :post, local: true, class:"registration-form" do |f| %>
+    <p class="parts-subtitle">ガラスパーツ</p>
+    <%= f.text_field :name, placeholder:"ガラスパーツ名", class:"part-name" %>
+    <p class="parts-subtitle">オパールカラー</p>
+    <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
+    
+    <div class="item-regi-submit-post">
+      <%= f.submit '登録' , class:"item-regi-submit" %>
+    </div>
   <% end %>
-</ul>
+
+  <%# 並べ替えリスト %>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>並べ替えリスト</h2>
+  </div>
+  <div class="sort-box">
+    <ul id="glass_ul" class="sort_ul">
+      <% @glasses.each do |glass| %>
+        <li class="glass_li sort_li">
+          <div class="sort-main-block">
+            <i class="fas fa-grip-lines-vertical handle"></i>
+            <%= glass.name %> <%= glass.opal_color.color unless glass.opal_color_id.nil? %>
+          </div>
+          <div class="sort-btn-block">
+            <%= link_to '削除', glass_path(glass.id), method: :delete, class:"sort-delete-btn" %>
+            <%= link_to '編集', edit_glass_path(glass.id), class:"sort-edit-btn" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

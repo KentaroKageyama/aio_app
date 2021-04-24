@@ -1,4 +1,4 @@
-if(document.URL.match(/items/)){
+if(document.URL.match(/items$/)){
   document.addEventListener("DOMContentLoaded", () => {
     const inputElement = document.getElementById("input-item");
     inputElement.addEventListener("keyup", () => {

@@ -1,25 +1,116 @@
 header a {
   color: white;
-}
-
-header {
-  height: 15vh;
-  background-color: #1f4570;
+  text-decoration: none;
 }
 
 .header-container {
+  height: 12vh;
+  background-color: #1f4570;
   display:flex;
   align-items: center;
 }
 
+.header-contents {
+  height: 100%;
+  width: calc(100% - 8vw);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-box {
+  height:100%;
+  width: 8vw;
+  background-color: #f8f8f8;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .title-logo {
-  height: 15vh;
+  height: 11vh;
 }
 
 .header-lists{
   display: flex;
 }
 
+.header-lists {
+  height: 100%;
+}
+
 .header-list {
-  margin-right: 10px;
+  font-size: 1.9vh;
+  width: 14vh;
+  height: 100%;
+  text-align: center;
+}
+
+.header-list:hover{
+  background-color: #1f3247;
+}
+
+.header-list a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.3em
+}
+
+.header-right {
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.header-company-box {
+  height: 12vh;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+.company-name {
+  color: #FFF;
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+
+.company-link {
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.company-link:hover {
+  opacity: 0.7;
+}
+
+.logout-btn {
+  font-size: 14px;
+  border: 1px solid #FFF;
+  padding: 10px;
+}
+
+.logout-btn:hover {
+  background-color: #205694;
+}
+
+// second
+
+.second-header {
+  width: 100%;
+  min-width: 800px;
+  height: 130px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-logo {
+  width: 110px;
 }

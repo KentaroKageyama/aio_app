@@ -1,19 +1,43 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h2>パーツ<h2>
-<%= form_with model: @part, url: parts_path, method: :post, local: true do |f| %>
-  <%= f.text_field :name, placeholder:"パーツ名" %>
-  <%= f.collection_select :material_id, Material.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
-  <%= f.submit '登録' %>
-<% end %>
-<ul id="part_ul" class="sort_ul">
-  <% @parts.each do |par| %>
-    <li class="part_li sort_li">
-      <p><i class="fas fa-grip-lines-vertical handle"></i>
-      <%= par.material.name %> <%= par.name %> <%= link_to '削除', part_path(par.id), method: :delete %></p>
-    </li>
+  <div class="title">
+    <h1>金属パーツ管理</h1>
+  </div>
+  <%# 並べ替えリスト %>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>金属パーツ登録</h2>
+  </div>
+  <%= form_with model: @part, url: parts_path, method: :post, local: true, class:"registration-form" do |f| %>
+    <p class="parts-subtitle">材質</p>
+    <%= f.collection_select :material_id, Material.all.order(:position), :id, :name,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
+    <p class="parts-subtitle">金属パーツ</p>
+    <%= f.text_field :name, placeholder:"金属パーツ名", class:"part-name" %>
+    
+    <div class="item-regi-submit-post">
+      <%= f.submit '登録' , class:"item-regi-submit" %>
+    </div>
   <% end %>
-</ul>
-<br>
+
+  <%# 並べ替えリスト %>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>並べ替えリスト</h2>
+  </div>
+  <div class="sort-box">
+    <ul id="part_ul" class="sort_ul">
+      <% @parts.each do |part| %>
+        <li class="part_li sort_li">
+          <div class="sort-main-block">
+            <i class="fas fa-grip-lines-vertical handle"></i>
+            <%= part.material.name %> <%= part.name %>
+          </div>
+          <div class="sort-btn-block">
+            <%= link_to '削除', part_path(part.id), method: :delete, class:"sort-delete-btn" %>
+            <%= link_to '編集', edit_part_path(part.id), class:"sort-edit-btn" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

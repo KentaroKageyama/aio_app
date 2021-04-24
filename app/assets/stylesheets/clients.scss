@@ -1,3 +1,40 @@
-// Place all the styles related to the clients controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.client-name {
+  height: 30px;
+  width: 15vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+.client-per {
+  height: 30px;
+  width: 9vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+.client-lists-box {
+  width: 90%;
+  margin-top: 15px;
+}
+
+.client-lists {
+  width: 60%;
+  font-size: 14px;
+}
+
+.client-lists th {
+  border-bottom: 2px double #c0c0c0;
+  text-align: left;
+  height: 30px;
+  font-weight: bold;
+}
+
+.client-lists td {
+  height: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}

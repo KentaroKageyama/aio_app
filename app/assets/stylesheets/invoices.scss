@@ -1,3 +1,159 @@
-// Place all the styles related to the invoices controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//indexページ
+
+.invoice-lists-box {
+  width: 90%;
+  margin-top: 15px;
+}
+
+.invoice-lists {
+  width: 100%;
+  font-size: 14px;
+}
+
+.invoice-lists th {
+  border-bottom: 2px double #c0c0c0;
+  text-align: left;
+  height: 30px;
+  font-weight: bold;
+}
+
+.invoice-lists td {
+  height: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.td-date {
+  width: 7vw;
+}
+
+.td-number {
+  width: 7vw;
+}
+
+.td-client-name {
+  width: 10vw;
+}
+
+.td-content {
+  width: 12vw;
+}
+
+.td-amount {
+  width: 7vw;
+}
+
+
+
+// newページ
+
+.invoice-date {
+  height: 30px;
+  width: 10vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.invoice-num {
+  height: 30px;
+  width: 10vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.invoice-cont {
+  height: 30px;
+  width: 12vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.invoice-client {
+  height: 30px;
+  width: 12vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+// invoice_item_fields
+
+.nested-fields2 {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.nested-row1 {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.nested-row2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.invoice-item-name {
+  height: 30px;
+  width: 33vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.invoice-item-qty {
+  height: 30px;
+  width: 8vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.invoice-item-size {
+  height: 30px;
+  width: 8vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.invoice-item-price {
+  height: 30px;
+  width: 10vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.control-label {
+  font-size: 13px;
+}
+
+.invoice-submit-post {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+}
+
+.invoice-submit {
+  width: 150px;
+  height: 40px;
+  color: #FFF;
+  background-color: rgb(56, 123, 211);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.invoice-submit:hover {
+  opacity: 0.7;
+}
+
+.fa-file-pdf {
+  font-size: 17px;
+  margin-right: 5px;
+}

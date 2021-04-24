@@ -1,42 +1,88 @@
 <%= render "shared/header" %>
 
 <div class="container">
-<h2>アイテム<h2>
-<%= form_with model: @item, url: items_path, method: :post, local: true do |f| %>
-  <%= f.collection_select :collection_id, Collection.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
-  <%= f.collection_select :category_id, Category.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
-  <%= f.collection_select :material_id, Material.all.order(:position), :id, :name, include_blank: "選択して下さい" %>
-  <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color, include_blank: "選択して下さい" %>
-  <br>
-  <%= f.text_field :name, placeholder:"アイテム名" %>
-  <%= f.text_field :price, placeholder:"金額" %>
-  <br>
-  <%= f.file_field :image, id:"item-image" %>
-  <div id="image-list" class="preview-image"></div>
-
-  <div>
-  <%= f.fields_for :item_parts do |item_part| %>
-    <%= render 'item_part_fields', f: item_part %>
-  <%- end %>
-    <%= link_to_add_association 'パーツ追加', f, :item_parts %>
+  <div class="title">
+    <h1>作品管理</h1>
   </div>
 
-  <div>
-  <%= f.fields_for :item_glasses do |item_glass| %>
-    <%= render 'item_glass_fields', f: item_glass %>
-  <%- end %>
-    <%= link_to_add_association 'ガラスパーツ追加', f, :item_glasses %>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>作品登録</h2>
   </div>
-  
-  <%= f.submit '登録' %>
-<% end %>
-<ul id="item_ul" class="sort_ul">
-  <% @items.each do |item| %>
-    <li class="item_li sort_li">
-      <i class="fas fa-grip-lines-vertical handle"></i>
-      <%= item.chain_name %><%= item.price.to_s(:delimited) %><%= link_to '削除', item_path(item.id), method: :delete %>
-    </li>
+
+  <%= form_with model: @item, url: items_path, method: :post, local: true, class:"registration-form" do |f| %>
+
+    <div class="item-regi-image">
+      <p><i class="fas fa-images"></i><%= f.label :image, '画像をアップロード' %></p>
+      <%= f.file_field :image, id:"item-image", class:"image-form" %>
+      <div id="image-list" class="preview-image"></div>
+    </div>
+
+    <table class="item-regi-table">
+      <thead>
+        <tr>
+          <th><%= f.label :collection_id, 'シリーズ'%></th>
+          <th><%= f.label :name, 'アイテム名' %></th>
+          <th><%= f.label :category_id, 'カテゴリー'%></th>
+          <th><%= f.label :material_id, '金具材質'%></th>
+          <th><%= f.label :opal_color_id, 'オパールカラー'%></th>
+          <th><%= f.label :price, '金額' %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.collection_select :collection_id, Collection.all.order(:position), :id, :name, { include_blank: "選択して下さい" }, { class:"item-regi-select" } %></td>
+          <td><%= f.text_field :name, placeholder:"アイテム名", class:"item-regi-name" %></td>
+          <td><%= f.collection_select :category_id, Category.all.order(:position), :id, :name,{ include_blank: "選択して下さい" }, { class:"item-regi-select" } %></td>
+          <td><%= f.collection_select :material_id, Material.all.order(:position), :id, :name,{ include_blank: "選択して下さい" }, { class:"item-regi-select" } %></td>
+          <td><%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color, { include_blank: "選択して下さい" }, { class:"item-regi-select" } %></td>
+          <td><%= f.text_field :price, placeholder:"金額", class:"item-regi-price" %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="parts-subtitle">金属パーツ</p>
+    <div class="parts-add-form">
+      <%= f.fields_for :item_parts do |item_part| %>
+        <%= render 'item_part_fields', f: item_part %>
+      <%- end %>
+      <div class="cocoon-links">
+        <%= link_to_add_association '+パーツ追加', f, :item_parts, class:"add-btn" %>
+      </div>
+    </div>
+
+    <p class="parts-subtitle">ガラスパーツ</p>
+    <div class="parts-add-form">
+      <%= f.fields_for :item_glasses do |item_glass| %>
+        <%= render 'item_glass_fields', f: item_glass %>
+      <%- end %>
+      <div class="cocoon-links">
+        <%= link_to_add_association '+パーツ追加', f, :item_glasses, class:"add-btn" %>
+      </div>
+    </div>
+    
+    <div class="item-regi-submit-post">
+      <%= f.submit '登録' , class:"item-regi-submit" %>
+    </div>
   <% end %>
-</ul>
 
+  <%# 並べ替えリスト %>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>並べ替えリスト</h2>
+  </div>
+  <div class="sort-box">
+    <ul id="item_ul" class="sort_ul">
+      <% @items.each do |item| %>
+        <li class="item_li sort_li">
+          <div class="sort-main-block">
+            <i class="fas fa-grip-lines-vertical handle"></i>
+            <%= item.chain_name %>
+          </div>
+          <div class="sort-btn-block">
+            <%= link_to '削除', item_path(item.id), method: :delete, class:"sort-delete-btn" %>
+            <%= link_to '編集', edit_item_path(item.id), class:"sort-edit-btn" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
