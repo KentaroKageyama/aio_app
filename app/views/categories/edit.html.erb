@@ -9,7 +9,7 @@
     <h2><i class="fas fa-square"></i>カテゴリー編集</h2>
   </div>
   <%= form_with model: @category, url: category_path, local: true, class:"registration-form" do |f| %>
-    <p class="parts-subtitle">シリーズ</p>
+    <p class="parts-subtitle">カテゴリー</p>
     <p><%= f.text_field :name, placeholder:"カテゴリー名", class:"other-form" %><%= f.submit '変更' , class:"item-regi-submit" %></p>
   <% end %>
   <%= link_to(:back , class:"back-link") do %>

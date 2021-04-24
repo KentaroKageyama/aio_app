@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :materials, only:  [:create, :destroy] do
+  resources :materials, only:  [:create, :edit, :update, :destroy] do
     collection do
       patch :sort
     end

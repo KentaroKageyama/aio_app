@@ -105,7 +105,7 @@
                 </div>
                 <div class="sort-btn-block">
                   <%= link_to '削除', material_path(mate.id), method: :delete, class:"sort-delete-btn" %>
-                  <%= link_to '編集', "#", class:"sort-edit-btn" %>
+                  <%= link_to '編集', edit_material_path(mate.id), class:"sort-edit-btn" %>
                 </div>
               </li>
             <% end %>
