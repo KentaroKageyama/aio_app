@@ -9,10 +9,10 @@
     <h2><i class="fas fa-square"></i>ガラスパーツ登録</h2>
   </div>
   <%= form_with model: @glass, url: glasses_path, method: :post, local: true, class:"registration-form" do |f| %>
-    <p class="parts-subtitle">材質</p>
-    <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
     <p class="parts-subtitle">ガラスパーツ</p>
     <%= f.text_field :name, placeholder:"ガラスパーツ名", class:"part-name" %>
+    <p class="parts-subtitle">オパールカラー</p>
+    <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
     
     <div class="item-regi-submit-post">
       <%= f.submit '登録' , class:"item-regi-submit" %>
@@ -33,7 +33,7 @@
           </div>
           <div class="sort-btn-block">
             <%= link_to '削除', glass_path(glass.id), method: :delete, class:"sort-delete-btn" %>
-            <%= link_to '編集', "#", class:"sort-edit-btn" %>
+            <%= link_to '編集', edit_glass_path(glass.id), class:"sort-edit-btn" %>
           </div>
         </li>
       <% end %>

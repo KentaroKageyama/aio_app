@@ -1,0 +1,27 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <div class="title">
+    <h1>ガラスパーツ管理</h1>
+  </div>
+  
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>ガラスパーツ編集</h2>
+  </div>
+  <%= form_with model: @glass, url: glass_path, local: true, class:"registration-form" do |f| %>
+    <p class="parts-subtitle">ガラスパーツ</p>
+    <%= f.text_field :name, placeholder:"ガラスパーツ名", class:"part-name" %>
+    <p class="parts-subtitle">オパールカラー</p>
+    <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
+    
+    <div class="item-regi-submit-post">
+      <%= f.submit '変更' , class:"item-regi-submit" %>
+    </div>
+    <div class="form-btn-post">
+      <%= link_to(:back , class:"back-link") do %>
+        <i class="fas fa-backward"></i> 変更せずに戻る
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

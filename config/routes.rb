@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :glasses, only: [:new, :create, :destroy] do
+  resources :glasses, only: [:new, :edit, :update, :create, :destroy] do
     collection do
       patch :sort
     end
