@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :opal_colors, only: [:create, :destroy] do
+  resources :opal_colors, only: [:create, :edit, :update, :destroy] do
     collection do
       patch :sort
     end

@@ -122,7 +122,7 @@
 
         <%= form_with model: @opal_color, url: opal_colors_path, method: :post, local: true, class:"registration-form" do |f| %>
           <p class="parts-subtitle">オパールカラー</p>
-          <p><%= f.text_field :name, placeholder:"オパールカラー名", class:"other-form" %><%= f.submit '登録' , class:"item-regi-submit" %></p>
+          <p><%= f.text_field :color, placeholder:"オパールカラー名", class:"other-form" %><%= f.submit '登録' , class:"item-regi-submit" %></p>
         <% end %>
 
         <div class="sub-title">
@@ -138,7 +138,7 @@
                 </div>
                 <div class="sort-btn-block">
                   <%= link_to '削除', opal_color_path(opal.id), method: :delete, class:"sort-delete-btn" %>
-                  <%= link_to '編集', "#", class:"sort-edit-btn" %>
+                  <%= link_to '編集', edit_opal_color_path(opal.id), class:"sort-edit-btn" %>
                 </div>
               </li>
             <% end %>
