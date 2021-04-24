@@ -16,11 +16,23 @@ class InvoicesController < ApplicationController
     redirect_to post_pdf_index_path(format: "pdf", invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
   end
 
+  def edit
+    @invoice = Invoice.find(params[:id])
+    @client = Client.find_by(name: @invoice.client_name)
+  end
+
+  def update
+    @invoice = Invoice.find(params[:id])
+    @invoice.update(set_invoice)
+    redirect_to post_pdf_index_path(format: "pdf", invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+  end
+
   def destroy
-    @invoice = Invoice.new(params[:id])
+    @invoice = Invoice.find(params[:id])
     @invoice.destroy
     redirect_to action: :index
   end
+
   private
 
   def set_invoice

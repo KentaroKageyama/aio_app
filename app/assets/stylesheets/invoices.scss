@@ -1,3 +1,52 @@
+//indexページ
+
+.invoice-lists-box {
+  width: 90%;
+  margin-top: 15px;
+}
+
+.invoice-lists {
+  width: 100%;
+  font-size: 14px;
+}
+
+.invoice-lists th {
+  border-bottom: 2px double #c0c0c0;
+  text-align: left;
+  height: 30px;
+  font-weight: bold;
+}
+
+.invoice-lists td {
+  height: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.td-date {
+  width: 7vw;
+}
+
+.td-number {
+  width: 7vw;
+}
+
+.td-client-name {
+  width: 10vw;
+}
+
+.td-content {
+  width: 12vw;
+}
+
+.td-amount {
+  width: 7vw;
+}
+
+
+
+// newページ
+
 .invoice-date {
   height: 30px;
   width: 10vw;
