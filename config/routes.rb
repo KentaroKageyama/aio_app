@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :parts, only: [:new, :create, :destroy] do
+  resources :parts, only: [:new, :edit, :update, :create, :destroy] do
     collection do
       patch :sort
     end
