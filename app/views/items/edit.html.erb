@@ -42,22 +42,31 @@
 
     <p class="parts-subtitle">金属パーツ</p>
     <div class="parts-add-form">
-    <%= f.fields_for :item_parts do |item_part| %>
-      <%= render 'item_part_fields', f: item_part %>
-    <%- end %>
-      <%= link_to_add_association '+パーツ追加', f, :item_parts, class:"add-btn" %>
+      <%= f.fields_for :item_parts do |item_part| %>
+        <%= render 'item_part_fields', f: item_part %>
+      <%- end %>
+      <div class="cocoon-links">
+        <%= link_to_add_association '+パーツ追加', f, :item_parts, class:"add-btn" %>
+      </div>
     </div>
 
     <p class="parts-subtitle">ガラスパーツ</p>
     <div class="parts-add-form">
-    <%= f.fields_for :item_glasses do |item_glass| %>
-      <%= render 'item_glass_fields', f: item_glass %>
-    <%- end %>
-      <%= link_to_add_association '+パーツ追加', f, :item_glasses, class:"add-btn" %>
+      <%= f.fields_for :item_glasses do |item_glass| %>
+        <%= render 'item_glass_fields', f: item_glass %>
+      <%- end %>
+      <div class="cocoon-links">
+        <%= link_to_add_association '+パーツ追加', f, :item_glasses, class:"add-btn" %>
+      </div>
     </div>
     
     <div class="item-regi-submit-post">
       <%= f.submit '変更' , class:"item-regi-submit" %>
+    </div>
+    <div class="form-btn-post">
+      <%= link_to(:back , class:"back-link") do %>
+        <i class="fas fa-backward"></i> 変更せずに戻る
+      <% end %>
     </div>
   <% end %>
 </div>

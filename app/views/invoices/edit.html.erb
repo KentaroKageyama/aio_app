@@ -31,10 +31,12 @@
 
     <p class="parts-subtitle">作品リスト</p>
     <div class="parts-add-form">
-    <%= f.fields_for :invoice_items do |invoice_item| %>
-      <%= render 'invoice_item_fields', f: invoice_item %>
-    <%- end %>
-      <%= link_to_add_association '+作品追加', f, :invoice_items, id:"add-item", class:"add-btn" %>
+      <%= f.fields_for :invoice_items do |invoice_item| %>
+        <%= render 'invoice_item_fields', f: invoice_item %>
+      <%- end %>
+      <div class="cocoon-links">
+        <%= link_to_add_association '+作品追加', f, :invoice_items, id:"add-item", class:"add-btn" %>
+      </div>
     </div>
 
     <div class="invoice-submit-post">
