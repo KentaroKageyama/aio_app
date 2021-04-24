@@ -15,16 +15,18 @@
   width: 100vw;
   height: 100vh;
   background: url(top_background.jpg) center center / cover no-repeat fixed;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center; 
 }
 
-.top-logo {
-  margin: 15vh 0;
-  width: 200px;
-  height: 200px;
+.top-logo {  
+  margin: 12vh auto;
+  width: 27h;
+  height: 27vh;
   position: fixed;
+  z-index: 999;
 }
 
 .catchcopy {
@@ -34,6 +36,7 @@
   font-weight: bold;
   left: 9vw;
   top: 55vh;
+  text-shadow: 2px 1px 0 #ccc, 0px 3px 0 #ccc, 4px 6px 8px rgb(255, 255, 255);
 }
 
 .catchcopy-sub {
@@ -42,6 +45,7 @@
   font-weight: bold;
   left: 10vw;
   top: 70vh;
+  line-height: 3vw;
 }
 
 .catchcopy-logo {
