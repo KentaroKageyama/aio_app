@@ -37,7 +37,11 @@
             取引先 顧客<br>管理
           <% end %>
         </li>
-        <li class="header-list"><%= link_to '請求書作成', invoices_path %></li>
+        <li class="header-list">
+          <%= link_to(new_invoice_path) do %>
+            請求書<br>作成  
+          <% end %>
+        </li>
 
       </ul>
       <div class="header-right">

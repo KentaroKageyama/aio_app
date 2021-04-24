@@ -163,6 +163,7 @@
   width: 200px;
   border: 1px solid #d0d0d0;
   border-radius: 4px;
+  margin-right: 10px;
 }
 
 .tab_wrap{
@@ -186,5 +187,3 @@ input[type="radio"]{display:none;}
 #tab3:checked ~ .panel_area #panel3{display:block;}
 #tab4:checked ~ .tab_area .tab4_label{background:#fff; color:#000;}
 #tab4:checked ~ .panel_area #panel4{display:block;}
-
-// 
