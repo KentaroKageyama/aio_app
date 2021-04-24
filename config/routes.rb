@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :collections, only: [:create, :destroy] do
+  resources :collections, only: [:create, :edit, :update, :destroy] do
     collection do
       patch :sort
     end
@@ -52,6 +52,6 @@ Rails.application.routes.draw do
   end
 
   resources :post_pdf, only: :index
-  resources :invoices, only: [:index, :create]
+  resources :invoices, only: [:index, :new, :create, :update, :destroy]
   resources :clients, only: [:index, :create, :update, :destroy]
 end
