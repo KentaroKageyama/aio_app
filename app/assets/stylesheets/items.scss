@@ -263,41 +263,45 @@
 
 .td-show {
   text-align: center;
-  width: 80px
+  width: 4vw;
 }
 
 .td-collection {
-  width: 100px;
+  width: 6vw;
 }
 
 .td-item {
-  width: 180px;
+  width: 12vw;
 }
 
 .td-category {
-  width: 100px;
+  width: 5vw;
 }
 
 .td-material {
-  width: 80px;
+  width: 5vw;
 }
 
 .td-color {
-  width: 80px;
+  width: 5vw;
 }
 
 .td-price {
-  width: 80px;
+  width: 4vw;
+}
+
+.td-stock {
+  width: 4vw;
 }
 
 
 .td-edit {
-  width: 60px;
+  width: 4vw;
   text-align: center;
 }
 
 .td-destroy {
-  width: 60px;
+  width: 4vw;
   text-align: center;
 }
 

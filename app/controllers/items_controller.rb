@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     @item.save
     redirect_to new_item_path

@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   has_many :glasses, through: :item_glasses
   accepts_nested_attributes_for :item_glasses
 
-  has_one :stock
+  has_one :stock, dependent: :destroy
   accepts_nested_attributes_for :stock
 
 
