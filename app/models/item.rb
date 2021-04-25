@@ -16,6 +16,10 @@ class Item < ApplicationRecord
   has_many :glasses, through: :item_glasses
   accepts_nested_attributes_for :item_glasses
 
+  has_one :stock
+  accepts_nested_attributes_for :stock
+
+
   with_options presence: true do
     validates :collection_id, :category_id, :name, :price
   end
