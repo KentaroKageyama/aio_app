@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.new(item_params)
     @item.save
     redirect_to new_item_path
@@ -77,7 +78,8 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, :material_id,
-      item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy] ).merge(chain_name: set_chain_name)
+      item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy], stock_attributes: [:id, :quantity] 
+      ).merge(chain_name: set_chain_name)
   end
 
   def search_item

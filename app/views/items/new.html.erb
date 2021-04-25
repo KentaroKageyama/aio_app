@@ -59,6 +59,13 @@
         <%= link_to_add_association '+パーツ追加', f, :item_glasses, class:"add-btn" %>
       </div>
     </div>
+
+    <div class="item-stock-box">
+      <p class="parts-subtitle">初期在庫数</p>
+      <%= f.fields_for :stock, @item.stock || Stock.new do |st| %>
+        <%= st.text_field :quantity, placeholder: "半角数字", class:"item-stock-qty" %>
+      <% end %>
+    </div>
     
     <div class="item-regi-submit-post">
       <%= f.submit '登録' , class:"item-regi-submit" %>
