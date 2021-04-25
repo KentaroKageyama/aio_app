@@ -1,0 +1,65 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <div class="title">
+    <h1>入出庫管理</h1>
+  </div>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>入出庫登録</h2>
+  </div>
+  <%= form_with model: @stock, url: stocks_path, local: true, class:"registration-form" do |f| %>
+      <%= f.collection_select(:in_out_id, InOut.all, :id, :name, {}, {}) %>
+
+    <%= f.fields_for :inventories do |inv| %>
+      <%= inv.collection_select(:in_out_id, InOut.all, :id, :name, {}, {}) %>
+      <span class="job_type_engine">入出庫</span><br>
+        <div class="radio-inline">
+          <%= inv.radio_button :in_out, :in_stock, checked: "checked" %>
+          <%= inv.label :in_stock, '入庫', class: "job_type_label" %>
+        </div>
+        <div class="radio-inline">
+          <%= inv.radio_button :in_out, :out_stock%>
+          <%= inv.label :out_stock, '出庫', class: "job_type_label" %>
+        </div>
+
+      <p class="parts-subtitle">個数</p>
+      <p><%= inv.text_field :quantity, placeholder: "例）50", class:"client-per"%></p>
+    <% end %>
+    
+    <p class="parts-subtitle">個数</p>
+    <p><%= f.text_field :percentage, placeholder: "例）50", class:"client-per"%>%</p>
+    <p class="parts-subtitle">作品名</p>
+    <%= f.text_field :name, placeholder: "例）Aio株式会社", class:"client-name" %>
+    <p class="parts-subtitle">個数</p>
+    <p><%= f.text_field :percentage, placeholder: "例）50", class:"client-per"%>%</p>
+    <div class="item-regi-submit-post">
+      <%= f.submit '登録' , class:"item-regi-submit" %>
+    </div>
+  <% end %>
+
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>取引先・顧客一覧</h2>
+  </div>
+  <div class="client-lists-box">
+    <table class="client-lists">
+      <thead>
+        <tr>
+          <th>取引先・顧客名</th>
+          <th>掛け率</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @inventories.each do |client| %>
+          <tr>
+            <td><%= client.name %></td>
+            <td><%= client.percentage %>%</td>
+            <td class="td-edit"><%= link_to '編集', "#" , class:"edit-link" %></td>
+            <td class="td-destroy"><%= link_to '削除', client_path(client.id), method: :delete, class:"destroy-link" %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

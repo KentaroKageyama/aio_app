@@ -214,7 +214,7 @@
 | date       | date       | null: false                    |
 | content    | string     |                                |
 | quantity   | integer    | null: false                    |
-| in_out     | integer    | null: false                    |
+| in_out_id  | integer    | null: false                    |
 
 ### Association
 

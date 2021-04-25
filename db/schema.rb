@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_04_25_031357) do
     t.date "date", null: false
     t.string "content"
     t.integer "quantity", null: false
-    t.integer "in_out", default: 0, null: false
+    t.integer "in_out_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stock_id"], name: "index_inventories_on_stock_id"
