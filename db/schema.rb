@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_134102) do
+ActiveRecord::Schema.define(version: 2021_04_25_031357) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position", null: false
     t.index ["opal_color_id"], name: "index_glasses_on_opal_color_id"
+  end
+
+  create_table "inventories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "stock_id", null: false
+    t.date "date", null: false
+    t.string "content"
+    t.integer "quantity", null: false
+    t.integer "in_out", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_inventories_on_stock_id"
   end
 
   create_table "invoice_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -146,6 +157,14 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
     t.index ["material_id"], name: "index_parts_on_material_id"
   end
 
+  create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.integer "quantity", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_stocks_on_item_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company", null: false
     t.string "zip_code", null: false
@@ -172,6 +191,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "glasses", "opal_colors"
+  add_foreign_key "inventories", "stocks"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "item_glasses", "glasses"
   add_foreign_key "item_glasses", "items"
@@ -182,4 +202,5 @@ ActiveRecord::Schema.define(version: 2021_04_17_134102) do
   add_foreign_key "items", "materials"
   add_foreign_key "items", "opal_colors"
   add_foreign_key "parts", "materials"
+  add_foreign_key "stocks", "items"
 end
