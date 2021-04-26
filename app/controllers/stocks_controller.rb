@@ -16,6 +16,7 @@ class StocksController < ApplicationController
       render action: :index
     end
   end
+  
 
   private
 
