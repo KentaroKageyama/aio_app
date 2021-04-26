@@ -47,6 +47,7 @@
         <th><%= sort_link(@p, :material_name, "material") %></th>
         <th><%= sort_link(@p, :opal_color_color, "opal color") %></th>
         <th><%= sort_link(@p, :price, "price") %></th>
+        <th><%= sort_link(@p, :stock_quantity, "stock") %></th>
         <th colspan = "2" ></th>
       </tr>
     </thead>
@@ -68,6 +69,7 @@
             <td class="td-color"></td>
           <% end %>
           <td class="td-price"><%= item.price.to_s(:delimited) %></td>
+          <td class="td-stock"><%= item.stock.quantity %></td>
           <td class="td-edit"><%= link_to '編集', edit_item_path(item.id), class:"edit-link" %></td>
           <td class="td-destroy"><%= link_to '削除', item_path(item.id), method: :delete, class:"destroy-link" %></td> 
         </tr>

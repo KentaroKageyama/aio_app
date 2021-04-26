@@ -8,6 +8,11 @@
     <div class="header-contents">
       <ul class="header-lists">
         <li class="header-list">
+          <%= link_to(inventories_path) do %>
+            入出庫<br>管理
+          <% end %>
+        </li>
+        <li class="header-list">
           <%= link_to(items_path) do %>
             作品一覧 
           <% end %>

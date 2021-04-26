@@ -7,7 +7,7 @@ class GlassesController < ApplicationController
   end
   
   def create
-    glass = Glass.new(set_glass)
+    glass = Glass.new(glass_params)
     glass.save
     redirect_to new_glass_path
   end
@@ -18,7 +18,7 @@ class GlassesController < ApplicationController
 
   def update
     @glass = Glass.find(params[:id])
-    @glass.update(set_glass)
+    @glass.update(glass_params)
     redirect_to new_glass_path
   end
 
@@ -38,7 +38,7 @@ class GlassesController < ApplicationController
   
   private
 
-  def set_glass
+  def glass_params
     params.require(:glass).permit(:name, :opal_color_id)
   end
   

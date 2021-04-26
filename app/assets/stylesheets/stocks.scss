@@ -1,0 +1,146 @@
+.stock-tab-area{
+  font-size:0; margin:10px 10px 15px 0;
+}
+
+.stock-tab-area label{
+  width:100px;
+  margin:0 5px; 
+  display:inline-block; 
+  padding:10px 0; 
+  color:#ccc; 
+  background:#fff; 
+  text-align:center; 
+  font-size:13px; 
+  font-weight: bold;
+  cursor:pointer; 
+  transition:ease 0.2s opacity;
+  border: 1px solid #909090;
+  border-radius: 4px;
+}
+
+.stock-tab-area label:hover{
+  opacity:0.7;
+}
+
+#stock-tab1:checked ~ .stock-tab-area .stock-tab1-label{
+  background:rgb(92, 162, 255); 
+  color:#FFF;
+}
+
+#stock-tab2:checked ~ .stock-tab-area .stock-tab2-label{
+  background:rgb(255, 155, 96); 
+  color:#FFF;
+}
+
+.stock-form {
+  margin-bottom: 20px;
+}
+
+.stock-form th {
+  font-size: 14px;
+  height: 15px;
+  text-align: left;
+}
+
+.stock-date {
+
+  height: 30px;
+  width: 9vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.stock-name {
+  height: 30px;
+  width: 500px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-bottom: 20px;
+}
+
+.stock-content {
+  height: 30px;
+  width: 15vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.stock-quantity {
+  height: 30px;
+  width: 8vw;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.stock-label {
+  font-size: 15px;
+  margin-bottom :5px;
+}
+
+.stock-lists-box {
+  width: 90%;
+  margin-top: 15px;
+}
+
+.stock-lists {
+  width: 100%;
+  font-size: 14px;
+}
+
+.stock-lists th {
+  border-bottom: 2px double #c0c0c0;
+  text-align: left;
+  height: 30px;
+  font-weight: bold;
+}
+
+.stock-lists td {
+  height: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.td-in_out {
+  text-align: center;
+  width: 5vw;
+}
+
+.td-date {
+  width: 7vw;
+}
+
+.td-item-name {
+  width: 400px;
+}
+
+.td-cont {
+  width: 12vw;
+}
+
+.td-qty {
+  width: 6vw;
+}
+
+.in_mark {
+  width: 50px;
+  border: 1px solid rgb(92, 162, 255); 
+  color:rgb(92, 162, 255);  
+  background-color: #FFF;
+  padding: 4px 0;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.out_mark {
+  width: 50px;
+  border: 1px solid rgb(255, 155, 96); 
+  color:rgb(255, 155, 96); 
+  background-color: #FFF;
+  padding: 4px 0;
+  border-radius: 4px;
+  margin: 0 auto;
+}

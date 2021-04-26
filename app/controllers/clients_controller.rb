@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(set_client)
+    @client = Client.new(client_params)
     @client.save
 
     redirect_to action: :index
@@ -25,7 +25,7 @@ class ClientsController < ApplicationController
 
   private
 
-  def set_client
+  def client_params
     params.require(:client).permit(:name, :percentage)
   end
 

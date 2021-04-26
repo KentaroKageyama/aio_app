@@ -1,0 +1,51 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <div class="title">
+    <h1>入出庫管理</h1>
+  </div>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>入出庫編集</h2>
+  </div>
+
+  <%= form_with model: @stock_inventory, local: true, class:"registration-form"  do |f| %>
+    <%= f.radio_button :in_out, "1", checked: true, id:"stock-tab1" %>
+ 	  <%= f.radio_button :in_out, "2", id:"stock-tab2" %>
+    <div class="stock-tab-area">
+      <label class="stock-tab1-label" for="stock-tab1">入庫</label>
+      <label class="stock-tab2-label" for="stock-tab2">出庫</label>
+    </div>
+
+    <table class="stock-form">
+      <thead>
+        <tr>
+          <th><%= f.label :date, '日付'%></th>
+          <th><%= f.label :content, '内容'%></th>
+          <th><%= f.label :inv_quantity, '個数'%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.date_field :date , class:"stock-date" %></td>
+          <td><%= f.text_field :content, placeholder: "例) 完成品入庫、売上出庫", class:"stock-content"%></td>
+          <td><%= f.text_field :inv_quantity, placeholder: "例）10", class:"stock-quantity"%></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= f.label :item_id, '作品名', class:"stock-label"%>
+    <%= f.collection_select(:item_id, Item.all.order(:position), :id, :chain_name, { include_blank: "選択して下さい" }, { class:"stock-name" }) %>
+
+    
+    <div class="item-regi-submit-post">
+      <%= f.submit '変更' , class:"item-regi-submit" %>
+    </div>
+
+    <div class="form-btn-post">
+      <%= link_to(:back , class:"back-link") do %>
+        <i class="fas fa-backward"></i> 変更せずに戻る
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

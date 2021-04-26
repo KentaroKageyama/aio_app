@@ -62,6 +62,8 @@
 - belongs_to :collection
 - belongs_to :category
 - belongs_to :opal_color
+- has_one :stock
+
 
 
 
@@ -189,3 +191,32 @@
 ### Association
 
 - belongs_to :invoice
+
+
+## stocks テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| item       | references | null: false, foreign_key: true |
+| quantity   | integer    | null: false                    |
+
+### Association
+
+- belongs_to :item
+- has_many :inventories
+
+
+## inventories テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| stock      | references | null: false, foreign_key: true |
+| date       | date       | null: false                    |
+| content    | string     |                                |
+| quantity   | integer    | null: false                    |
+| in_out_id  | integer    | null: false                    |
+
+### Association
+
+- belongs_to :item
+- has_many :inventories

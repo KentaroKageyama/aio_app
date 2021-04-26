@@ -1,0 +1,83 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <div class="title">
+    <h1>入出庫管理</h1>
+  </div>
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>入出庫登録</h2>
+  </div>
+  
+  <%= form_with model: @stock_inventory, url: inventories_path, local: true, class:"registration-form"  do |f| %>
+  
+    <%= f.radio_button :in_out, "1", checked: true, id:"stock-tab1" %>
+ 	  <%= f.radio_button :in_out, "2", id:"stock-tab2" %>
+    <div class="stock-tab-area">
+      <label class="stock-tab1-label" for="stock-tab1">入庫</label>
+      <label class="stock-tab2-label" for="stock-tab2">出庫</label>
+    </div>
+
+    <table class="stock-form">
+      <thead>
+        <tr>
+          <th><%= f.label :date, '日付'%></th>
+          <th><%= f.label :content, '内容'%></th>
+          <th><%= f.label :inv_quantity, '個数'%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.date_field :date , class:"stock-date" %></td>
+          <td><%= f.text_field :content, placeholder: "例) 完成品入庫、売上出庫", class:"stock-content"%></td>
+          <td><%= f.text_field :inv_quantity, placeholder: "例）10", class:"stock-quantity"%></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= f.label :item_id, '作品名', class:"stock-label"%>
+    <%= f.collection_select(:item_id, Item.all.order(:position), :id, :chain_name, { include_blank: "選択して下さい" }, { class:"stock-name" }) %>
+
+    
+    <div class="item-regi-submit-post">
+      <%= f.submit '登録' , class:"item-regi-submit" %>
+    </div>
+  <% end %>
+
+  <div class="sub-title">
+    <h2><i class="fas fa-square"></i>入出庫履歴</h2>
+  </div>
+  <div class="stock-lists-box">
+    <table class="stock-lists">
+      <thead>
+        <tr>
+          <th colspan="1"></th>
+          <th>日付</th>
+          <th>作品名</th>
+          <th>内容</th>
+          <th>個数</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @inventories.each do |inventory| %>
+          <tr>
+            <td class="td-in_out">
+              <% if inventory.in_out_id == 1 %>
+                <div class="in_mark"><%= inventory.in_out.name %></div>
+              <% elsif inventory.in_out_id == 2 %>
+                <div class="out_mark"><%= inventory.in_out.name %></div>
+              <% end %>
+            </td>
+            <td class="td-date"><%= inventory.date %></td>
+            <td class="td-item-name"><%= Item.find(inventory.stock.item_id).chain_name %></td>
+            <td class="td-cont"><%= inventory.content %></td>
+            <td class="td-qty"><%= inventory.inv_quantity %></td>
+            <td class="td-edit"><%= link_to '編集', edit_inventory_path(inventory.id) , class:"edit-link" %></td>
+            <td class="td-destroy"><%= link_to '削除', inventory_path(inventory.id), method: :delete, class:"destroy-link" %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

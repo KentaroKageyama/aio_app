@@ -2,7 +2,7 @@ class OpalColorsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    opal_color = OpalColor.new(set_opal_color)
+    opal_color = OpalColor.new(opal_color_params)
     opal_color.save
     redirect_to new_other_items_path
   end
@@ -13,7 +13,7 @@ class OpalColorsController < ApplicationController
 
   def update
     @opal_color = OpalColor.find(params[:id])
-    @opal_color.update(set_opal_color)
+    @opal_color.update(opal_color_params)
     redirect_to new_other_items_path
   end
 
@@ -31,7 +31,7 @@ class OpalColorsController < ApplicationController
   
   private
 
-  def set_opal_color
+  def opal_color_params
     params.require(:opal_color).permit(:color)
   end
 end

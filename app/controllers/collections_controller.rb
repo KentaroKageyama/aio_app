@@ -2,7 +2,7 @@ class CollectionsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    collection = Collection.new(set_collection)
+    collection = Collection.new(collection_params)
     collection.save
     redirect_to new_other_items_path
   end
@@ -13,7 +13,7 @@ class CollectionsController < ApplicationController
 
   def update
     @collection = Collection.find(params[:id])
-    @collection.update(set_collection)
+    @collection.update(collection_params)
     redirect_to new_other_items_path
   end
 
@@ -31,7 +31,7 @@ class CollectionsController < ApplicationController
 
   private
 
-  def set_collection
+  def collection_params
     params.require(:collection).permit(:name)
   end
 

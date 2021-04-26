@@ -2,7 +2,7 @@ class MaterialsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    material = Material.new(set_material)
+    material = Material.new(material_params)
     material.save
     redirect_to new_other_items_path
   end
@@ -13,7 +13,7 @@ class MaterialsController < ApplicationController
 
   def update
     @material = Material.find(params[:id])
-    @material.update(set_material)
+    @material.update(material_params)
     redirect_to new_other_items_path
   end
 
@@ -32,7 +32,7 @@ class MaterialsController < ApplicationController
   
   private
 
-  def set_material
+  def material_params
     params.require(:material).permit(:name)
   end
 end
