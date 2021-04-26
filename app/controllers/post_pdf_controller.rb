@@ -18,14 +18,4 @@ class PostPdfController < ApplicationController
     end
   end
 
-  private
-
-  def set_invoice
-    params.require(:invoice).permit(:issue_date, :issue_number)
-  end
-
-  def set_items
-    params.require(:invoice).permit()
-  end
-
 end
