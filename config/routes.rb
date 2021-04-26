@@ -54,7 +54,6 @@ Rails.application.routes.draw do
   resources :post_pdf, only: :index
   resources :invoices, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :clients, only: [:index, :create, :update, :destroy]
-  resources :stocks, only: [:index, :create]
-  resources :inventories, only: [:destroy]
+  resources :inventories, only: [:index, :create, :edit, :update, :destroy]
 
 end

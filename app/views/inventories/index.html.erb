@@ -7,8 +7,8 @@
   <div class="sub-title">
     <h2><i class="fas fa-square"></i>入出庫登録</h2>
   </div>
-
-  <%= form_with model: @stock_inventory, url: stocks_path, local: true, class:"registration-form"  do |f| %>
+  
+  <%= form_with model: @stock_inventory, url: inventories_path, local: true, class:"registration-form"  do |f| %>
   
     <%= f.radio_button :in_out, "1", checked: true, id:"stock-tab1" %>
  	  <%= f.radio_button :in_out, "2", id:"stock-tab2" %>
@@ -72,7 +72,7 @@
             <td class="td-item-name"><%= Item.find(inventory.stock.item_id).chain_name %></td>
             <td class="td-cont"><%= inventory.content %></td>
             <td class="td-qty"><%= inventory.inv_quantity %></td>
-            <td class="td-edit"><%= link_to '編集', "#" , class:"edit-link" %></td>
+            <td class="td-edit"><%= link_to '編集', edit_inventory_path(inventory.id) , class:"edit-link" %></td>
             <td class="td-destroy"><%= link_to '削除', inventory_path(inventory.id), method: :delete, class:"destroy-link" %></td> 
           </tr>
         <% end %>
