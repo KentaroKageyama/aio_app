@@ -30,6 +30,25 @@ class StockInventory
     inventory.update(stock_id: stock.id, date: date, content: content, inv_quantity: inv_quantity, in_out_id: in_out)
   end
 
+  def to_model
+    inventory
+  end
+
+  private
+
+  attr_reader :inventory, :stock
+
+  def default_attributes
+    {
+      item_id: stock.item_id,
+      quantity: stock.quantity,
+      date: inventory.date,
+      content: inventory.content,
+      inv_quantity: inventory.inv_quantity,
+      in_out: inventory.in_out_id
+    }
+  end
+
   def create_stock_calc(stock)
     if in_out == "1"
       calc_qty = stock.quantity + inv_quantity.to_i
@@ -54,26 +73,6 @@ class StockInventory
       end
     end
     return calc_qty
-  end
-
-  def to_model
-    inventory
-  end
-
-
-  private
-
-  attr_reader :inventory, :stock
-
-  def default_attributes
-    {
-      item_id: stock.item_id,
-      quantity: stock.quantity,
-      date: inventory.date,
-      content: inventory.content,
-      inv_quantity: inventory.inv_quantity,
-      in_out: inventory.in_out_id
-    }
   end
 
 end
