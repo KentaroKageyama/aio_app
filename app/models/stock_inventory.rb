@@ -3,6 +3,14 @@ class StockInventory
   include ActiveModel::Model
   attr_accessor :item_id, :quantity, :date, :content, :inv_quantity, :in_out
 
+  validates :quantity, presence: true, numericality: true
+  with_options presence: true do
+    validates :item_id
+    validates :quantity, numericality: true
+    validates :date
+    validates :inv_quantity, numericality: true
+  end
+
   delegate :persisted?, to: :inventory
 
   def initialize(attributes = nil, inventory: Inventory.new)
