@@ -66,8 +66,6 @@
 - has_one :stock
 
 
-
-
 ## item_parts テーブル
 
 | Column   | Type       | Options                        |
@@ -85,16 +83,17 @@
 
 ## parts テーブル
 
-| Column   | Type       | Options     |
-| -------- | ---------- | ----------- |
-| name     | string     | null: false |
-| material | string     | null: false |
-| position | integer    | null: false |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| name     | string     | null: false                    |
+| material | references | null: false, foreign_key: true |
+| position | integer    | null: false                    |
 
 
 ### Association
 
 - has_many :item_parts
+- belongs_to :material
 
 
 ## item_glasses テーブル
@@ -149,6 +148,19 @@
 ### Association
 
 - has_many :items
+
+
+## materials テーブル
+
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| name          | string     | null: false |
+| position      | integer    | null: false |
+
+### Association
+
+- has_many :items
+- has_many :parts
 
 
 ## opal_colors テーブル
