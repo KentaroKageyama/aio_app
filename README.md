@@ -48,7 +48,8 @@
 | price           | integer    | null: false                    |
 | collection      | references | null: false, foreign_key: true |
 | category        | references | null: false, foreign_key: true |
-| opal_color      | references | null: false, foreign_key: true |
+| material        | references | foreign_key: true              |
+| opal_color      | references | foreign_key: true              |
 | chain_name      | string     | null: false, unique: true      |
 | position        | integer    | null: false                    |
 
@@ -60,6 +61,7 @@
 - has_many :item_glasses
 - belongs_to :collection
 - belongs_to :category
+- belongs_to :material
 - belongs_to :opal_color
 - has_one :stock
 
