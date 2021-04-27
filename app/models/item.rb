@@ -1,5 +1,11 @@
 class Item < ApplicationRecord
 
+  with_options presence: true do
+    validates :chain_name, uniqueness: true
+    validates :name
+    validates :price, numericality: true
+  end
+
   acts_as_list
 
   belongs_to :collection
@@ -18,12 +24,5 @@ class Item < ApplicationRecord
 
   has_one :stock, dependent: :destroy
   accepts_nested_attributes_for :stock
-
-
-  with_options presence: true do
-    validates :collection_id, :category_id, :name, :price
-  end
-
-  validates :price, numericality: true
 
 end
