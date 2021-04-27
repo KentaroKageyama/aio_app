@@ -1,6 +1,8 @@
 class Part < ApplicationRecord
 
-  def view_material_and_name
+  validates :name, presence: true
+
+  def view_material_and_name              #collection_select表示用
     self.material.name + ' ' + self.name
   end
 
@@ -9,9 +11,5 @@ class Part < ApplicationRecord
   has_many :item_parts
   has_many :items, through: :item_parts
   belongs_to :material
-
-  with_options presence: true do
-    validates :name, :material_id
-  end
   
 end
