@@ -8,7 +8,6 @@ class InventoriesController < ApplicationController
   end
 
   def create
-    @inventories = Inventory.all.order(id: :DESC)
     @stock_inventory = StockInventory.new(inventory_params)
     if @stock_inventory.valid?
       @stock_inventory.save
