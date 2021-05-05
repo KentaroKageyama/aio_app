@@ -34,7 +34,7 @@
           <tr>
             <td><%= client.name %></td>
             <td><%= client.percentage %>%</td>
-            <td class="td-edit"><%= link_to '編集', "#" , class:"edit-link" %></td>
+            <td class="td-edit"><%= link_to '編集', edit_client_path(client.id) , class:"edit-link" %></td>
             <td class="td-destroy"><%= link_to '削除', client_path(client.id), method: :delete, class:"destroy-link" %></td> 
           </tr>
         <% end %>

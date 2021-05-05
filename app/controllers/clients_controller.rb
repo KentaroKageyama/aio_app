@@ -13,7 +13,14 @@ class ClientsController < ApplicationController
     redirect_to action: :index
   end
 
+  def edit
+    @client = Client.find(params[:id])
+  end
+
   def update
+    @client = Client.find(params[:id])
+    @client.update(client_params)
+    redirect_to action: :index
   end
 
   def destroy
