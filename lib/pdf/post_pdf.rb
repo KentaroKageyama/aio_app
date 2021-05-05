@@ -78,7 +78,7 @@ class PostPdf < Prawn::Document
     end
 
     bounding_box([328, 550], width: 250) do
-      table [['小計', "¥#{subtotal.to_s(:delimited)}"], ['消費税', "¥#{tax.to_s(:delimited)}"], ['合計金額', "¥#{subtotal + tax}"], ['掛け率', "#{@client.percentage}%"]], column_widths: [70, 90], position: :left do |table|
+      table [['小計', "¥#{subtotal.to_s(:delimited)}"], ['消費税', "¥#{tax.to_s(:delimited)}"], ['合計金額', "¥#{(subtotal + tax).to_s(:delimited)}"], ['掛け率', "#{@client.percentage}%"]], column_widths: [70, 90], position: :left do |table|
         table.cells.size = 9
         table.column(0).background_color = 'e0e0e0'
         table.column(1).align = :right
@@ -114,7 +114,7 @@ class PostPdf < Prawn::Document
   def subtotal
     sub = 0
     @items.each do |item|
-      sub += item.price
+      sub += item.price * item.quantity
     end
     return sub
   end
