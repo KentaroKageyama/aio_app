@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :company
-    validates :phonenumber, numericality: true, length: { maximum: 11 }
+    validates :phone_number, numericality: true, length: { maximum: 11 }
     validates :zip_code, numericality: true, length: { maximum: 7 } 
     validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
     validates :city, :address
