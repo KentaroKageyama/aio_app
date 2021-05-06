@@ -63,3 +63,4 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'devise'
 gem 'active_hash'
+gem "aws-sdk-s3", require: false
