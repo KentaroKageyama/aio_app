@@ -8,5 +8,7 @@ class InvoiceItem < ApplicationRecord
   end
 
   belongs_to :invoice
+
+
   
 end

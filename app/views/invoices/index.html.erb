@@ -26,7 +26,7 @@
             <td class="td-number"><%= invoice.issue_number %></td>
             <td class="td-client-name"><%= invoice.client_name %>
             <td class="td-content"><%= invoice.content %></td>
-            <td class="td-amount"><%= ((InvoiceItem.where(invoice_id: invoice.id).pluck(:price).sum) * 1.1 * invoice.client_percentage / 100 ).floor.to_s(:delimited) %></td>
+            <td class="td-amount"><%= invoice.calc_billing_total %></td>
             <td class="td-edit"><%= link_to '再発行', edit_invoice_path(invoice.id) , class:"edit-link" %></td>
             <td class="td-destroy"><%= link_to '削除', invoice_path(invoice.id), method: :delete, class:"destroy-link" %></td> 
           </tr>
