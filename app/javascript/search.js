@@ -21,7 +21,10 @@ if(document.URL.match(/items$/)){
             const clickElement = document.getElementById(item.id);
             clickElement.addEventListener("click", () => {
               document.getElementById("input-item").value = clickElement.textContent;
-              clickElement.remove();
+              const childClass = document.querySelectorAll(".child");
+              childClass.forEach(function(child) {
+                child.remove();
+              });
             });
           });
         };
