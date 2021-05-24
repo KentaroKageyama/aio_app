@@ -16,7 +16,6 @@ class MaterialsController < ApplicationController
     redirect_to new_other_items_path
   end
 
-
   def destroy
     @material.destroy
     redirect_to new_other_items_path
