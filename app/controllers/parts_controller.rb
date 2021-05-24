@@ -1,5 +1,6 @@
 class PartsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_part, only: [:edit, :update, :destroy]
 
   def new
     @part = Part.new
@@ -13,18 +14,15 @@ class PartsController < ApplicationController
   end
 
   def edit
-    @part = Part.find(params[:id])
   end
 
   def update
-    @part = Part.find(params[:id])
     @part.update(part_params)
     redirect_to new_part_path
   end
 
   def destroy
-    part = Part.find(params[:id])
-    part.destroy
+    @part.destroy
     redirect_to new_part_path
   end
   
@@ -38,6 +36,10 @@ class PartsController < ApplicationController
 
   def part_params
     params.require(:part).permit(:name, :material_id)
+  end
+
+  def set_part
+    @part = Part.find(params[:id])
   end
   
 end
