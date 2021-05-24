@@ -1,5 +1,6 @@
 class GlassesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_glass, only: [:edit, :update, :destroy]
 
   def new
     @glass = Glass.new
@@ -13,19 +14,15 @@ class GlassesController < ApplicationController
   end
 
   def edit
-    @glass = Glass.find(params[:id])
   end
 
   def update
-    @glass = Glass.find(params[:id])
     @glass.update(glass_params)
     redirect_to new_glass_path
   end
 
-
   def destroy
-    glass = Glass.find(params[:id])
-    glass.destroy
+    @glass.destroy
     redirect_to new_glass_path
   end
 
@@ -35,11 +32,14 @@ class GlassesController < ApplicationController
     head :ok
   end
   
-  
   private
 
   def glass_params
     params.require(:glass).permit(:name, :opal_color_id)
+  end
+
+  def set_glass
+    @glass = Glass.find(params[:id])
   end
   
 end
