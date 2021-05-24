@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :search_item, only: [:index, :search]
   before_action :authenticate_user!
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = @p.result.order(:position)
@@ -11,7 +12,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def new
@@ -26,17 +26,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item  = Item.find(params[:id])
     @item.update(item_params)
     redirect_to action: :index
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to new_item_path
   end
@@ -79,6 +76,10 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, :material_id,
       item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy], stock_attributes: [:id, :quantity] 
       ).merge(chain_name: set_chain_name)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   def search_item
