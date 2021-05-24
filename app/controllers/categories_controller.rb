@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    category.destroy
+    @category.destroy
     redirect_to new_other_items_path
   end
   
