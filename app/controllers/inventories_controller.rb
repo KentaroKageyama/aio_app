@@ -1,5 +1,6 @@
 class InventoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_inventory, only: [:edit, :update, :destroy]
 
   def index
     @stock_inventory = StockInventory.new
@@ -18,12 +19,10 @@ class InventoriesController < ApplicationController
   end
 
   def edit
-    @inventory = Inventory.find(params[:id])
     @stock_inventory = StockInventory.new(inventory: @inventory)
   end
 
   def update
-    @inventory = Inventory.find(params[:id])
     @stock_inventory = StockInventory.new(inventory_params, inventory: @inventory)
     if @stock_inventory.valid?
       @stock_inventory.update_save
@@ -34,7 +33,6 @@ class InventoriesController < ApplicationController
   end
 
   def destroy
-    @inventory = Inventory.find(params[:id])
     destroy_stock_calc
     @inventory.destroy
     redirect_to action: :index
@@ -57,5 +55,8 @@ class InventoriesController < ApplicationController
     params.require(:inventory).permit(:item_id, :quantity, :date, :content, :inv_quantity, :in_out)
   end
 
+  def set_inventory
+    @inventory = Inventory.find(params[:id])
+  end
 
 end
