@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_collection, only: [:edit, :update, :destroy]
 
   def create
     collection = Collection.new(collection_params)
@@ -8,18 +9,15 @@ class CollectionsController < ApplicationController
   end
 
   def edit
-    @collection = Collection.find(params[:id])
   end
 
   def update
-    @collection = Collection.find(params[:id])
     @collection.update(collection_params)
     redirect_to new_other_items_path
   end
 
   def destroy
-    collection = Collection.find(params[:id])
-    collection.destroy
+    @collection.destroy
     redirect_to new_other_items_path
   end
 
@@ -33,6 +31,10 @@ class CollectionsController < ApplicationController
 
   def collection_params
     params.require(:collection).permit(:name)
+  end
+
+  def set_collection
+    @collection = Collection.find(params[:id])
   end
 
 end
