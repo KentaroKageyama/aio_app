@@ -1,5 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_material, only: [:edit, :update, :destroy]
 
   def create
     material = Material.new(material_params)
@@ -8,19 +9,16 @@ class MaterialsController < ApplicationController
   end
 
   def edit
-    @material = Material.find(params[:id])
   end
 
   def update
-    @material = Material.find(params[:id])
     @material.update(material_params)
     redirect_to new_other_items_path
   end
 
 
   def destroy
-    material = Material.find(params[:id])
-    material.destroy
+    @material.destroy
     redirect_to new_other_items_path
   end
 
@@ -35,4 +33,9 @@ class MaterialsController < ApplicationController
   def material_params
     params.require(:material).permit(:name)
   end
+
+  def set_material
+    @material = Material.find(params[:id])
+  end
+
 end
