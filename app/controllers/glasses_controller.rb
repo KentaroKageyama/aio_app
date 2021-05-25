@@ -6,7 +6,7 @@ class GlassesController < ApplicationController
     @glass = Glass.new
     @glasses = Glass.all.order(:position)
   end
-  
+
   def create
     glass = Glass.new(glass_params)
     glass.save
@@ -31,7 +31,7 @@ class GlassesController < ApplicationController
     glass.insert_at(params[:to].to_i + 1)
     head :ok
   end
-  
+
   private
 
   def glass_params
@@ -41,5 +41,4 @@ class GlassesController < ApplicationController
   def set_glass
     @glass = Glass.find(params[:id])
   end
-  
 end

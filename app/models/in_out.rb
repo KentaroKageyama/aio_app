@@ -3,6 +3,6 @@ class InOut < ActiveHash::Base
     { id: 1, name: '入庫' },
     { id: 2, name: '出庫' }
   ]
- include ActiveHash::Associations
-   has_many :inventories
- end
+  include ActiveHash::Associations
+  has_many :inventories
+end

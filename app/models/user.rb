@@ -9,7 +9,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :company
     validates :phone_number, numericality: true, length: { maximum: 11 }
-    validates :zip_code, numericality: true, length: { maximum: 7 } 
+    validates :zip_code, numericality: true, length: { maximum: 7 }
     validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
     validates :city, :address
     validates :bank, :branch
@@ -17,9 +17,8 @@ class User < ApplicationRecord
     validates :bank_number, numericality: true, length: { maximum: 7 }
     validates :bank_account
   end
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
   belongs_to :bank_type
-
 end

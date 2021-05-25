@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   with_options presence: true do
     validates :chain_name, uniqueness: true
     validates :name
@@ -24,5 +23,4 @@ class Item < ApplicationRecord
 
   has_one :stock, dependent: :destroy
   accepts_nested_attributes_for :stock
-
 end

@@ -58,5 +58,4 @@ class InventoriesController < ApplicationController
   def set_inventory
     @inventory = Inventory.find(params[:id])
   end
-
 end

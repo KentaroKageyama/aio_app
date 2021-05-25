@@ -26,7 +26,7 @@ class OpalColorsController < ApplicationController
     opal_color.insert_at(params[:to].to_i + 1)
     head :ok
   end
-  
+
   private
 
   def opal_color_params
@@ -36,5 +36,4 @@ class OpalColorsController < ApplicationController
   def set_opal_color
     @opal_color = OpalColor.find(params[:id])
   end
-
 end

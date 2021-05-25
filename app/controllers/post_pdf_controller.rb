@@ -11,11 +11,10 @@ class PostPdfController < ApplicationController
         post_pdf = PostPdf.new(@invoice, @user, @client).render
 
         send_data post_pdf,
-          filename: 'post_pdf.pdf',
-          type: 'application/pdf',
-          disposition: 'inline'
+                  filename: 'post_pdf.pdf',
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
     end
   end
-
 end

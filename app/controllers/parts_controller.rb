@@ -25,7 +25,7 @@ class PartsController < ApplicationController
     @part.destroy
     redirect_to new_part_path
   end
-  
+
   def sort
     part = Part.find_by(position: params[:from].to_i + 1)
     part.insert_at(params[:to].to_i + 1)
@@ -41,5 +41,4 @@ class PartsController < ApplicationController
   def set_part
     @part = Part.find(params[:id])
   end
-  
 end

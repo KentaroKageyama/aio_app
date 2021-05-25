@@ -26,7 +26,7 @@ class MaterialsController < ApplicationController
     material.insert_at(params[:to].to_i + 1)
     head :ok
   end
-  
+
   private
 
   def material_params
@@ -36,5 +36,4 @@ class MaterialsController < ApplicationController
   def set_material
     @material = Material.find(params[:id])
   end
-
 end

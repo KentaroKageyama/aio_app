@@ -43,9 +43,10 @@ class ItemsController < ApplicationController
   end
 
   def incremental_search
-    return nil if params[:keyword] == ""
-    item = Item.where(['chain_name LIKE ?', "%#{params[:keyword]}%"] )
-    render json:{ keyword: item }
+    return nil if params[:keyword] == ''
+
+    item = Item.where(['chain_name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: item }
   end
 
   def sort
@@ -67,15 +68,14 @@ class ItemsController < ApplicationController
 
   def output_price
     price = Item.find_by(chain_name: params[:name]).price
-    render json: {price: price} 
+    render json: { price: price }
   end
 
   private
 
   def item_params
     params.require(:item).permit(:name, :price, :image, :collection_id, :category_id, :opal_color_id, :material_id,
-      item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy], stock_attributes: [:id, :quantity] 
-      ).merge(chain_name: set_chain_name)
+                                 item_parts_attributes: [:id, :part_id, :quantity, :_destroy], item_glasses_attributes: [:id, :glass_id, :quantity, :_destroy], stock_attributes: [:id, :quantity]).merge(chain_name: set_chain_name)
   end
 
   def set_item
@@ -94,7 +94,6 @@ class ItemsController < ApplicationController
     array << Category.find(items[:category_id]).name
     array << Material.find(items[:material_id]).name if items[:material_id].present?
     array << OpalColor.find(items[:opal_color_id]).color if items[:opal_color_id].present?
-    return array.join(" ")
+    array.join(' ')
   end
-
 end

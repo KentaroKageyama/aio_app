@@ -13,7 +13,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
     @invoice.save
-    redirect_to post_pdf_index_path(format: "pdf", invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+    redirect_to post_pdf_index_path(format: 'pdf', invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
   end
 
   def edit
@@ -22,7 +22,7 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice.update(invoice_params)
-    redirect_to post_pdf_index_path(format: "pdf", invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+    redirect_to post_pdf_index_path(format: 'pdf', invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
   end
 
   def destroy
@@ -34,11 +34,12 @@ class InvoicesController < ApplicationController
 
   def invoice_params
     client = Client.find(params[:invoice][:client_id]) if params[:invoice][:client_id].present?
-    params.require(:invoice).permit(:issue_date, :issue_number, :content, invoice_items_attributes: [:id, :chain_item, :size, :quantity, :price, :_destroy]).merge(client_name: client.name, client_percentage: client.percentage)
+    params.require(:invoice).permit(:issue_date, :issue_number, :content, invoice_items_attributes: [:id, :chain_item, :size, :quantity, :price, :_destroy]).merge(
+      client_name: client.name, client_percentage: client.percentage
+    )
   end
 
   def set_invoice
     @invoice = Invoice.find(params[:id])
   end
-
 end

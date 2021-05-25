@@ -1,5 +1,4 @@
 class InvoiceItem < ApplicationRecord
-
   with_options presence: true do
     validates :chain_item
     with_options numericality: true do
@@ -8,7 +7,4 @@ class InvoiceItem < ApplicationRecord
   end
 
   belongs_to :invoice
-
-
-  
 end

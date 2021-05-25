@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     @category.destroy
     redirect_to new_other_items_path
   end
-  
+
   def sort
     category = Category.find_by(position: params[:from].to_i + 1)
     category.insert_at(params[:to].to_i + 1)
@@ -36,5 +36,4 @@ class CategoriesController < ApplicationController
   def set_category
     @category = Category.find(params[:id])
   end
-
 end

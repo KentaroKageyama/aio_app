@@ -36,5 +36,4 @@ class CollectionsController < ApplicationController
   def set_collection
     @collection = Collection.find(params[:id])
   end
-
 end
