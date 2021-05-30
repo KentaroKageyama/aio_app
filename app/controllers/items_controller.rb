@@ -17,6 +17,8 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @items = Item.all.order(:position)
+    @glasses = Glass.all.order(:position).includes([:opal_color])
+    @parts = Part.all.order(:position).includes([:material])
   end
 
   def create
