@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = @p.result.order(:position)
+    @items = @p.result.order(:position).includes([:collection, :category, :opal_color, :material, :stock])
     @collections = Collection.all.order(:position)
     @categories = Category.all.order(:position)
     @opal_colors = OpalColor.all.order(:position)
