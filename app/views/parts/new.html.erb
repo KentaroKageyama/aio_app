@@ -10,7 +10,7 @@
   </div>
   <%= form_with model: @part, url: parts_path, method: :post, local: true, class:"registration-form" do |f| %>
     <p class="parts-subtitle">材質</p>
-    <%= f.collection_select :material_id, Material.all.order(:position), :id, :name,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
+    <%= f.collection_select :material_id, @materials, :id, :name,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
     <p class="parts-subtitle">金属パーツ</p>
     <%= f.text_field :name, placeholder:"金属パーツ名", class:"part-name" %>
     
