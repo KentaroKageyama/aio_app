@@ -5,6 +5,7 @@ class PartsController < ApplicationController
   def new
     @part = Part.new
     @parts = Part.all.order(:position).includes([:material])
+    @materials = Material.all.order(:position)
   end
 
   def create
