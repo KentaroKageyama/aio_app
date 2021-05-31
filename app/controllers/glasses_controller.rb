@@ -4,7 +4,8 @@ class GlassesController < ApplicationController
 
   def new
     @glass = Glass.new
-    @glasses = Glass.all.order(:position)
+    @glasses = Glass.all.order(:position).includes([:opal_color])
+    @opal_colors = OpalColor.all.order(:position)
   end
 
   def create

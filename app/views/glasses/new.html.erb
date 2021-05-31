@@ -12,7 +12,7 @@
     <p class="parts-subtitle">ガラスパーツ</p>
     <%= f.text_field :name, placeholder:"ガラスパーツ名", class:"part-name" %>
     <p class="parts-subtitle">オパールカラー</p>
-    <%= f.collection_select :opal_color_id, OpalColor.all.order(:position), :id, :color,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
+    <%= f.collection_select :opal_color_id, @opal_colors, :id, :color,{ include_blank: "選択して下さい" }, { class:"part-select" }  %>
     
     <div class="item-regi-submit-post">
       <%= f.submit '登録' , class:"item-regi-submit" %>
