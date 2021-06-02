@@ -52,6 +52,14 @@
   margin-right: 6px;
 }
 
+.field_with_errors{
+  display: contents;
+}
+
+.field_with_errors input{
+  border:2px solid rgb(240, 157, 157);
+}
+
 // sortable
 
 .sort-box {

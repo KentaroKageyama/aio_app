@@ -8,10 +8,13 @@ class ClientsController < ApplicationController
   end
 
   def create
+    @clients = Client.all
     @client = Client.new(client_params)
-    @client.save
-
-    redirect_to action: :index
+    if @client.save
+      redirect_to action: :index
+    else
+      render action: :index
+    end
   end
 
   def edit
