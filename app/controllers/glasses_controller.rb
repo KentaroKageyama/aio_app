@@ -9,17 +9,25 @@ class GlassesController < ApplicationController
   end
 
   def create
-    glass = Glass.new(glass_params)
-    glass.save
-    redirect_to new_glass_path
+    @glasses = Glass.all.order(:position).includes([:opal_color])
+    @opal_colors = OpalColor.all.order(:position)
+    @glass = Glass.new(glass_params)
+    if @glass.save
+      redirect_to new_glass_path
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @glass.update(glass_params)
-    redirect_to new_glass_path
+    if @glass.update(glass_params)
+      redirect_to new_glass_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -42,4 +50,5 @@ class GlassesController < ApplicationController
   def set_glass
     @glass = Glass.find(params[:id])
   end
+
 end
