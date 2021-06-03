@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
     if @client.save
       redirect_to action: :index
     else
-      render action: :index
+      render :index
     end
   end
 
@@ -21,8 +21,11 @@ class ClientsController < ApplicationController
   end
 
   def update
-    @client.update(client_params)
-    redirect_to action: :index
+    if @client.update(client_params)
+      redirect_to action: :index
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -11,12 +11,12 @@
     <p class="parts-subtitle">取引先・顧客名</p>
     <%= f.text_field :name, placeholder: "例）Aio株式会社", class:"client-name" %>
     <p class="parts-subtitle">掛け率(自社取り分)</p>
-    <p><%= f.text_field :percentage, placeholder: "例）50", class:"client-per"%>%</p>
+    <span><%= f.text_field :percentage, placeholder: "例）50", class:"client-per"%>%</span>
     <div class="item-regi-submit-post">
       <%= f.submit '変更' , class:"item-regi-submit" %>
     </div>
   <% end %>
-  <%= link_to(:back , class:"back-link") do %>
+  <%= link_to(clients_path, class:"back-link") do %>
     <i class="fas fa-backward"></i> 変更せずに戻る
   <% end %>
 </div>
