@@ -304,12 +304,12 @@
 
 
 .td-edit {
-  width: 4vw;
+  width: 60px;
   text-align: center;
 }
 
 .td-destroy {
-  width: 4vw;
+  width: 60px;
   text-align: center;
 }
 
@@ -341,8 +341,8 @@
   border: 1px solid #909090;
   border-radius: 4px;
   padding: 4px 8px;
-  margin-right: 15px;
   text-decoration: none;
+  margin-right: 15px;
 }
 
 .show-link:hover, .edit-link:hover, .destroy-link:hover {
