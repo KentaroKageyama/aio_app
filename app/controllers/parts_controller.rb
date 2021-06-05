@@ -9,17 +9,25 @@ class PartsController < ApplicationController
   end
 
   def create
-    part = Part.new(part_params)
-    part.save
-    redirect_to new_part_path
+    @parts = Part.all.order(:position).includes([:material])
+    @materials = Material.all.order(:position)
+    @part = Part.new(part_params)
+    if @part.save
+      redirect_to new_part_path
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @part.update(part_params)
-    redirect_to new_part_path
+    if @part.update(part_params)
+      redirect_to new_part_path
+    else
+      render :edit
+    end
   end
 
   def destroy
