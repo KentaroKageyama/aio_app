@@ -22,12 +22,21 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @items = Item.all.order(:position)
+    @glasses = Glass.all.order(:position).includes([:opal_color])
+    @parts = Part.all.order(:position).includes([:material])
+
     @item = Item.new(item_params)
-    @item.save
-    redirect_to new_item_path
+    if @item.save
+      redirect_to new_item_path
+    else
+      render :new
+    end
   end
 
   def edit
+    @glasses = Glass.all.order(:position).includes([:opal_color])
+    @parts = Part.all.order(:position).includes([:material])
   end
 
   def update
@@ -91,11 +100,13 @@ class ItemsController < ApplicationController
   def set_chain_name
     array = []
     items = params.require(:item)
-    array << Collection.find(items[:collection_id]).name
-    array << items[:name]
-    array << Category.find(items[:category_id]).name
-    array << Material.find(items[:material_id]).name if items[:material_id].present?
-    array << OpalColor.find(items[:opal_color_id]).color if items[:opal_color_id].present?
-    array.join(' ')
+    if items[:collection_id].present? && items[:category_id].present?
+      array << Collection.find(items[:collection_id]).name
+      array << items[:name]
+      array << Category.find(items[:category_id]).name
+      array << Material.find(items[:material_id]).name if items[:material_id].present?
+      array << OpalColor.find(items[:opal_color_id]).color if items[:opal_color_id].present?
+      array.join(' ')
+    end
   end
 end
