@@ -23,7 +23,11 @@
           <td><%= f.date_field :issue_date , class:"invoice-date" %></td>
           <td><%= f.text_field :issue_number, placeholder: "例）210001", class:"invoice-num" %></td>
           <td><%= f.text_field :content, placeholder:"例）東京店1月売上分", class:"invoice-cont" %></td>
-          <td><%= f.collection_select :client_id, Client.all, :id, :name, { include_blank: "選択して下さい",selected: @client.id }, { class:"invoice-client" } %></td>
+          <% if @client.present? %>
+            <td><%= f.collection_select :client_id, Client.all, :id, :name, { include_blank: "選択して下さい",selected: @client.id }, { class:"invoice-client" } %></td>
+          <% else %>
+            <td><%= f.collection_select :client_id, Client.all, :id, :name, { include_blank: "選択して下さい" }, { class:"invoice-client" } %></td>
+          <% end %>
         </tr>
       </tbody>
     </table>
