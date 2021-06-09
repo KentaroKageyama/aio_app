@@ -12,8 +12,11 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(invoice_params)
-    @invoice.save
-    redirect_to post_pdf_index_path(format: 'pdf', invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+    if @invoice.save
+      redirect_to post_pdf_index_path(format: 'pdf', invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,8 +24,12 @@ class InvoicesController < ApplicationController
   end
 
   def update
-    @invoice.update(invoice_params)
-    redirect_to post_pdf_index_path(format: 'pdf', invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+    @client = Client.find_by(name: @invoice.client_name)
+    if @invoice.update(invoice_params)
+      redirect_to post_pdf_index_path(format: 'pdf', invoice_id: @invoice.id, client_id: params[:invoice][:client_id])
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -33,10 +40,12 @@ class InvoicesController < ApplicationController
   private
 
   def invoice_params
-    client = Client.find(params[:invoice][:client_id]) if params[:invoice][:client_id].present?
-    params.require(:invoice).permit(:issue_date, :issue_number, :content, invoice_items_attributes: [:id, :chain_item, :size, :quantity, :price, :_destroy]).merge(
+    if params[:invoice][:client_id].present?
+      client = Client.find(params[:invoice][:client_id])
+      params.require(:invoice).permit(:issue_date, :issue_number, :content, invoice_items_attributes: [:id, :chain_item, :size, :quantity, :price, :_destroy]).merge(
       client_name: client.name, client_percentage: client.percentage
-    )
+      )
+    end
   end
 
   def set_invoice
